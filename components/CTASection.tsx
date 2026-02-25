@@ -3,6 +3,7 @@
 import gsap from "gsap";
 import { useRef, MouseEvent } from "react";
 import { ArrowRight, Zap, Shield, Clock } from "lucide-react";
+import Link from "next/link";
 
 export default function CTASection() {
     const buttonRef = useRef < HTMLAnchorElement > (null);
@@ -61,9 +62,9 @@ export default function CTASection() {
                         </p>
 
                         <div className="flex justify-center mb-16">
-                            <a
+                            <Link
                                 ref={buttonRef}
-                                href="#soft-offer"
+                                href="https://softoffer.commerciallendingusa.com/login"
                                 onMouseMove={handleMouseMove}
                                 onMouseLeave={handleMouseLeave}
                                 className="relative flex items-center justify-center bg-white text-zinc-950 font-black text-2xl py-6 px-12 rounded-full overflow-hidden hover:scale-105 transition-transform shadow-[0_0_50px_rgba(255,255,255,0.2)] hover:shadow-[0_0_80px_rgba(255,255,255,0.4)] will-change-transform"
@@ -73,7 +74,7 @@ export default function CTASection() {
                                     <ArrowRight className="w-8 h-8" />
                                 </span>
                                 <div className="absolute inset-0 bg-linear-to-r from-amber-200 to-amber-500 opacity-0 hover:opacity-100 transition-opacity duration-300" />
-                            </a>
+                            </Link>
                         </div>
 
                         {/* Reassurance pills */}
