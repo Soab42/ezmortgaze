@@ -1,167 +1,98 @@
 "use client";
 
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
-import { useRef } from "react";
-
-gsap.registerPlugin(ScrollTrigger);
-
 const steps = [
   {
     num: "01",
     title: "Complete the 5-Minute Soft Pre-Qual Form",
-    desc: "Provide basic borrower and property details so our AI can evaluate your deal structure. No hard credit pull required.",
-    color: "#3b82f6", // blue
+    desc: "Provide basic borrower and property details so our AI can evaluate your deal structure.",
+    color: "#3b82f6",
   },
   {
     num: "02",
     title: "Receive Your AI-Generated Soft Offer",
     desc: "Instantly view your estimated qualification range and potential financing options — with no hard credit inquiry.",
-    color: "#f59e0b", // amber
+    color: "#f59e0b",
   },
   {
     num: "03",
     title: "Strategic Review with a Loan Specialist",
     desc: "Our team refines the structure, evaluates capital sources, and optimizes terms based on your property type, leverage, and exit strategy.",
-    color: "#8b5cf6", // violet
+    color: "#8b5cf6",
   },
   {
     num: "04",
-    title: "LOI Issuance & Full Processing",
-    desc: "Once supporting documents are reviewed, management may issue a formal Letter of Intent (LOI). Upon signing, we accelerate your file into underwriting.",
-    color: "#10b981", // emerald
+    title: "LOI Issuance & Processing",
+    desc: (
+      <>
+        Once supporting documents are reviewed and the deal meets initial parameters, management may issue a formal Letter of Intent (LOI) to move your transaction forward.
+        <br /><br />
+        Upon signing the LOI, our team immediately pulls credit, confirms documentation, and activates full processing — accelerating your file into underwriting with a clear path toward funding. We move decisively to keep your timeline intact and your closing on track. If one structure doesn’t fit, we don’t stall deals — we pivot. Leveraging our extensive capital network, we quickly reposition your file into alternative loan programs to secure the strongest possible financing solution.
+      </>
+    ),
+    color: "#10b981",
   },
 ];
 
 export default function HowItWorks() {
-  const container = useRef < HTMLDivElement > (null);
-
-  useGSAP(() => {
-    // Header animation
-    gsap.from(".hiw-hdr", {
-      y: 40, opacity: 0, duration: 0.8, stagger: 0.1, ease: "power3.out",
-      scrollTrigger: { trigger: container.current, start: "top 75%" }
-    });
-
-    // Vertical line drawing animation linked to scroll
-    gsap.to(".hiw-line-glow", {
-      height: "100%",
-      ease: "none",
-      scrollTrigger: {
-        trigger: ".hiw-timeline-wrapper",
-        start: "top 50%",
-        end: "bottom 80%",
-        scrub: 1,
-      }
-    });
-
-    // Step items staggered fade up as you scroll past them
-    gsap.utils.toArray < HTMLElement > (".hiw-step").forEach((step, i) => {
-      gsap.from(step, {
-        x: i % 2 === 0 ? -50 : 50,
-        opacity: 0,
-        duration: 0.8,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: step,
-          start: "top 85%",
-          toggleActions: "play none none reverse",
-        }
-      });
-    });
-
-    // Glowing dot pulses as they activate
-    gsap.utils.toArray < HTMLElement > (".hiw-dot").forEach((dot) => {
-      gsap.fromTo(dot,
-        { scale: 0.5, opacity: 0.2 },
-        {
-          scale: 1.2, opacity: 1, duration: 0.4, ease: "back.out(1.5)",
-          scrollTrigger: {
-            trigger: dot,
-            start: "top 60%",
-            toggleActions: "play none none reverse",
-          }
-        }
-      );
-    });
-
-  }, { scope: container });
-
   return (
-    <section id="how-it-works" ref={container} className="relative py-32 px-6 overflow-hidden" style={{ zIndex: 1 }}>
-
-      {/* Background Effect */}
-      <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-blue-600/5 rounded-full filter blur-[120px] pointer-events-none translate-x-1/2 -translate-y-1/2" />
-
-      <div className="max-w-5xl mx-auto relative z-10 w-full">
+    <section id="how-it-works" className="relative py-12 px-6 overflow-hidden bg-[#020814]" style={{ zIndex: 1 }}>
+      <div className="max-w-4xl mx-auto relative z-10 w-full">
         {/* Header */}
-        <div className="hiw-hdr text-center mb-24">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-panel mb-6 border-amber-500/20">
-            <span className="text-sm font-medium tracking-wide text-amber-300 uppercase">
-              The Process
+        <div className="text-center mb-10">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-panel mb-4 border-amber-500/20 bg-white/5">
+            <span className="text-xs font-bold tracking-widest text-amber-300 uppercase">
+              🧠 How It Works
             </span>
           </div>
-          <h2
-            className="font-black mb-6 tracking-tight leading-[1.1]"
-            style={{ fontSize: "clamp(2.5rem, 5vw, 4.2rem)" }}
-          >
+          <h2 className="font-black mb-2 tracking-tight leading-tight text-white" style={{ fontSize: "clamp(1.5rem, 3vw, 2.22rem)" }}>
             Simple. Strategic.{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 to-amber-500">
+            <span className="bg-clip-text text-transparent bg-linear-to-r from-amber-200 to-amber-500">
               Powerful.
             </span>
           </h2>
-          <p className="max-w-2xl mx-auto text-zinc-400 text-lg leading-relaxed">
-            Four clear steps from initial input to funded transaction. We move decisively to keep your timeline intact.
-          </p>
         </div>
 
-        {/* Timeline Desktop/Mobile unified layout */}
-        <div className="hiw-timeline-wrapper relative max-w-4xl mx-auto">
+        {/* Timeline Layout - Static & Compact */}
+        <div className="relative">
+          {/* Central Line */}
+          <div className="absolute left-[20px] md:left-1/2 top-4 bottom-4 w-[2px] -translate-x-1/2 bg-white/5 whitespace-normal" />
 
-          {/* Central Vertical Line (hidden on very small screens, placed left on mobile, center on md+) */}
-          <div className="absolute left-[30px] md:left-1/2 top-4 bottom-4 w-1 -translate-x-1/2 bg-white/5 rounded-full overflow-hidden">
-            <div className="hiw-line-glow w-full bg-gradient-to-b from-blue-500 via-amber-500 to-emerald-500 h-0 block shadow-[0_0_15px_rgba(245,158,11,0.5)]" />
-          </div>
-
-          <div className="space-y-16 lg:space-y-24">
+          <div className="space-y-8">
             {steps.map((step, i) => (
               <div
                 key={step.num}
-                className={`hiw-step relative flex flex-col md:flex-row items-center gap-8 md:gap-16 ${i % 2 === 0 ? "md:flex-row-reverse" : ""}`}
+                className={`relative flex flex-col md:flex-row items-center gap-4 md:gap-12 ${i % 2 === 0 ? "md:flex-row-reverse" : ""}`}
               >
-
-                {/* Center Node / Dot */}
-                <div className="absolute left-[30px] md:left-1/2 -translate-x-1/2 flex items-center justify-center w-12 h-12 rounded-full glass-panel bg-zinc-950/80 backdrop-blur-xl border border-white/10 shadow-2xl z-10">
-                  <div className="hiw-dot w-4 h-4 rounded-full shadow-[0_0_15px_rgba(255,255,255,0.8)]" style={{ backgroundColor: step.color }} />
+                {/* Center Node */}
+                <div className="absolute left-[20px] md:left-1/2 -translate-x-1/2 flex items-center justify-center w-8 h-8 rounded-full glass-panel bg-zinc-950/80 border border-white/10 z-10">
+                  <div className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: step.color }} />
                 </div>
 
                 {/* Content Box */}
-                <div className={`w-full md:w-1/2 pl-24 md:pl-0 ${i % 2 === 0 ? "md:text-left" : "md:text-right"}`}>
-                  <div className="glass-panel p-8 premium-card hover:bg-white/5 transition-colors border-white/5 relative overflow-hidden group">
-                    <div className="text-[6rem] font-black absolute -top-6 -right-4 opacity-5 pointer-events-none group-hover:scale-110 transition-transform duration-500" style={{ color: step.color }}>
-                      {step.num}
-                    </div>
-
-                    <h3 className="text-sm font-black tracking-widest uppercase mb-3" style={{ color: step.color }}>
-                      Step {step.num}
-                    </h3>
-                    <h4 className="text-2xl font-bold text-white mb-4 tracking-tight leading-snug">
-                      {step.title}
+                <div className={`w-full md:w-1/2 pl-12 md:pl-0 ${i % 2 === 0 ? "md:text-left" : "md:text-right"}`}>
+                  <div className="glass-panel p-5 md:p-6 rounded-2xl border-white/5 bg-white/2 hover:bg-white/4 transition-colors">
+                    <h4 className="text-lg font-bold text-white mb-2 tracking-tight">
+                      {step.num}. {step.title}
                     </h4>
-                    <p className="text-zinc-400 leading-relaxed text-[0.95rem]">
+                    <div className="text-zinc-400 text-sm leading-relaxed">
                       {step.desc}
-                    </p>
+                    </div>
                   </div>
                 </div>
 
-                {/* Empty space for alternating layout */}
+                {/* Spacer */}
                 <div className="hidden md:block w-1/2" />
               </div>
             ))}
           </div>
         </div>
 
+        {/* Closing Quote */}
+        <div className="mt-16 text-center border-t border-white/5 pt-10">
+          <p className="text-xl md:text-2xl font-black tracking-tight italic bg-clip-text text-transparent bg-linear-to-r from-zinc-300 via-white to-zinc-500">
+            Speed matters. Certainty wins deals. And we’re built to deliver both.
+          </p>
+        </div>
       </div>
     </section>
   );

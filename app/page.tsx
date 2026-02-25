@@ -22,7 +22,7 @@ export default function Home() {
       <WhySection />
       <SectionDivider />
       <LoanPrograms />
-      <PowerhouseMarquee />
+      {/* <PowerhouseMarquee /> */}
       <SectionDivider />
       <HowItWorks />
       <SectionDivider />
@@ -30,7 +30,7 @@ export default function Home() {
       <SectionDivider />
       <Testimonials />
       <SectionDivider />
-      <SoftOfferForm />
+      {/* <SoftOfferForm /> */}
       <SectionDivider />
       <CTASection />
       <Footer />
