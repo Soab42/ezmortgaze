@@ -25,7 +25,9 @@ export default function Home() {
       <SectionDivider />
       <LoanPrograms />
       {/* <PowerhouseMarquee /> */}
-      <SectionDivider />    <MarketingSection /><SectionDivider />
+      <SectionDivider />
+      <MarketingSection />
+      <SectionDivider />
       <HowItWorks />
       <SectionDivider />
       <WhyChooseUs />
