@@ -16,7 +16,7 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <nav className="sticky top-0 left-0 right-0 z-50 w-full bg-[#020814]/90 backdrop-blur-md border-b border-white/5 py-4">
+    <nav className="fixed top-0 left-0 right-0 z-50 w-full bg-linear-to-br from-[#6d28d9]/40 via-[#020814]/20 to-transparent backdrop-blur-sm pt-4 pb-6 transition-all duration-300 border-white/5">
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 no-underline group">
