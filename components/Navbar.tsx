@@ -52,13 +52,13 @@ export default function Navbar() {
         {/* CTA */}
         <div className="hidden md:flex items-center gap-6">
           <a
-            href="tel:18005550199"
+            href="tel:8553659200"
             className="flex items-center gap-2 text-sm font-semibold text-[#f8fafc] hover:text-[#fbbf24] transition-colors no-underline group"
           >
             <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center border border-white/10 group-hover:border-[#fbbf24]/30">
               <Phone className="w-4 h-4 text-[#fbbf24]" />
             </div>
-            <span>800-555-0199</span>
+            <span>(855) 365-9200</span>
           </a>
           <Link
             href="https://softoffer.commerciallendingusa.com/login"
@@ -81,7 +81,7 @@ export default function Navbar() {
       {/* Mobile menu */}
       {menuOpen && (
         <div className="md:hidden absolute top-full left-0 right-0 bg-[#020814]/95 backdrop-blur-xl border-b border-white/5 px-6 py-6 flex flex-col gap-4">
-          {navLinks.map((link) => (
+          {/* {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
@@ -90,13 +90,13 @@ export default function Navbar() {
             >
               {link.label}
             </Link>
-          ))}
+          ))} */}
           <a
-            href="tel:18005550199"
+            href="tel:8553659200"
             className="flex items-center justify-center gap-2 text-lg font-bold text-[#f8fafc] py-4 bg-white/5 rounded-xl border border-white/10 no-underline mb-2"
           >
             <Phone className="w-5 h-5 text-[#fbbf24]" />
-            <span>800-555-0199</span>
+            <span>(855) 365-9200</span>
           </a>
           <Link
             href="https://softoffer.commerciallendingusa.com/login"

@@ -8,7 +8,7 @@ export default function LoanPrograms() {
       <div className="max-w-7xl mx-auto relative z-10 w-full">
         {/* Header */}
         <div className="text-center mb-20">
-          <h2 className="font-black mb-10 tracking-tight leading-tight text-white" style={{ fontSize: "clamp(2.2rem, 5vw, 3.8rem)" }}>
+          <h2 className="font-black mb-10 tracking-tight leading-tight text-white text-4xl md:text-5xl" >
             Loan Programs Designed for <br className="hidden md:block" />
             <span className="bg-clip-text text-transparent bg-linear-to-r from-emerald-400 to-teal-400">
               Real Results
@@ -28,10 +28,8 @@ export default function LoanPrograms() {
 
             <ul className="space-y-6">
               {[
-                "Acquisition & refinance for multifamily, retail, office, industrial, hospitality, mixed-use, assisted living facility, self-storage, healthcare, & special-use properties",
-                "Bridge financing for time-sensitive or transitional deals",
-                "Ground-up construction & major renovation loans",
-                "Long-term commercial mortgages with structured amortization"
+                "Acquisition and refinance financing for multifamily, retail, office, industrial, hospitality, mixed-use, assisted living, self-storage, healthcare, and special-use properties",
+                "Bridge financing for time-sensitive acquisitions, repositioning strategies, or transitional assets", "Ground-up construction and major renovation loans for development and value-add projects", "Lite-Doc or Full-Doc commercial mortgages with flexible terms and structured amortization"
               ].map((item, i) => (
                 <li key={i} className="flex gap-4 group/item">
                   <CheckCircle2 className="w-6 h-6 text-emerald-500/60 shrink-0 mt-1 transition-colors group-hover/item:text-emerald-400" />
@@ -52,10 +50,8 @@ export default function LoanPrograms() {
 
             <ul className="space-y-6">
               {[
-                "Fix & Flip / Bridge/ Blanket/ Hard Money loans",
-                "Landlord & rental portfolio expansion financing",
-                "DSCR & bank statement qualification programs",
-                "No-Doc / Lite-Doc financing for complex borrower profiles"
+                "Fix & Flip, bridge, blanket, ground-up construction, and hard money financing for investors and builders seeking short-term or long-term project capital",
+                "Landlord and rental portfolio expansion financing for scaling investment portfolios", "DSCR and bank statement qualification programs designed for real estate entrepreneurs", "No-Doc and Lite-Doc financing for complex borrower profiles and non-traditional income"
               ].map((item, i) => (
                 <li key={i} className="flex gap-4 group/item">
                   <CheckCircle2 className="w-6 h-6 text-amber-500/60 shrink-0 mt-1 transition-colors group-hover/item:text-amber-400" />

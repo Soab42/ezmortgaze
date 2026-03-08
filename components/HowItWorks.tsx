@@ -1,5 +1,7 @@
 "use client";
 
+import { Zap } from "lucide-react";
+
 const steps = [
   {
     num: "01",
@@ -25,8 +27,6 @@ const steps = [
     desc: (
       <>
         Once supporting documents are reviewed and the deal meets initial parameters, management may issue a formal Letter of Intent (LOI) to move your transaction forward.
-        <br /><br />
-        Upon signing the LOI, our team immediately pulls credit, confirms documentation, and activates full processing — accelerating your file into underwriting with a clear path toward funding. We move decisively to keep your timeline intact and your closing on track. If one structure doesn’t fit, we don’t stall deals — we pivot. Leveraging our extensive capital network, we quickly reposition your file into alternative loan programs to secure the strongest possible financing solution.
       </>
     ),
     color: "#10b981",
@@ -44,7 +44,7 @@ export default function HowItWorks() {
               🧠 How It Works
             </span>
           </div>
-          <h2 className="font-black mb-2 tracking-tight leading-tight text-white" style={{ fontSize: "clamp(1.5rem, 3vw, 2.22rem)" }}>
+          <h2 className="font-black mb-2 tracking-tight leading-tight text-white text-4xl md:text-5xl" >
             Simple. Strategic.{" "}
             <span className="bg-clip-text text-transparent bg-linear-to-r from-amber-200 to-amber-500">
               Powerful.
@@ -70,11 +70,17 @@ export default function HowItWorks() {
 
                 {/* Content Box */}
                 <div className={`w-full md:w-1/2 pl-12 md:pl-0 ${i % 2 === 0 ? "md:text-left" : "md:text-right"}`}>
-                  <div className="glass-panel p-5 md:p-6 rounded-2xl border-white/5 bg-white/2 hover:bg-white/4 transition-colors">
-                    <h4 className="text-lg font-bold text-white mb-2 tracking-tight">
-                      {step.num}. {step.title}
+                  <div className="relative glass-panel p-5 md:p-6 rounded-2xl border-white/5 bg-white/2 hover:bg-white/4 transition-colors overflow-hidden group/card">
+                    {/* Large Background Number */}
+                    <span className={`absolute -bottom-6 text-[10rem] font-black text-white/4 select-none pointer-events-none transition-transform duration-700 group-hover/card:scale-110 group-hover/card:text-white/6 ${i % 2 === 0 ? "-right-2" : "-left-2"
+                      }`}>
+                      {step.num}
+                    </span>
+
+                    <h4 className="relative z-10 text-lg font-bold text-white mb-2 tracking-tight">
+                      {step.title}
                     </h4>
-                    <div className="text-zinc-400 text-sm leading-relaxed">
+                    <div className="relative z-10 text-zinc-400 text-sm leading-relaxed">
                       {step.desc}
                     </div>
                   </div>
@@ -87,11 +93,33 @@ export default function HowItWorks() {
           </div>
         </div>
 
-        {/* Closing Quote */}
-        <div className="mt-16 text-center border-t border-white/5 pt-10">
-          <p className="text-xl md:text-2xl font-black tracking-tight italic bg-clip-text text-transparent bg-linear-to-r from-zinc-300 via-white to-zinc-500">
-            Speed matters. Certainty wins deals. And we’re built to deliver both.
-          </p>
+        {/* Closing Execution Card */}
+        <div className="mt-16 group">
+          <div className="relative glass-panel overflow-hidden border-white/10 bg-white/3 p-8 md:p-10 rounded-3xl transition-all duration-500 hover:bg-white/5 hover:border-amber-500/30">
+            {/* Subtle Glow Effect */}
+            <div className="absolute top-0 right-0 w-64 h-64 bg-amber-500/5 blur-[100px] -mr-32 -mt-32 rounded-full pointer-events-none group-hover:bg-amber-500/10 transition-colors" />
+
+            <div className="relative z-10 flex flex-col items-center text-center gap-6">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/20 mb-2">
+                <Zap className="w-4 h-4 text-amber-400 fill-amber-400/20" />
+                <span className="text-[10px] font-black tracking-widest text-amber-200 uppercase">
+                  Our Commitment to Execution
+                </span>
+              </div>
+
+              <h3 className="text-2xl md:text-3xl font-black tracking-tight italic bg-clip-text text-transparent bg-linear-to-r from-white via-amber-100 to-zinc-500 max-w-2xl">
+                Speed matters. Certainty wins deals. <br className="hidden md:block" />
+                And we’re built to deliver both.
+              </h3>
+
+              <div className="w-16 h-1 bg-linear-to-r from-transparent via-amber-500/40 to-transparent rounded-full" />
+
+              <p className="text-zinc-400 text-sm md:text-base leading-relaxed max-w-3xl font-medium">
+                Upon signing the LOI, our team immediately pulls credit, confirms documentation, and activates full processing — accelerating your file into underwriting with a clear path toward funding.
+                <span className="text-white font-bold mx-1">We move decisively</span> to keep your timeline intact and your closing on track. If one structure doesn’t fit, we don’t stall deals — we pivot. Leveraging our extensive capital network, we quickly reposition your file into alternative loan programs to secure the strongest possible financing solution.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>

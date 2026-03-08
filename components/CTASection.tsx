@@ -46,7 +46,7 @@ export default function CTASection() {
                         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-blue-500/20 bg-blue-500/10 mb-8 max-w-fit mx-auto">
                             <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
                             <span className="text-sm font-semibold tracking-widest text-blue-300 uppercase">
-                                Ready to scale?
+                                Ready to Discover Your Borrowing Power?
                             </span>
                         </div>
 
@@ -57,8 +57,8 @@ export default function CTASection() {
                             </span>
                         </h2>
 
-                        <p className="mb-12 max-w-2xl mx-auto text-zinc-400 text-xl leading-relaxed">
-                            It takes 5 minutes. Know your numbers, strengthen your position, and win more deals.
+                        <p className="mb-12 max-w-2xl mx-auto text-zinc-400 text-lg  leading-relaxed">
+                            It’s free. It takes just 5 minutes. It gives you actionable insight before submitting a full application. Know your numbers. Strengthen your position. Win more deals.
                         </p>
 
                         <div className="flex justify-center mb-16">

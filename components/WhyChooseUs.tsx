@@ -48,7 +48,7 @@ export default function WhyChooseUs() {
             </span>
           </div>
 
-          <h2 className="font-black mb-6 tracking-tight leading-tight text-white" style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)" }}>
+          <h2 className="font-black mb-6 tracking-tight leading-tight text-white text-4xl md:text-5xl" >
             Why Investors Choose Us?
           </h2>
           <p className="max-w-2xl text-zinc-400 text-lg leading-relaxed">

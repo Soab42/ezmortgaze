@@ -1,6 +1,6 @@
 "use client";
 
-import { Target, Building2, Home, Briefcase, Zap } from "lucide-react";
+import { Target, Building2, Home, Briefcase, Zap, ShieldCheck } from "lucide-react";
 
 const features = [
   {
@@ -32,6 +32,12 @@ const features = [
     title: "Smart Technology + Experienced Loan Experts",
     desc: "AI speed combined with 30+ years of underwriting insight. Our experienced team is ready to step in, refine strategy, and guide your deal forward.",
     color: "#ec4899" // pink
+  },
+  {
+    icon: ShieldCheck,
+    title: "Right Products+ More Options",
+    desc: "Stop wasting to shop around. Let our team handle your mortgage loan with 75+ products with our Underwriting capabilities, corresponding or Partners network.",
+    color: "#06b6d4" // cyan
   }
 ];
 
@@ -50,7 +56,7 @@ export default function WhySection() {
               The EZ Advantage
             </span>
           </div>
-          <h2 className="font-black mb-6 tracking-tight leading-tight text-white" style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)" }}>
+          <h2 className="font-black mb-6 tracking-tight leading-tight text-white text-4xl md:text-5xl">
             Why This Is More Than <br className="hidden md:block" />
             <span className="bg-clip-text text-transparent bg-linear-to-r from-blue-400 to-cyan-300">
               “Just Another Loan Quote?
