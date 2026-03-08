@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X, TrendingUp, Phone } from "lucide-react";
 import Link from "next/link";
 
@@ -14,10 +14,23 @@ const navLinks = [
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 w-full bg-linear-to-br from-[#6d28d9]/40 via-[#020814]/20 to-transparent backdrop-blur-sm pt-4 pb-6 transition-all duration-300 border-white/5">
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+    <nav className="fixed top-0 left-0 right-0 z-50 w-full pt-4 pb-6">
+      {/* Base Background: Small blur */}
+      <div className="absolute inset-0 bg-transparent backdrop-blur-sm border-b border-transparent z-[-1]" />
+
+      {/* Scrolled Background: Gradient and large blur fading in */}
+      <div className={`absolute inset-0 bg-linear-to-br from-[#6d28d9]/40 via-[#020814]/20 to-transparent backdrop-blur-xl border-b border-white/5 z-[-1] transition-opacity duration-300 ${scrolled ? 'opacity-100' : 'opacity-0 pointer-events-none'}`} />
+
+      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between relative z-10">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 no-underline group">
           <div

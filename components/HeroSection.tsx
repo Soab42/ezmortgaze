@@ -108,13 +108,13 @@ export default function HeroSection() {
             }
           `}} />
 
-          {/* 3D Container to strongly tilt the feed for massive depth */}
-          <div className="absolute inset-0 fade-mask flex gap-6 justify-center items-center rotate-6 -rotate-y-35 rotate-x-10 scale-[1.4] origin-right">
+          {/* 3D Container to strongly tilt the feed for massive depth - Now non-interactive (pointer-events-none) */}
+          <div className="absolute inset-0 fade-mask flex gap-6 justify-center items-center rotate-6 -rotate-y-35 rotate-x-10 scale-[1.4] origin-right pointer-events-none">
 
             {/* Column 1 (Slower) */}
             <div className="w-[260px] flex flex-col animate-marquee-up">
               {[...LIVE_OFFERS, ...LIVE_OFFERS].map((offer, i) => (
-                <div key={`col1-${i}`} className="w-full relative overflow-hidden p-6 rounded-3xl mb-6 shadow-[0_8px_32px_0_rgba(255,255,255,0.05)] border border-white/20 bg-white/10 backdrop-blur-2xl transition-all duration-300 hover:scale-[1.02] hover:bg-white/10 hover:border-white/30 cursor-default">
+                <div key={`col1-${i}`} className="w-full relative overflow-hidden p-6 rounded-3xl mb-6 shadow-[0_8px_32px_0_rgba(255,255,255,0.05)] border border-white/20 bg-white/10 backdrop-blur-2xl">
                   <div className="flex justify-between items-center mb-4">
                     <span className="text-[10px] font-bold text-white/80 tracking-wider uppercase">{offer.location}</span>
                     <span className={`px-2.5 py-1 text-[9px] font-bold rounded-full border ${offer.colorClasses}`}>
@@ -142,7 +142,7 @@ export default function HeroSection() {
             {/* Column 2 (Faster, staggered start) */}
             <div className="w-[260px] flex flex-col animate-marquee-up-fast">
               {[...LIVE_OFFERS.slice(3).concat(LIVE_OFFERS.slice(0, 3)), ...LIVE_OFFERS.slice(3).concat(LIVE_OFFERS.slice(0, 3))].map((offer, i) => (
-                <div key={`col2-${i}`} className="w-full relative overflow-hidden p-6 rounded-3xl mb-6 shadow-[0_8px_32px_0_rgba(255,255,255,0.05)] border border-white/20 bg-white/10 backdrop-blur-2xl transition-all duration-300 hover:scale-[1.02] hover:bg-white/10 hover:border-white/30 cursor-default">
+                <div key={`col2-${i}`} className="w-full relative overflow-hidden p-6 rounded-3xl mb-6 shadow-[0_8px_32px_0_rgba(255,255,255,0.05)] border border-white/20 bg-white/10 backdrop-blur-2xl">
                   <div className="flex justify-between items-center mb-4">
                     <span className="text-[10px] font-bold text-white/80 tracking-wider uppercase">{offer.location}</span>
                     <span className={`px-2.5 py-1 text-[9px] font-bold rounded-full border ${offer.colorClasses}`}>
