@@ -46,14 +46,14 @@ export default function CTASection() {
                         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-blue-500/20 bg-blue-500/10 mb-8 max-w-fit mx-auto">
                             <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
                             <span className="text-sm font-semibold tracking-widest text-blue-300 uppercase">
-                                Ready to Discover Your Borrowing Power?
+                                Start Your AI-Generated Soft Offer Now
                             </span>
                         </div>
 
-                        <h2 className="font-black mb-6 tracking-tight leading-[1.1]" style={{ fontSize: "clamp(3rem, 6vw, 4.5rem)" }}>
-                            Discover Your True<br className="hidden md:block" />
+                        <h2 className="font-black mb-6 tracking-tight leading-[1.1]" style={{ fontSize: "clamp(2.5rem, 6vw, 3.5rem)" }}>
+                            Ready to Discover Your<br className="hidden md:block" />
                             <span className="bg-clip-text text-transparent bg-linear-to-r from-amber-200 via-amber-400 to-amber-600">
-                                Borrowing Power
+                                Borrowing Power?
                             </span>
                         </h2>
 

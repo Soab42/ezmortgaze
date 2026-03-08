@@ -37,8 +37,11 @@ export default function HeroSection() {
     <section
       id="hero"
       ref={container}
-      className="relative min-h-screen flex items-start pt-10 overflow-hidden"
-      style={{ zIndex: 1 }}
+      className="relative min-h-screen flex items-center overflow-hidden"
+      style={{
+        zIndex: 1,
+        background: 'linear-gradient(135deg, #6d28d9 0%, #c026d3 50%, #f6a47a 100%)'
+      }}
     >
       {/* Dynamic Glow Orbs */}
       <div className="glow-orb opacity-80 w-[600px] h-[600px] bg-blue-600/50 top-0 left-0 -translate-x-1/4 -translate-y-1/4 mix-blend-screen z-0" />
@@ -64,7 +67,7 @@ export default function HeroSection() {
             </span>
           </h1>
 
-          <p className="hero-text text-zinc-400 text-lg md:text-xl max-w-xl leading-relaxed mb-10">
+          <p className="hero-text text-white/90 text-lg md:text-xl max-w-xl leading-relaxed mb-10 font-medium">
             Acquiring or refinancing your next residential investment, fix-and-flip, multifamily property, retail center, office, mixed use, or other commercial properties? Click and review our AI Generated Soft offer.
           </p>
 
@@ -111,25 +114,25 @@ export default function HeroSection() {
             {/* Column 1 (Slower) */}
             <div className="w-[260px] flex flex-col animate-marquee-up">
               {[...LIVE_OFFERS, ...LIVE_OFFERS].map((offer, i) => (
-                <div key={`col1-${i}`} className="w-full glass-panel p-5 rounded-3xl mb-6 shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-white/5 bg-zinc-900/60 backdrop-blur-xl transition-all duration-300 hover:scale-[1.02] hover:bg-zinc-800/80 hover:border-white/20 cursor-default">
+                <div key={`col1-${i}`} className="w-full relative overflow-hidden p-6 rounded-3xl mb-6 shadow-[0_8px_32px_0_rgba(255,255,255,0.05)] border border-white/20 bg-white/10 backdrop-blur-2xl transition-all duration-300 hover:scale-[1.02] hover:bg-white/10 hover:border-white/30 cursor-default">
                   <div className="flex justify-between items-center mb-4">
-                    <span className="text-[10px] font-bold text-zinc-500 tracking-wider uppercase">{offer.location}</span>
+                    <span className="text-[10px] font-bold text-white/80 tracking-wider uppercase">{offer.location}</span>
                     <span className={`px-2.5 py-1 text-[9px] font-bold rounded-full border ${offer.colorClasses}`}>
                       {offer.status}
                     </span>
                   </div>
-                  <h4 className="text-white font-bold text-[15px] mb-1">{offer.type}</h4>
-                  <div className="text-2xl font-black bg-clip-text text-transparent bg-linear-to-r from-white to-zinc-400 mb-4 tracking-tight">
+                  <h4 className="text-white font-bold text-lg mb-1">{offer.type}</h4>
+                  <div className="text-2xl font-black text-white mb-4 tracking-tight drop-shadow-md">
                     {offer.amount}
                   </div>
-                  <div className="flex justify-between items-center border-t border-white/5 pt-3">
+                  <div className="flex justify-between items-center border-t border-white/20 pt-4">
                     <div className="flex flex-col">
-                      <span className="text-[10px] text-zinc-500 font-semibold uppercase">LTV/LTC</span>
-                      <span className="text-xs font-bold text-zinc-300">{offer.ltv}</span>
+                      <span className="text-[10px] text-white/70 font-bold uppercase tracking-wider mb-1">LTV/LTC</span>
+                      <span className="text-sm font-black text-white">{offer.ltv}</span>
                     </div>
                     <div className="flex flex-col items-end">
-                      <span className="text-[10px] text-zinc-500 font-semibold uppercase">Est. Rate</span>
-                      <span className="text-xs font-bold text-white">{offer.rate}</span>
+                      <span className="text-[10px] text-white/70 font-bold uppercase tracking-wider mb-1">Est. Rate</span>
+                      <span className="text-sm font-black text-white">{offer.rate}</span>
                     </div>
                   </div>
                 </div>
@@ -139,25 +142,25 @@ export default function HeroSection() {
             {/* Column 2 (Faster, staggered start) */}
             <div className="w-[260px] flex flex-col animate-marquee-up-fast">
               {[...LIVE_OFFERS.slice(3).concat(LIVE_OFFERS.slice(0, 3)), ...LIVE_OFFERS.slice(3).concat(LIVE_OFFERS.slice(0, 3))].map((offer, i) => (
-                <div key={`col2-${i}`} className="w-full glass-panel p-5 rounded-3xl mb-6 shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-white/5 bg-zinc-950/40 backdrop-blur-md transition-all duration-300 hover:scale-[1.02] hover:bg-zinc-900/80 hover:border-white/20 cursor-default">
+                <div key={`col2-${i}`} className="w-full relative overflow-hidden p-6 rounded-3xl mb-6 shadow-[0_8px_32px_0_rgba(255,255,255,0.05)] border border-white/20 bg-white/10 backdrop-blur-2xl transition-all duration-300 hover:scale-[1.02] hover:bg-white/10 hover:border-white/30 cursor-default">
                   <div className="flex justify-between items-center mb-4">
-                    <span className="text-[10px] font-bold text-zinc-500 tracking-wider uppercase">{offer.location}</span>
+                    <span className="text-[10px] font-bold text-white/80 tracking-wider uppercase">{offer.location}</span>
                     <span className={`px-2.5 py-1 text-[9px] font-bold rounded-full border ${offer.colorClasses}`}>
                       {offer.status}
                     </span>
                   </div>
-                  <h4 className="text-white font-bold text-[15px] mb-1">{offer.type}</h4>
-                  <div className="text-2xl font-black bg-clip-text text-transparent bg-linear-to-r from-white to-zinc-400 mb-4 tracking-tight">
+                  <h4 className="text-white font-bold text-lg mb-1">{offer.type}</h4>
+                  <div className="text-2xl font-black text-white mb-4 tracking-tight drop-shadow-md">
                     {offer.amount}
                   </div>
-                  <div className="flex justify-between items-center border-t border-white/5 pt-3">
+                  <div className="flex justify-between items-center border-t border-white/20 pt-4">
                     <div className="flex flex-col">
-                      <span className="text-[10px] text-zinc-500 font-semibold uppercase">LTV/LTC</span>
-                      <span className="text-xs font-bold text-zinc-300">{offer.ltv}</span>
+                      <span className="text-[10px] text-white/70 font-bold uppercase tracking-wider mb-1">LTV/LTC</span>
+                      <span className="text-sm font-black text-white">{offer.ltv}</span>
                     </div>
                     <div className="flex flex-col items-end">
-                      <span className="text-[10px] text-zinc-500 font-semibold uppercase">Est. Rate</span>
-                      <span className="text-xs font-bold text-white">{offer.rate}</span>
+                      <span className="text-[10px] text-white/70 font-bold uppercase tracking-wider mb-1">Est. Rate</span>
+                      <span className="text-sm font-black text-white">{offer.rate}</span>
                     </div>
                   </div>
                 </div>

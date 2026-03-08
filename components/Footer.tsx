@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import { TrendingUp } from "lucide-react";
 import LegalModal from "./LegalModal";
 
 export default function Footer() {
@@ -46,11 +47,20 @@ export default function Footer() {
 
           <div className="max-w-7xl mx-auto relative z-10 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Left Column: Text Content */}
-            <div className="flex flex-col gap-2">
-              <h2 className="text-3xl md:text-5xl font-black text-white leading-tight tracking-tight">
-                <span className="bg-clip-text text-transparent bg-linear-to-r from-amber-400 to-amber-600">EZMortgageLender®</span>
-              </h2>
-              <p>Negotiate stronger. Move faster. Compete with confidence.</p>
+            <div className="flex flex-col gap-5">
+              <div className="flex items-center gap-3">
+                <div
+                  className="w-12 h-12 md:w-16 md:h-16 rounded-xl flex items-center justify-center shrink-0 shadow-lg"
+                  style={{ background: "linear-gradient(135deg,#f59e0b,#d97706)" }}
+                >
+                  <TrendingUp className="w-7 h-7 md:w-9 md:h-9" style={{ color: "#020814" }} />
+                </div>
+                <h2 className="text-3xl md:text-5xl font-black leading-tight tracking-tight" style={{ fontFamily: "Outfit, sans-serif", color: "#f8fafc" }}>
+                  EZ<span className="gradient-text-gold">Mortgage</span>Lender
+                  <span className="text-xl md:text-2xl align-super" style={{ color: "#f59e0b" }}>®</span>
+                </h2>
+              </div>
+              <p className="text-zinc-300 text-lg md:text-xl">Negotiate stronger. Move faster. Compete with confidence.</p>
             </div>
 
             {/* Right Column: Trust Logos */}

@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
+import MarketingSection from "@/components/MarketingSection";
 import PowerhouseMarquee from "@/components/PowerhouseMarquee";
 import WhySection from "@/components/WhySection";
 import LoanPrograms from "@/components/LoanPrograms";
@@ -19,11 +20,12 @@ export default function Home() {
     <main className="relative">
       <Navbar />
       <HeroSection />
+
       <WhySection />
       <SectionDivider />
       <LoanPrograms />
       {/* <PowerhouseMarquee /> */}
-      <SectionDivider />
+      <SectionDivider />    <MarketingSection /><SectionDivider />
       <HowItWorks />
       <SectionDivider />
       <WhyChooseUs />
