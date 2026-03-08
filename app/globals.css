@@ -2,16 +2,17 @@
 /* Fonts loaded via <link> in layout.tsx <head> to avoid CSS @import ordering conflicts */
 
 :root {
-  --bg-primary: #030509; /* Deeper space grey */
-  --bg-secondary: #0a0f1c;
-  --bg-card: rgba(10, 15, 28, 0.4);
+  --bg-primary: #6d28d9; /* Deep Purple from reference */
+  --bg-secondary: #c026d3; /* Magenta/Fuchsia transition */
+  --bg-tertiary: #f6a47a; /* Warm Peach/Orange from reference */
+  --bg-card: rgba(255, 255, 255, 0.05);
   --gold: #efc354;
   --gold-light: #fde047;
   --gold-dark: #b45309;
   --blue-accent: #3b82f6;
   --text-primary: #ffffff;
-  --text-secondary: #a1a1aa; /* Zinc 400 */
-  --border-glass: rgba(255, 255, 255, 0.08);
+  --text-secondary: rgba(255, 255, 255, 0.7);
+  --border-glass: rgba(255, 255, 255, 0.12);
 }
 
 /* Base resets are handled by Tailwind v4 preflight */
@@ -21,11 +22,11 @@ html {
 }
 
 body {
-  background: var(--bg-primary);
+  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, var(--bg-tertiary) 100%);
   color: var(--text-primary);
   font-family: 'Inter', sans-serif;
   overflow-x: hidden;
-  /* Very subtle noise texture could go here */
+  min-height: 100vh;
 }
 
 h1, h2, h3, h4, h5 {
@@ -33,16 +34,25 @@ h1, h2, h3, h4, h5 {
   letter-spacing: -0.02em; /* Tighter leading for premium feel */
 }
 
-/* Ambient Animated Glows */
+/* Vibrant Noisy Background */
 .mesh-bg {
   position: fixed;
   top: 0; left: 0;
   width: 100vw; height: 100vh;
-  z-index: 0;
+  z-index: -2;
   pointer-events: none;
-  background:
-    radial-gradient(circle 800px at 10% 0%, rgba(59,130,246,0.06) 0%, transparent 60%),
-    radial-gradient(circle 900px at 90% 80%, rgba(239,195,84,0.04) 0%, transparent 50%);
+  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, var(--bg-tertiary) 100%);
+}
+
+.noisy-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.25;
+  filter: url(#noiseFilter);
+  mix-blend-mode: overlay;
 }
 
 .glow-orb {

@@ -31,7 +31,7 @@ const reasons = [
 
 export default function WhyChooseUs() {
   return (
-    <section id="why-choose" className="relative py-24 px-6 overflow-hidden bg-[#020814]" style={{ zIndex: 1 }}>
+    <section id="why-choose" className="relative py-24 px-6 overflow-hidden bg-transparent" style={{ zIndex: 1 }}>
 
       {/* Abstract Glowing Lines & Beams Background */}
       <div className="absolute inset-0 z-0 pointer-events-none">
@@ -42,8 +42,8 @@ export default function WhyChooseUs() {
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Header */}
         <div className="text-center mb-20 flex flex-col items-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-panel mb-6 border-indigo-500/20 bg-white/5">
-            <span className="text-sm font-semibold tracking-wider text-indigo-300 uppercase">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-panel mb-6 border-white/20 bg-white/5">
+            <span className="text-sm font-semibold tracking-wider text-white uppercase">
               Proven Track Record
             </span>
           </div>
@@ -51,7 +51,7 @@ export default function WhyChooseUs() {
           <h2 className="font-black mb-6 tracking-tight leading-tight text-white text-4xl md:text-5xl" >
             Why Investors Choose Us?
           </h2>
-          <p className="max-w-2xl text-zinc-400 text-lg leading-relaxed">
+          <p className="max-w-2xl text-white/90 text-lg leading-relaxed">
             Relationships forged over decades. Capital deployed across every property type. We bring absolute certainty to complex deals.
           </p>
         </div>
@@ -70,25 +70,25 @@ export default function WhyChooseUs() {
 
               <div className="relative z-10 flex-1 flex flex-col justify-center h-full pt-1">
                 <h3 className="text-2xl font-bold text-white mb-3 tracking-tight">{r.title}</h3>
-                <p className="text-zinc-400 text-base leading-relaxed">{r.desc}</p>
+                <p className="text-white/80 text-base leading-relaxed">{r.desc}</p>
               </div>
             </div>
           ))}
         </div>
 
         {/* Broker / Realtor Banner */}
-        <div className="mt-20 p-px bg-linear-to-r from-indigo-500/20 via-blue-500/20 to-emerald-500/20 rounded-4xl shadow-2xl">
-          <div className="glass-panel p-10 lg:p-12 rounded-[inherit] bg-zinc-950/80 backdrop-blur-2xl border-none flex flex-col md:flex-row items-center justify-between gap-10">
+        <div className="mt-20 p-px bg-white/20 rounded-4xl shadow-2xl">
+          <div className="glass-panel p-10 lg:p-12 rounded-[inherit] bg-white/5 backdrop-blur-2xl border-none flex flex-col md:flex-row items-center justify-between gap-10">
             <div className="flex-1 text-center md:text-left">
               <h3 className="text-3xl font-bold text-white mb-4 tracking-tight">
                 Are you a Mortgage Broker or Realtor?
               </h3>
-              <p className="text-zinc-400 text-lg leading-relaxed max-w-2xl">
+              <p className="text-white/80 text-lg leading-relaxed max-w-2xl">
                 We actively partner with industry professionals to provide immediate and reliable capital access. Stop losing deals because traditional lenders can't perform.
               </p>
             </div>
             <div className="shrink-0">
-              <span className="px-8 py-4 rounded-full bg-white text-zinc-950 font-bold text-lg flex items-center gap-3 hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer shadow-xl">
+              <span className="px-8 py-4 rounded-full bg-white text-[#6d28d9] font-bold text-lg flex items-center gap-3 hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer shadow-xl">
                 Partner With Us
                 <ArrowRight className="w-5 h-5 stroke-[3px]" />
               </span>

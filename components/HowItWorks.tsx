@@ -35,7 +35,7 @@ const steps = [
 
 export default function HowItWorks() {
   return (
-    <section id="how-it-works" className="relative py-12 px-6 overflow-hidden bg-[#020814]" style={{ zIndex: 1 }}>
+    <section id="how-it-works" className="relative py-12 px-6 overflow-hidden bg-transparent" style={{ zIndex: 1 }}>
       <div className="max-w-4xl mx-auto relative z-10 w-full">
         {/* Header */}
         <div className="text-center mb-10">
@@ -46,7 +46,7 @@ export default function HowItWorks() {
           </div>
           <h2 className="font-black mb-2 tracking-tight leading-tight text-white text-4xl md:text-5xl" >
             Simple. Strategic.{" "}
-            <span className="bg-clip-text text-transparent bg-linear-to-r from-amber-200 to-amber-500">
+            <span className="text-white">
               Powerful.
             </span>
           </h2>
@@ -80,7 +80,7 @@ export default function HowItWorks() {
                     <h4 className="relative z-10 text-lg font-bold text-white mb-2 tracking-tight">
                       {step.title}
                     </h4>
-                    <div className="relative z-10 text-zinc-400 text-sm leading-relaxed">
+                    <div className="relative z-10 text-white/90 text-sm leading-relaxed">
                       {step.desc}
                     </div>
                   </div>
@@ -97,24 +97,24 @@ export default function HowItWorks() {
         <div className="mt-16 group">
           <div className="relative glass-panel overflow-hidden border-white/10 bg-white/3 p-8 md:p-10 rounded-3xl transition-all duration-500 hover:bg-white/5 hover:border-amber-500/30">
             {/* Subtle Glow Effect */}
-            <div className="absolute top-0 right-0 w-64 h-64 bg-amber-500/5 blur-[100px] -mr-32 -mt-32 rounded-full pointer-events-none group-hover:bg-amber-500/10 transition-colors" />
+            <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 blur-[100px] -mr-32 -mt-32 rounded-full pointer-events-none group-hover:bg-white/10 transition-colors" />
 
             <div className="relative z-10 flex flex-col items-center text-center gap-6">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/20 mb-2">
-                <Zap className="w-4 h-4 text-amber-400 fill-amber-400/20" />
-                <span className="text-[10px] font-black tracking-widest text-amber-200 uppercase">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 border border-white/20 mb-2">
+                <Zap className="w-4 h-4 text-white fill-white/20" />
+                <span className="text-[10px] font-black tracking-widest text-white uppercase">
                   Our Commitment to Execution
                 </span>
               </div>
 
-              <h3 className="text-2xl md:text-3xl font-black tracking-tight italic bg-clip-text text-transparent bg-linear-to-r from-white via-amber-100 to-zinc-500 max-w-2xl">
+              <h3 className="text-2xl md:text-3xl font-black tracking-tight italic text-white max-w-2xl">
                 Speed matters. Certainty wins deals. <br className="hidden md:block" />
                 And we’re built to deliver both.
               </h3>
 
-              <div className="w-16 h-1 bg-linear-to-r from-transparent via-amber-500/40 to-transparent rounded-full" />
+              <div className="w-16 h-1 bg-linear-to-r from-transparent via-white/40 to-transparent rounded-full" />
 
-              <p className="text-zinc-400 text-sm md:text-base leading-relaxed max-w-3xl font-medium">
+              <p className="text-white/90 text-sm md:text-base leading-relaxed max-w-3xl font-medium">
                 Upon signing the LOI, our team immediately pulls credit, confirms documentation, and activates full processing — accelerating your file into underwriting with a clear path toward funding.
                 <span className="text-white font-bold mx-1">We move decisively</span> to keep your timeline intact and your closing on track. If one structure doesn’t fit, we don’t stall deals — we pivot. Leveraging our extensive capital network, we quickly reposition your file into alternative loan programs to secure the strongest possible financing solution.
               </p>

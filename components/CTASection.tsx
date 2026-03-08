@@ -37,7 +37,7 @@ export default function CTASection() {
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-white/20 blur-[100px] pointer-events-none rounded-full" />
 
             <div className="max-w-4xl mx-auto relative z-10 w-full">
-                <div className="glass-panel p-12 md:p-20 text-center rounded-[3rem] border border-white/10 bg-zinc-950/60 backdrop-blur-3xl shadow-2xl relative overflow-hidden group">
+                <div className="glass-panel p-12 md:p-20 text-center rounded-[3rem] border border-white/10 bg-white/5 backdrop-blur-2xl shadow-2xl relative overflow-hidden group">
 
                     {/* Hover Glow Follower inside card */}
                     <div className="absolute inset-0 bg-linear-to-b from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
@@ -45,19 +45,19 @@ export default function CTASection() {
                     <div className="relative z-10">
                         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-blue-500/20 bg-blue-500/10 mb-8 max-w-fit mx-auto">
                             <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
-                            <span className="text-sm font-semibold tracking-widest text-blue-300 uppercase">
+                            <span className="text-sm font-semibold tracking-widest text-white uppercase">
                                 Ready to Discover Your Borrowing Power?
                             </span>
                         </div>
 
                         <h2 className="font-black mb-6 tracking-tight leading-[1.1]" style={{ fontSize: "clamp(3rem, 6vw, 4.5rem)" }}>
                             Discover Your True<br className="hidden md:block" />
-                            <span className="bg-clip-text text-transparent bg-linear-to-r from-amber-200 via-amber-400 to-amber-600">
+                            <span className="text-white">
                                 Borrowing Power
                             </span>
                         </h2>
 
-                        <p className="mb-12 max-w-2xl mx-auto text-zinc-400 text-lg  leading-relaxed">
+                        <p className="mb-12 max-w-2xl mx-auto text-white/90 text-lg  leading-relaxed">
                             It’s free. It takes just 5 minutes. It gives you actionable insight before submitting a full application. Know your numbers. Strengthen your position. Win more deals.
                         </p>
 
@@ -67,13 +67,12 @@ export default function CTASection() {
                                 href="https://softoffer.commerciallendingusa.com/login"
                                 onMouseMove={handleMouseMove}
                                 onMouseLeave={handleMouseLeave}
-                                className="relative flex items-center justify-center bg-white text-zinc-950 font-black text-2xl py-6 px-12 rounded-full overflow-hidden hover:scale-105 transition-transform shadow-[0_0_50px_rgba(255,255,255,0.2)] hover:shadow-[0_0_80px_rgba(255,255,255,0.4)] will-change-transform"
+                                className="relative flex items-center justify-center bg-white text-[#6d28d9] font-black text-2xl py-6 px-12 rounded-full overflow-hidden hover:scale-105 transition-transform shadow-[0_4px_20px_rgba(0,0,0,0.1)] hover:shadow-[0_0_40px_rgba(255,255,255,0.6)] will-change-transform"
                             >
                                 <span ref={textRef} className="relative z-10 flex items-center gap-3">
                                     Get My AI Soft Offer
                                     <ArrowRight className="w-8 h-8" />
                                 </span>
-                                <div className="absolute inset-0 bg-linear-to-r from-amber-200 to-amber-500 opacity-0 hover:opacity-100 transition-opacity duration-300" />
                             </Link>
                         </div>
 
@@ -84,8 +83,8 @@ export default function CTASection() {
                                 { icon: Clock, text: "Results in 5 Minutes" },
                                 { icon: Zap, text: "AI-Powered Pre-Qual" }
                             ].map((pill, i) => (
-                                <div key={i} className="flex items-center gap-2 px-4 py-2 rounded-full bg-black/40 border border-white/5 text-zinc-400 text-sm font-medium">
-                                    <pill.icon className="w-4 h-4 text-emerald-400" />
+                                <div key={i} className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-white/90 text-sm font-medium">
+                                    <pill.icon className="w-4 h-4 text-white" />
                                     {pill.text}
                                 </div>
                             ))}

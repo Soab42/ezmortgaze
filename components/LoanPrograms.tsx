@@ -4,7 +4,21 @@ import { Building2, Home, CheckCircle2 } from "lucide-react";
 
 export default function LoanPrograms() {
   return (
-    <section id="programs" className="relative py-24 px-6 overflow-hidden bg-[#020814]" style={{ zIndex: 1 }}>
+    <section id="programs" className="relative py-10 px-6 overflow-hidden" style={{ zIndex: 1 }}>
+      {/* Enhanced Background Effects */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <div className="absolute inset-0 bg-[#030509]/40" />
+        {/* Localized Vibrant Glows */}
+        <div className="absolute top-0 left-0 w-full h-full">
+          <div className="absolute top-1/4 -left-1/4 w-[800px] h-[800px] bg-emerald-500/30 blur-[150px] rounded-full animate-pulse" />
+          <div className="absolute bottom-1/4 -right-1/4 w-[800px] h-[800px] bg-amber-500/30 blur-[150px] rounded-full animate-pulse" style={{ animationDelay: "1s" }} />
+        </div>
+        {/* Abstract Tech Grid */}
+        <div className="absolute inset-0 opacity-[0.03]"
+          style={{ backgroundImage: 'linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px)', backgroundSize: '6rem 6rem' }}>
+        </div>
+      </div>
+
       <div className="max-w-7xl mx-auto relative z-10 w-full">
         {/* Header */}
         <div className="text-center mb-20">
@@ -33,7 +47,7 @@ export default function LoanPrograms() {
               ].map((item, i) => (
                 <li key={i} className="flex gap-4 group/item">
                   <CheckCircle2 className="w-6 h-6 text-emerald-500/60 shrink-0 mt-1 transition-colors group-hover/item:text-emerald-400" />
-                  <span className="text-zinc-300 text-lg leading-relaxed">{item}</span>
+                  <span className="text-white/90 text-lg leading-relaxed">{item}</span>
                 </li>
               ))}
             </ul>
@@ -55,7 +69,7 @@ export default function LoanPrograms() {
               ].map((item, i) => (
                 <li key={i} className="flex gap-4 group/item">
                   <CheckCircle2 className="w-6 h-6 text-amber-500/60 shrink-0 mt-1 transition-colors group-hover/item:text-amber-400" />
-                  <span className="text-zinc-300 text-lg leading-relaxed">{item}</span>
+                  <span className="text-white/90 text-lg leading-relaxed">{item}</span>
                 </li>
               ))}
             </ul>

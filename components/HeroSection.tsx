@@ -48,31 +48,30 @@ export default function HeroSection() {
 
         {/* Left Column: Typography & CTAs */}
         <div className="flex flex-col items-start text-left lg:mt-0">
-          <div className="hero-text flex items-center gap-3 px-4 py-2 rounded-full glass-panel mb-8 border-amber-500/20">
-            <Zap className="w-4 h-4 text-amber-400" />
-            <span className="text-sm font-medium tracking-wide text-amber-100 uppercase">
+          <div className="hero-text flex items-center gap-3 px-4 py-2 rounded-full glass-panel mb-8 border-white/20 bg-white/5">
+            <Zap className="w-4 h-4 text-white" />
+            <span className="text-sm font-medium tracking-wide text-white uppercase">
               Fast. Flexible. Intelligent.
             </span>
           </div>
 
-          <h1 className="hero-text font-black leading-[1.05] tracking-tight mb-6"
+          <h1 className="hero-text font-black leading-[1.05] tracking-tight mb-6 text-white"
             style={{ fontSize: "clamp(3.8rem, 7vw, 1.5rem)" }}>
             Get Your AI-Driven Commercial & Residential Investment Loan Soft Offer {" "}
             <br />
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-amber-200 via-amber-400 to-amber-600">
+            <span className="text-white">
               in Just 5 Minutes!
             </span>
           </h1>
 
-          <p className="hero-text text-zinc-400 text-lg md:text-xl max-w-xl leading-relaxed mb-10">
+          <p className="hero-text text-white/90 text-lg md:text-xl max-w-xl leading-relaxed mb-10 font-medium">
             Acquiring or refinancing your next residential investment, fix-and-flip, multifamily property, retail center, office, mixed use, or other commercial properties? Click and review our AI Generated Soft offer.
           </p>
 
           <div className="hero-text flex flex-col sm:flex-row gap-5 w-full sm:w-auto mb-16">
-            <a href="https://softoffer.commerciallendingusa.com/login" className="group relative px-8 py-4 rounded-full bg-white text-zinc-950 font-bold text-lg overflow-hidden transition-transform hover:scale-105 inline-flex items-center justify-center gap-2">
+            <a href="https://softoffer.commerciallendingusa.com/login" className="group relative px-8 py-4 rounded-full bg-white text-[#6d28d9] font-bold text-lg overflow-hidden transition-transform hover:scale-105 inline-flex items-center justify-center gap-2 shadow-[0_4px_20px_rgba(0,0,0,0.1)] hover:shadow-[0_0_40px_rgba(255,255,255,0.6)]">
               <span className="relative z-10">Get Soft Offer Now</span>
               <ArrowRight className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform" />
-              <div className="absolute inset-0 bg-gradient-to-r from-amber-200 to-amber-400 opacity-0 group-hover:opacity-100 transition-opacity" />
             </a>
 
             {/* <a href="#how-it-works" className="px-8 py-4 rounded-full border border-white/10 text-white font-medium text-lg flex items-center justify-center hover:bg-white/5 transition-colors">
@@ -111,24 +110,24 @@ export default function HeroSection() {
             {/* Column 1 (Slower) */}
             <div className="w-[260px] flex flex-col animate-marquee-up">
               {[...LIVE_OFFERS, ...LIVE_OFFERS].map((offer, i) => (
-                <div key={`col1-${i}`} className="w-full glass-panel p-5 rounded-3xl mb-6 shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-white/5 bg-zinc-900/60 backdrop-blur-xl transition-all duration-300 hover:scale-[1.02] hover:bg-zinc-800/80 hover:border-white/20 cursor-default">
+                <div key={`col1-${i}`} className="w-full relative overflow-hidden p-5 rounded-3xl mb-6 shadow-[0_8px_32px_0_rgba(255,255,255,0.05)] border border-white/10 bg-white/5 backdrop-blur-md transition-all duration-300 hover:scale-[1.02] hover:bg-white/10 hover:border-white/20 cursor-default">
                   <div className="flex justify-between items-center mb-4">
-                    <span className="text-[10px] font-bold text-zinc-500 tracking-wider uppercase">{offer.location}</span>
+                    <span className="text-[10px] font-bold text-white/60 tracking-wider uppercase">{offer.location}</span>
                     <span className={`px-2.5 py-1 text-[9px] font-bold rounded-full border ${offer.colorClasses}`}>
                       {offer.status}
                     </span>
                   </div>
                   <h4 className="text-white font-bold text-[15px] mb-1">{offer.type}</h4>
-                  <div className="text-2xl font-black bg-clip-text text-transparent bg-linear-to-r from-white to-zinc-400 mb-4 tracking-tight">
+                  <div className="text-2xl font-black text-white mb-4 tracking-tight">
                     {offer.amount}
                   </div>
-                  <div className="flex justify-between items-center border-t border-white/5 pt-3">
+                  <div className="flex justify-between items-center border-t border-white/10 pt-3">
                     <div className="flex flex-col">
-                      <span className="text-[10px] text-zinc-500 font-semibold uppercase">LTV/LTC</span>
-                      <span className="text-xs font-bold text-zinc-300">{offer.ltv}</span>
+                      <span className="text-[10px] text-white/50 font-semibold uppercase">LTV/LTC</span>
+                      <span className="text-xs font-bold text-white/80">{offer.ltv}</span>
                     </div>
                     <div className="flex flex-col items-end">
-                      <span className="text-[10px] text-zinc-500 font-semibold uppercase">Est. Rate</span>
+                      <span className="text-[10px] text-white/50 font-semibold uppercase">Est. Rate</span>
                       <span className="text-xs font-bold text-white">{offer.rate}</span>
                     </div>
                   </div>
@@ -139,24 +138,24 @@ export default function HeroSection() {
             {/* Column 2 (Faster, staggered start) */}
             <div className="w-[260px] flex flex-col animate-marquee-up-fast">
               {[...LIVE_OFFERS.slice(3).concat(LIVE_OFFERS.slice(0, 3)), ...LIVE_OFFERS.slice(3).concat(LIVE_OFFERS.slice(0, 3))].map((offer, i) => (
-                <div key={`col2-${i}`} className="w-full glass-panel p-5 rounded-3xl mb-6 shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-white/5 bg-zinc-950/40 backdrop-blur-md transition-all duration-300 hover:scale-[1.02] hover:bg-zinc-900/80 hover:border-white/20 cursor-default">
+                <div key={`col2-${i}`} className="w-full relative overflow-hidden p-5 rounded-3xl mb-6 shadow-[0_8px_32px_0_rgba(255,255,255,0.05)] border border-white/10 bg-white/5 backdrop-blur-md transition-all duration-300 hover:scale-[1.02] hover:bg-white/10 hover:border-white/20 cursor-default">
                   <div className="flex justify-between items-center mb-4">
-                    <span className="text-[10px] font-bold text-zinc-500 tracking-wider uppercase">{offer.location}</span>
+                    <span className="text-[10px] font-bold text-white/60 tracking-wider uppercase">{offer.location}</span>
                     <span className={`px-2.5 py-1 text-[9px] font-bold rounded-full border ${offer.colorClasses}`}>
                       {offer.status}
                     </span>
                   </div>
                   <h4 className="text-white font-bold text-[15px] mb-1">{offer.type}</h4>
-                  <div className="text-2xl font-black bg-clip-text text-transparent bg-linear-to-r from-white to-zinc-400 mb-4 tracking-tight">
+                  <div className="text-2xl font-black text-white mb-4 tracking-tight">
                     {offer.amount}
                   </div>
-                  <div className="flex justify-between items-center border-t border-white/5 pt-3">
+                  <div className="flex justify-between items-center border-t border-white/10 pt-3">
                     <div className="flex flex-col">
-                      <span className="text-[10px] text-zinc-500 font-semibold uppercase">LTV/LTC</span>
-                      <span className="text-xs font-bold text-zinc-300">{offer.ltv}</span>
+                      <span className="text-[10px] text-white/50 font-semibold uppercase">LTV/LTC</span>
+                      <span className="text-xs font-bold text-white/80">{offer.ltv}</span>
                     </div>
                     <div className="flex flex-col items-end">
-                      <span className="text-[10px] text-zinc-500 font-semibold uppercase">Est. Rate</span>
+                      <span className="text-[10px] text-white/50 font-semibold uppercase">Est. Rate</span>
                       <span className="text-xs font-bold text-white">{offer.rate}</span>
                     </div>
                   </div>

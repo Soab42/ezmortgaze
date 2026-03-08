@@ -43,7 +43,7 @@ const features = [
 
 export default function WhySection() {
   return (
-    <section id="why" className="relative py-24 px-6 overflow-hidden bg-[#020814]" style={{ zIndex: 1 }}>
+    <section id="why" className="relative py-24 px-6 overflow-hidden bg-transparent" style={{ zIndex: 1 }}>
       {/* Abstract Tech Grid Background */}
       <div className="absolute inset-0 z-0 pointer-events-none opacity-[0.03]"
         style={{ backgroundImage: 'linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px)', backgroundSize: '4rem 4rem' }}>
@@ -51,14 +51,14 @@ export default function WhySection() {
 
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-panel mb-6 border-blue-500/20 bg-white/5">
-            <span className="text-sm font-bold tracking-widest text-blue-300 uppercase">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-panel mb-6 border-white/20 bg-white/5">
+            <span className="text-sm font-bold tracking-widest text-white uppercase">
               The EZ Advantage
             </span>
           </div>
           <h2 className="font-black mb-6 tracking-tight leading-tight text-white text-4xl md:text-5xl">
             Why This Is More Than <br className="hidden md:block" />
-            <span className="bg-clip-text text-transparent bg-linear-to-r from-blue-400 to-cyan-300">
+            <span className="text-white">
               “Just Another Loan Quote?
             </span>
           </h2>
@@ -68,7 +68,7 @@ export default function WhySection() {
           {features.map((feat, i) => (
             <div
               key={feat.title}
-              className={`relative glass-panel overflow-hidden border-white/5 bg-white/3 p-8 flex flex-col gap-6 rounded-3xl group hover:bg-white/5 transition-colors duration-500 ${i === 3 || i === 4 ? "lg:col-span-1.5" : ""
+              className={`relative overflow-hidden border border-white/10 bg-white/5 backdrop-blur-md p-8 flex flex-col gap-6 rounded-3xl group hover:bg-white/10 transition-colors duration-500 shadow-[0_8px_32px_0_rgba(255,255,255,0.05)] ${i === 3 || i === 4 ? "lg:col-span-1.5" : ""
                 }`}
             >
               <div className="flex items-center justify-center w-14 h-14 rounded-2xl border bg-white/5 backdrop-blur-md transition-transform duration-500 group-hover:scale-110"
@@ -78,7 +78,7 @@ export default function WhySection() {
 
               <div className="flex flex-col gap-3">
                 <h3 className="text-xl font-bold text-white tracking-tight">{feat.title}</h3>
-                <p className="text-zinc-400 leading-relaxed text-base">
+                <p className="text-white/80 leading-relaxed text-base">
                   {feat.desc}
                 </p>
               </div>

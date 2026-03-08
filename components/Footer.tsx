@@ -30,33 +30,34 @@ export default function Footer() {
     <>
       <footer className="relative w-full overflow-hidden">
         {/* Upper Background Section with CTA */}
-        <div className="relative py-10 px-6 min-h-[100px] flex items-center">
-          {/* Background Image with Overlay */}
+        <div className="relative py-24 px-6 min-h-[300px] flex items-center overflow-hidden">
+          {/* Background Image with Blended Overlays */}
           <div className="absolute inset-0 z-0">
             <Image
               src="/footer-cta-bg.png"
               alt="Commercial Building Background"
               fill
-              className="object-cover"
+              className="object-cover opacity-20"
               priority
             />
-            <div className="absolute inset-0 bg-slate-950/80 mix-blend-multiply" />
-            <div className="absolute inset-0 bg-linear-to-r from-slate-950/90 via-slate-950/70 to-transparent" />
+            {/* Vibrant Gradient Overlay to blend with precise global background */}
+            <div className="absolute inset-0 bg-linear-to-r from-[#6d28d9]/90 via-[#c026d3]/80 to-[#f6a47a]/50 mix-blend-color" />
+            <div className="absolute inset-0 bg-black/20" />
           </div>
 
           <div className="max-w-7xl mx-auto relative z-10 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Left Column: Text Content */}
             <div className="flex flex-col gap-2">
               <h2 className="text-3xl md:text-5xl font-black text-white leading-tight tracking-tight">
-                <span className="bg-clip-text text-transparent bg-linear-to-r from-amber-400 to-amber-600">EZMortgageLender®</span>
+                <span className="text-white">EZMortgageLender®</span>
               </h2>
-              <p>Negotiate stronger. Move faster. Compete with confidence.</p>
+              <p className="text-white/90 font-medium">Negotiate stronger. Move faster. Compete with confidence.</p>
             </div>
 
             {/* Right Column: Trust Logos */}
             <div className="flex flex-wrap items-center justify-center lg:justify-end gap-12 md:gap-16">
               <div className="flex flex-col items-center gap-4">
-                <span className="text-zinc-300 font-bold uppercase tracking-widest text-sm">We're A Member Of</span>
+                <span className="text-white/90 font-bold uppercase tracking-widest text-sm">We're A Member Of</span>
                 <div className="w-36 h-24 relative hover:scale-105 transition-transform duration-500 rounded-lg bg-white/5 p-2 flex items-center justify-center border border-white/10 group overflow-hidden">
                   <div className="absolute inset-0 bg-linear-to-br from-white/5 to-transparent pointer-events-none group-hover:from-white/10 transition-colors" />
                   <div className="relative w-full h-full">
@@ -66,7 +67,7 @@ export default function Footer() {
               </div>
 
               <div className="flex flex-col items-center gap-4">
-                <span className="text-zinc-300 font-bold uppercase tracking-widest text-sm">BBB Member</span>
+                <span className="text-white/90 font-bold uppercase tracking-widest text-sm">BBB Member</span>
                 <div className="w-36 h-24 relative hover:scale-105 transition-transform duration-500 rounded-lg bg-white/5 p-2 flex items-center justify-center border border-white/10 group overflow-hidden">
                   <div className="absolute inset-0 bg-linear-to-br from-white/5 to-transparent pointer-events-none group-hover:from-white/10 transition-colors" />
                   <div className="relative w-full h-full">
@@ -79,18 +80,18 @@ export default function Footer() {
         </div>
 
         {/* Bottom Strip */}
-        <div className="bg-[#020814] py-6 px-6 border-t border-white/5">
+        <div className="bg-black/30 py-6 px-6 border-t border-white/10 backdrop-blur-md">
           <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-center gap-2 md:gap-6 text-[11px] md:text-sm font-bold tracking-wide">
-            <span className="text-zinc-400">Powered by: <a href="https://commerciallendingusa.com/" target="_blank" rel="noopener noreferrer" className="text-zinc-200 hover:text-amber-500 transition-colors">Commercial Lending USA</a></span>
-            <span className="hidden md:inline text-zinc-800">|</span>
+            <span className="text-white/80">Powered by: <a href="https://commerciallendingusa.com/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-white/80 transition-colors">Commercial Lending USA</a></span>
+            <span className="hidden md:inline text-white/30">|</span>
             <button 
               onClick={() => setActiveModal("Legal & Terms, Privacy")}
-              className="text-white hover:text-amber-500 transition-colors"
+              className="text-white hover:text-white/80 transition-colors"
             >
               Legal & Terms, Privacy
             </button>
-            <span className="hidden md:inline text-zinc-800">|</span>
-            <span className="text-zinc-400">Copyrights ©2016-{new Date().getFullYear()}</span>
+            <span className="hidden md:inline text-white/30">|</span>
+            <span className="text-white/80">Copyrights ©2016-{new Date().getFullYear()}</span>
           </div>
         </div>
       </footer>

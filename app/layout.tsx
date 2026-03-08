@@ -103,6 +103,24 @@ export default function RootLayout({
       </head>
       <body>
         <div className="mesh-bg" aria-hidden="true" />
+        <div className="noisy-overlay" aria-hidden="true" />
+
+        {/* SVG Noise Filter */}
+        <svg style={{ visibility: "hidden", position: "absolute", width: 0, height: 0 }}>
+          <filter id="noiseFilter">
+            <feTurbulence
+              type="fractalNoise"
+              baseFrequency="0.6"
+              numOctaves="3"
+              stitchTiles="stitch"
+            />
+            <feColorMatrix
+              type="saturate"
+              values="0"
+            />
+          </filter>
+        </svg>
+
         {children}
       </body>
     </html>
