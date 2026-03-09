@@ -35,52 +35,88 @@ const steps = [
 
 export default function HowItWorks() {
   return (
-    <section id="how-it-works" className="relative py-12 px-6 overflow-hidden bg-[#020814]" style={{ zIndex: 1 }}>
+    <section id="how-it-works" className="relative py-24 px-6 overflow-hidden bg-[#020610]" style={{ zIndex: 1 }}>
+      {/* Premium Background Architecture */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {/* Atmospheric Glows */}
+        <div className="absolute top-[-10%] left-[-10%] w-[800px] h-[800px] bg-amber-500/80 blur-[150px] rounded-full animate-pulse-slow" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[700px] h-[700px] bg-blue-500/80 blur-[150px] rounded-full animate-pulse-slow delay-1000" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-purple-500/10 blur-[180px] rounded-full" />
+
+        {/* Strategic Grid Pattern */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_at_center,black,transparent_80%)]" />
+
+        {/* Subtle Noise Texture */}
+        <div className="absolute inset-0 opacity-[0.03] mix-blend-overlay"
+          style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }} />
+      </div>
+
+      <style jsx global>{`
+        @keyframes pulse-slow {
+          0%, 100% { transform: scale(1) translate(0, 0); opacity: 0.1; }
+          50% { transform: scale(1.1) translate(10px, -10px); opacity: 0.15; }
+        }
+        .animate-pulse-slow {
+          animation: pulse-slow 15s ease-in-out infinite;
+        }
+      `}</style>
+
       <div className="max-w-4xl mx-auto relative z-10 w-full">
         {/* Header */}
-        <div className="text-center mb-10">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-panel mb-4 border-amber-500/20 bg-white/5">
-            <span className="text-xs font-bold tracking-widest text-amber-300 uppercase">
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-amber-500/20 bg-amber-500/5 backdrop-blur-md mb-4 shadow-sm">
+            <span className="text-xs font-bold tracking-[0.2em] text-amber-300 uppercase">
               🧠 How It Works
             </span>
           </div>
-          <h2 className="font-black mb-2 tracking-tight leading-tight text-white text-4xl md:text-5xl" >
+          <h2 className="font-black mb-4 tracking-tighter leading-none text-white text-5xl" >
             Simple. Strategic.{" "}
-            <span className="bg-clip-text text-transparent bg-linear-to-r from-amber-200 to-amber-500">
+            <br className="md:hidden" />
+            <span className="bg-clip-text text-transparent bg-linear-to-r from-amber-200 via-amber-400 to-amber-600">
               Powerful.
             </span>
           </h2>
+          <p className="text-zinc-500 text-lg max-w-2xl mx-auto font-medium">
+            A precision-engineered approach to securing high-leverage financing.
+          </p>
         </div>
 
-        {/* Timeline Layout - Static & Compact */}
+        {/* Timeline Layout */}
         <div className="relative">
           {/* Central Line */}
-          <div className="absolute left-[20px] md:left-1/2 top-4 bottom-4 w-[2px] -translate-x-1/2 bg-white/5 whitespace-normal" />
+          <div className="absolute left-[20px] md:left-1/2 top-4 bottom-4 w-[2px] -translate-x-1/2 bg-linear-to-b from-transparent via-white/10 to-transparent" />
 
-          <div className="space-y-8">
+          <div className="space-y-4">
             {steps.map((step, i) => (
               <div
                 key={step.num}
-                className={`relative flex flex-col md:flex-row items-center gap-4 md:gap-12 ${i % 2 === 0 ? "md:flex-row-reverse" : ""}`}
+                className={`relative flex flex-col md:flex-row items-center gap-10 ${i % 2 === 0 ? "md:flex-row-reverse" : ""}`}
               >
                 {/* Center Node */}
-                <div className="absolute left-[20px] md:left-1/2 -translate-x-1/2 flex items-center justify-center w-8 h-8 rounded-full glass-panel bg-zinc-950/80 border border-white/10 z-10">
-                  <div className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: step.color }} />
+                <div className="absolute left-[20px] md:left-1/2 -translate-x-1/2 flex items-center justify-center w-8 h-8 rounded-full bg-zinc-950 border border-white/10 z-10 shadow-[0_0_20px_rgba(255,255,255,0.05)]">
+                  <div className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: step.color, boxShadow: `0 0 10px ${step.color}60` }} />
                 </div>
 
                 {/* Content Box */}
                 <div className={`w-full md:w-1/2 pl-12 md:pl-0 ${i % 2 === 0 ? "md:text-left" : "md:text-right"}`}>
-                  <div className="relative glass-panel p-5 md:p-6 rounded-2xl border-white/5 bg-white/2 hover:bg-white/4 transition-colors overflow-hidden group/card">
+                  <div className="relative p-4 rounded-3xl border border-white/5 bg-white/[0.02] backdrop-blur-xl hover:bg-white/[0.04] transition-all duration-500 overflow-hidden group/card"
+                    style={{ borderLeft: i % 2 !== 0 ? `2px solid ${step.color}40` : "1px solid rgba(255,255,255,0.05)", borderRight: i % 2 === 0 ? `2px solid ${step.color}40` : "1px solid rgba(255,255,255,0.05)" }}
+                  >
+                    {/* Glow on hover */}
+                    <div className="absolute inset-0 bg-radial-gradient(circle_at_center,transparent_0%,transparent_100%) group-hover/card:from-white/5 transition-colors duration-700" />
+
                     {/* Large Background Number */}
-                    <span className={`absolute -bottom-6 text-[10rem] font-black text-white/4 select-none pointer-events-none transition-transform duration-700 group-hover/card:scale-110 group-hover/card:text-white/6 ${i % 2 === 0 ? "-right-2" : "-left-2"
-                      }`}>
+                    <span className={`absolute -bottom-6 text-[10rem] font-black select-none pointer-events-none transition-all duration-1000 group-hover/card:scale-110 blur-md opacity-20 ${i % 2 === 0 ? "-right-2 text-white" : "-left-2 text-white"
+                      }`}
+                      style={{ color: step.color }}
+                    >
                       {step.num}
                     </span>
 
-                    <h4 className="relative z-10 text-lg font-bold text-white mb-2 tracking-tight">
+                    <h4 className="relative z-10 text-lg font-bold text-white mb-3 tracking-tight">
                       {step.title}
                     </h4>
-                    <div className="relative z-10 text-zinc-400 text-sm leading-relaxed">
+                    <div className="relative z-10 text-zinc-400 text-sm leading-relaxed font-medium" >
                       {step.desc}
                     </div>
                   </div>
@@ -94,29 +130,29 @@ export default function HowItWorks() {
         </div>
 
         {/* Closing Execution Card */}
-        <div className="mt-16 group">
-          <div className="relative glass-panel overflow-hidden border-white/10 bg-white/3 p-8 md:p-10 rounded-3xl transition-all duration-500 hover:bg-white/5 hover:border-amber-500/30">
-            {/* Subtle Glow Effect */}
-            <div className="absolute top-0 right-0 w-64 h-64 bg-amber-500/5 blur-[100px] -mr-32 -mt-32 rounded-full pointer-events-none group-hover:bg-amber-500/10 transition-colors" />
+        <div className="mt-20 group">
+          <div className="relative overflow-hidden border border-white/10 bg-white/[0.03] backdrop-blur-2xl p-10 rounded-[3rem] transition-all duration-700 hover:border-amber-500/40 hover:shadow-[0_0_50px_rgba(245,158,11,0.1)]">
+            {/* Internal Glow Effect */}
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-amber-500/5 blur-[120px] -mr-64 -mt-64 rounded-full pointer-events-none group-hover:bg-amber-500/10 transition-all duration-1000" />
 
-            <div className="relative z-10 flex flex-col items-center text-center gap-6">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/20 mb-2">
-                <Zap className="w-4 h-4 text-amber-400 fill-amber-400/20" />
-                <span className="text-[10px] font-black tracking-widest text-amber-200 uppercase">
+            <div className="relative z-10 flex flex-col items-center text-center gap-8">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-500/10 border border-amber-500/20 shadow-inner">
+                <Zap className="w-4 h-4 text-amber-400 fill-amber-400/20 animate-pulse" />
+                <span className="text-[11px] font-black tracking-[0.2em] text-amber-200 uppercase">
                   Our Commitment to Execution
                 </span>
               </div>
 
-              <h3 className="text-2xl md:text-3xl font-black tracking-tight italic bg-clip-text text-transparent bg-linear-to-r from-white via-amber-100 to-zinc-500 max-w-2xl">
+              <h3 className="text-3xl font-black tracking-tighter italic bg-clip-text text-transparent bg-linear-to-r from-white via-amber-100 to-zinc-600 max-w-3xl leading-none">
                 Speed matters. Certainty wins deals. <br className="hidden md:block" />
                 And we’re built to deliver both.
               </h3>
 
-              <div className="w-16 h-1 bg-linear-to-r from-transparent via-amber-500/40 to-transparent rounded-full" />
+              <div className="w-24 h-1.5 bg-linear-to-r from-transparent via-amber-500 to-transparent rounded-full opacity-40 shadow-[0_0_20px_rgba(245,158,11,0.4)]" />
 
-              <p className="text-zinc-400 text-sm md:text-base leading-relaxed max-w-3xl font-medium">
+              <p className="text-zinc-400 text-lg leading-relaxed max-w-3xl font-medium">
                 Upon signing the LOI, our team immediately pulls credit, confirms documentation, and activates full processing — accelerating your file into underwriting with a clear path toward funding.
-                <span className="text-white font-bold mx-1">We move decisively</span> to keep your timeline intact and your closing on track. If one structure doesn’t fit, we don’t stall deals — we pivot. Leveraging our extensive capital network, we quickly reposition your file into alternative loan programs to secure the strongest possible financing solution.
+                <span className="text-white font-bold mx-2">We move decisively</span> to keep your timeline intact. If one structure doesn’t fit, we reposition your file into alternative programs to secure the strongest possible financing solution.
               </p>
             </div>
           </div>

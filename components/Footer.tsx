@@ -67,7 +67,7 @@ export default function Footer() {
             <div className="flex flex-wrap items-center justify-center lg:justify-end gap-12 md:gap-16">
               <div className="flex flex-col items-center gap-4">
                 <span className="text-zinc-300 font-bold uppercase tracking-widest text-sm">We're A Member Of</span>
-                <div className="w-36 h-24 relative hover:scale-105 transition-transform duration-500 rounded-lg bg-white/5 p-2 flex items-center justify-center border border-white/10 group overflow-hidden">
+                <div className="w-54 h-36 relative hover:scale-105 transition-transform duration-500 rounded-lg bg-white/5 p-2 flex items-center justify-center border border-white/10 group overflow-hidden">
                   <div className="absolute inset-0 bg-linear-to-br from-white/5 to-transparent pointer-events-none group-hover:from-white/10 transition-colors" />
                   <div className="relative w-full h-full">
                     <Image src="/aapl-logo.webp" alt="AAPL Member" fill className="object-contain" />
@@ -77,7 +77,7 @@ export default function Footer() {
 
               <div className="flex flex-col items-center gap-4">
                 <span className="text-zinc-300 font-bold uppercase tracking-widest text-sm">BBB Member</span>
-                <div className="w-36 h-24 relative hover:scale-105 transition-transform duration-500 rounded-lg bg-white/5 p-2 flex items-center justify-center border border-white/10 group overflow-hidden">
+                <div className="w-54 h-36 relative hover:scale-105 transition-transform duration-500 rounded-lg bg-white/5 p-2 flex items-center justify-center border border-white/10 group overflow-hidden">
                   <div className="absolute inset-0 bg-linear-to-br from-white/5 to-transparent pointer-events-none group-hover:from-white/10 transition-colors" />
                   <div className="relative w-full h-full">
                     <Image src="/bbb-logo.png" alt="BBB Accredited" fill className="object-contain" />
