@@ -1,6 +1,6 @@
 "use client";
 
-import { Target, Building2, Home, Briefcase, Zap, ShieldCheck } from "lucide-react";
+import { Briefcase, Building2, Home, ShieldCheck, Target, Zap } from "lucide-react";
 
 const features = [
   {
@@ -43,17 +43,26 @@ const features = [
 
 export default function WhySection() {
   return (
-    <section id="why" className="relative py-24 px-6 overflow-hidden bg-[#020814]" style={{ zIndex: 1 }}>
-      {/* Seamless Ambient Blend from Hero */}
-      <div
-        className="absolute top-0 left-0 w-full md:w-[80vw] h-[80vh] blur-[150px] opacity-80 pointer-events-none z-0 mix-blend-screen"
+    <section id="why" className="relative py-24 px-6 overflow-hidden bg-[#030509]" style={{ zIndex: 1 }}>
+
+      {/* Seamless Top Blend from Hero's bright colors to dark */}
+      <div 
+        className="absolute top-0 left-0 right-0 h-[80vh] pointer-events-none"
         style={{
-          background: 'linear-gradient(to bottom right, #9d27d6 0%, #c026d3 40%, #f6a47a 80%)',
-          transform: 'translate(-10%, -20%)'
+          background: 'linear-gradient(180deg, #c026d390 0%, rgba(192, 38, 211, 0.1) 40%, rgba(3, 5, 9, 0) 100%)',
+          zIndex: 0
+        }}
+      />
+      {/* Additional ambient glow to soften the transition */}
+      <div
+        className="absolute -top-32 left-1/2 -translate-x-1/2 w-full max-w-[1200px] h-[80vh] pointer-events-none opacity-40 mix-blend-screen blur-[120px]"
+        style={{
+          background: 'radial-gradient(ellipse at top, #ec4899 50%, transparent 70%)',
+          zIndex: 0
         }}
       />
 
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="max-w-7xl mx-auto mt-36 relative z-10">
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-panel mb-6 border-blue-500/20 bg-white/5">
             <span className="text-sm font-bold tracking-widest text-blue-300 uppercase">

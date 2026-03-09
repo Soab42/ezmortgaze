@@ -20,13 +20,12 @@ export default function Home() {
     <main className="relative">
       <Navbar />
       <HeroSection />
-
+      <MarketingSection />
       <WhySection />
       <SectionDivider />
       <LoanPrograms />
       {/* <PowerhouseMarquee /> */}
-      <SectionDivider />
-      <MarketingSection />
+
       <SectionDivider />
       <HowItWorks />
       <SectionDivider />
