@@ -99,14 +99,14 @@ export default function HowItWorks() {
 
                 {/* Content Box */}
                 <div className={`w-full md:w-1/2 pl-12 md:pl-0 ${i % 2 === 0 ? "md:text-left" : "md:text-right"}`}>
-                  <div className="relative p-4 rounded-3xl border border-white/5 bg-white/[0.02] backdrop-blur-xl hover:bg-white/[0.04] transition-all duration-500 overflow-hidden group/card"
-                    style={{ borderLeft: i % 2 !== 0 ? `2px solid ${step.color}40` : "1px solid rgba(255,255,255,0.05)", borderRight: i % 2 === 0 ? `2px solid ${step.color}40` : "1px solid rgba(255,255,255,0.05)" }}
+                  <div className="relative p-4 rounded-3xl border border-white/5  backdrop-blur-xl hover:bg-white/[0.04] transition-all duration-500 overflow-hidden group/card"
+                    style={{ borderLeft: i % 2 !== 0 ? `2px solid ${step.color}40` : "1px solid rgba(255,255,255,0.05)", borderRight: i % 2 === 0 ? `2px solid ${step.color}40` : "1px solid rgba(255,255,255,0.05)", backgroundColor: step.color + 30 }}
                   >
                     {/* Glow on hover */}
                     <div className="absolute inset-0 bg-radial-gradient(circle_at_center,transparent_0%,transparent_100%) group-hover/card:from-white/5 transition-colors duration-700" />
 
                     {/* Large Background Number */}
-                    <span className={`absolute -bottom-6 text-[10rem] font-black select-none pointer-events-none transition-all duration-1000 group-hover/card:scale-110 blur-md opacity-20 ${i % 2 === 0 ? "-right-2 text-white" : "-left-2 text-white"
+                    <span className={`absolute -bottom-6 text-[10rem] font-black select-none pointer-events-none transition-all duration-1000 group-hover/card:scale-110 blur-md opacity-50 ${i % 2 === 0 ? "-right-2 text-white" : "-left-2 text-white"
                       }`}
                       style={{ color: step.color }}
                     >

@@ -14,26 +14,9 @@ export default function MarketingSection() {
   const containerRef = useRef < HTMLDivElement > (null);
   const cardRef = useRef < HTMLDivElement > (null);
 
-  useGSAP(() => {
-    if (!cardRef.current) return;
-
-    gsap.from(cardRef.current, {
-      y: 100,
-      opacity: 0,
-      scale: 0.95,
-      duration: 1.2,
-      ease: "power4.out",
-      scrollTrigger: {
-        trigger: cardRef.current,
-        start: "top bottom-=100",
-        toggleActions: "play none none reverse",
-      }
-    });
-  }, { scope: containerRef });
-
 
   return (
-    <section ref={containerRef} className="absolute z-20  -translate-y-1/2 translate-x-1/2">
+    <section ref={containerRef} className="">
       <style dangerouslySetInnerHTML={{
         __html: `
         .border-container {
@@ -44,23 +27,11 @@ export default function MarketingSection() {
           overflow: hidden;
         }
 
-        .border-animation {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          width: 150%;
-          height: 150%;
-          transform: translate(-50%, -50%);
-          background: conic-gradient(from 0deg, #fbbf24 0%, #10b981 25%, #3b82f6 50%, #10b981 75%, #fbbf24 100%);
-          animation: rotate-bg 10s linear infinite;
-          z-index: 0;
-        }
-
         .inner-content {
           position: relative;
           z-index: 10;
           border-radius: calc(2rem);
-          background: #02081490;
+          background: linear-gradient(135deg, rgba(16,185,129,0.5) 0%, rgba(109,40,217,0.4) 100%);
           overflow: hidden;
         }
 
@@ -86,7 +57,7 @@ export default function MarketingSection() {
                     Know where you stand before you structure your deal. Before committing to hard money, bridge loans, no-doc, lite-doc, construction, or long-term financing — get clarity first.
                   </p>
 
-                  <p className="text-zinc-400 text-lg text-center leading-relaxed font-medium">
+                  <p className="text-amber-200 text-lg text-center leading-relaxed font-medium">
                     Built for Mortgage Brokers, Realtors, and Direct Borrowers, this tool helps you evaluate scenarios instantly, set realistic expectations, and position every transaction for success.
                   </p>
 

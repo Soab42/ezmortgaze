@@ -1,6 +1,7 @@
 "use client";
 
 import { Briefcase, Building2, Home, ShieldCheck, Target, Zap } from "lucide-react";
+import MarketingSection from "./MarketingSection";
 
 const features = [
   {
@@ -43,21 +44,29 @@ const features = [
 
 export default function WhySection() {
   return (
-    <section id="why" className="relative py-24 px-6 overflow-hidden bg-[#030509]" style={{ zIndex: 1 }}>
-
+    <section id="why" className="relative py-12 px-6 overflow-hidden" style={{ zIndex: 1, background: 'linear-gradient(145deg,#c026d3 10%,transparent 30%,transparent 60%, rgba(16,185,129,0.08) 80%)', }}>
+      <MarketingSection />
       {/* Seamless Top Blend from Hero's bright colors to dark */}
-      <div 
-        className="absolute top-0 left-0 right-0 h-[80vh] pointer-events-none"
+      {/* <div 
+        className="absolute top-0 left-0 right-0 h-[120vh] pointer-events-none"
         style={{
-          background: 'linear-gradient(180deg, #c026d390 0%, rgba(192, 38, 211, 0.1) 40%, rgba(3, 5, 9, 0) 100%)',
+          background: 'linear-gradient(135deg, #c026d3 20%,transparent 50%, #f6a47a 80%)',
           zIndex: 0
         }}
-      />
+      /> */}
+      {/*
+      <div
+        className="absolute top-10 left-0 right-0 h-[20vh] pointer-events-none"
+        style={{
+          background: 'linear-gradient(165deg,transparent 10%, #f6a47a 30%)',
+          zIndex: 0,
+        }}
+      /> */}
       {/* Additional ambient glow to soften the transition */}
       <div
-        className="absolute -top-32 left-1/2 -translate-x-1/2 w-full max-w-[1200px] h-[80vh] pointer-events-none opacity-40 mix-blend-screen blur-[120px]"
+        className="absolute  left-1/2 -translate-x-1/2 w-full max-w-[1200px] h-[80vh] pointer-events-none opacity-40 mix-blend-screen blur-[120px]"
         style={{
-          background: 'radial-gradient(ellipse at top, #ec4899 50%, transparent 70%)',
+          background: 'radial-gradient(ellipse at top,#f6a47a 50%, transparent 70%)',
           zIndex: 0
         }}
       />

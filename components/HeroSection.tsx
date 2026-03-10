@@ -23,7 +23,7 @@ export default function HeroSection() {
     <section
       id="hero"
       ref={container}
-      className="relative min-h-screen flex items-start pt-24 overflow-hidden"
+      className="relative min-h-[70vh] md:min-h-screen flex items-start pt-16 md:pt-24 overflow-hidden"
       style={{
         zIndex: 1,
         background: 'linear-gradient(135deg, #6d28d9 0%, #c026d3 50%, #f6a47a 100%)'
@@ -37,7 +37,7 @@ export default function HeroSection() {
 
         {/* Left Column: Typography & CTAs */}
         <div className="flex flex-col items-start text-left lg:mt-0">
-          <div className="hero-text flex items-center gap-3 px-4 py-2 rounded-full glass-panel mb-8 border-amber-500/20">
+          <div className="hero-text flex items-center gap-3 px-4 py-2 rounded-full glass-panel mb-6 md:mb-8 border-amber-500/20">
             <Zap className="w-4 h-4 text-amber-400" />
             <span className="text-sm font-medium tracking-wide text-amber-100 uppercase">
               Fast. Flexible. Intelligent.
@@ -45,7 +45,7 @@ export default function HeroSection() {
           </div>
 
           <h1 className="hero-text font-black leading-[1.05] tracking-tight mb-6"
-            style={{ fontSize: "clamp(3.8rem, 7vw, 1.5rem)" }}>
+            style={{ fontSize: "clamp(2.2rem, 10vw, 4rem)" }}>
             Get Your AI-Driven Commercial & Residential Investment Loan Soft Offer {" "}
             <br />
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-amber-200 via-amber-400 to-amber-600">
@@ -53,12 +53,12 @@ export default function HeroSection() {
             </span>
           </h1>
 
-          <p className="hero-text text-white/90 text-lg md:text-xl max-w-xl leading-relaxed mb-10 font-medium">
+          <p className="hero-text text-white/90 text-base md:text-xl max-w-xl leading-relaxed mb-8 md:mb-10 font-medium">
             Acquiring or refinancing your next residential investment, fix-and-flip, multifamily property, retail center, office, mixed use, or other commercial properties? Click and review our AI Generated Soft offer.
           </p>
 
-          <div className="hero-text flex flex-col sm:flex-row gap-5 w-full sm:w-auto mb-16">
-            <a href="https://softoffer.commerciallendingusa.com/login" className="group relative px-8 py-4 rounded-full bg-white text-zinc-950 font-bold text-lg overflow-hidden transition-transform hover:scale-105 inline-flex items-center justify-center gap-2">
+          <div className="hero-text flex flex-col sm:flex-row gap-5 w-full sm:w-auto mb-12 md:mb-16">
+            <a href="https://softoffer.commerciallendingusa.com/login" className="group relative px-6 py-3 md:px-8 md:py-4 rounded-full bg-white text-zinc-950 font-bold text-base md:text-lg overflow-hidden transition-transform hover:scale-105 inline-flex items-center justify-center gap-2">
               <span className="relative z-10">Get Soft Offer Now</span>
               <ArrowRight className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform" />
               <div className="absolute inset-0 bg-gradient-to-r from-amber-200 to-amber-400 opacity-0 group-hover:opacity-100 transition-opacity" />

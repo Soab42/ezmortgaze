@@ -42,8 +42,8 @@ export default function LoanPrograms() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-10">
           {/* Commercial Column */}
-          <div className="group relative p-px rounded-[3rem] bg-linear-to-b from-white/15 to-transparent backdrop-blur-3xl overflow-hidden transition-all duration-700 hover:scale-[1.015] hover:shadow-[0_0_80px_rgba(16,185,129,0.1)]">
-            <div className="relative z-10 p-8 md:p-14 bg-[#020814] rounded-[calc(3rem-1px)] h-full">
+          <div className="group relative p-px rounded-[3rem] bg-linear-to-b from-emerald-500 to-transparent backdrop-blur-3xl overflow-hidden transition-all duration-700 hover:scale-[1.015] hover:shadow-[0_0_80px_rgba(16,185,129,0.1)]">
+            <div className="relative z-10 p-8 md:p-14 bg-[#02081490] rounded-[calc(3rem-1px)] h-full">
               {/* Internal Accent Glow */}
               <div className="absolute top-0 right-0 w-80 h-80 bg-emerald-500/10 blur-[100px] -mr-40 -mt-40 transition-opacity opacity-40 group-hover:opacity-100" />
 
@@ -75,8 +75,8 @@ export default function LoanPrograms() {
           </div>
 
           {/* Residential Column */}
-          <div className="group relative p-px rounded-[3rem] bg-linear-to-b from-white/15 to-transparent backdrop-blur-3xl overflow-hidden transition-all duration-700 hover:scale-[1.015] hover:shadow-[0_0_80px_rgba(245,158,11,0.1)]">
-            <div className="relative z-10 p-8 md:p-14 bg-[#020814] rounded-[calc(3rem-1px)] h-full">
+          <div className="group relative p-px rounded-[3rem] bg-linear-to-b from-amber-500  to-transparent backdrop-blur-3xl overflow-hidden transition-all duration-700 hover:scale-[1.015] hover:shadow-[0_0_80px_rgba(245,158,11,0.1)]">
+            <div className="relative z-10 p-8 md:p-14 bg-[#02081460] rounded-[calc(3rem-1px)] h-full">
               {/* Internal Accent Glow */}
               <div className="absolute top-0 right-0 w-80 h-80 bg-amber-500/10 blur-[100px] -mr-40 -mt-40 transition-opacity opacity-40 group-hover:opacity-100" />
 

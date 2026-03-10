@@ -27,37 +27,37 @@ export default function CTASection() {
     };
 
     return (
-        <section className="relative py-32 px-6 overflow-hidden flex items-center justify-center min-h-[80vh]" style={{ zIndex: 1 }}>
+        <section className="relative py-20 md:py-32 px-6 overflow-hidden flex items-center justify-center min-h-[80vh]" style={{ zIndex: 1 }}>
 
             {/* Massive Ambient Glow */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[1200px] rounded-full pointer-events-none opacity-40 blur-[150px] mix-blend-screen"
-                style={{ background: "conic-gradient(from 0deg, rgba(59,130,246,0.3) 0%, rgba(245,158,11,0.5) 50%, rgba(59,130,246,0.3) 100%)" }} />
+                style={{ background: "conic-gradient(from 0deg, rgba(99,102,241,0.3) 0%, rgba(16,185,129,0.4) 50%, rgba(99,102,241,0.3) 100%)" }} />
 
             {/* Central Star/Flare */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-white/20 blur-[100px] pointer-events-none rounded-full" />
 
             <div className="max-w-4xl mx-auto relative z-10 w-full">
-                <div className="glass-panel p-12 md:p-20 text-center rounded-[3rem] border border-white/10 bg-zinc-950/60 backdrop-blur-3xl shadow-2xl relative overflow-hidden group">
+                <div className="glass-panel p-8 md:p-20 text-center rounded-[3rem] border border-white/10 bg-zinc-950/60 backdrop-blur-3xl shadow-2xl relative overflow-hidden group">
 
                     {/* Hover Glow Follower inside card */}
                     <div className="absolute inset-0 bg-linear-to-b from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
 
                     <div className="relative z-10">
-                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-blue-500/20 bg-blue-500/10 mb-8 max-w-fit mx-auto">
-                            <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
-                            <span className="text-sm font-semibold tracking-widest text-blue-300 uppercase">
+                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-indigo-500/20 bg-indigo-500/10 mb-8 max-w-fit mx-auto">
+                            <span className="w-2 h-2 rounded-full bg-indigo-400 animate-pulse" />
+                            <span className="text-sm font-semibold tracking-widest text-indigo-300 uppercase">
                                 Start Your AI-Generated Soft Offer Now
                             </span>
                         </div>
 
-                        <h2 className="font-black mb-6 tracking-tight leading-[1.1]" style={{ fontSize: "clamp(2.5rem, 6vw, 3.5rem)" }}>
+                        <h2 className="font-black mb-6 tracking-tight leading-[1.1]" style={{ fontSize: "clamp(1.8rem, 8vw, 3.5rem)" }}>
                             Ready to Discover Your<br className="hidden md:block" />
-                            <span className="bg-clip-text text-transparent bg-linear-to-r from-amber-200 via-amber-400 to-amber-600">
+                            <span className="bg-clip-text text-transparent bg-linear-to-r from-emerald-200 via-emerald-400 to-emerald-600">
                                 Borrowing Power?
                             </span>
                         </h2>
 
-                        <p className="mb-12 max-w-2xl mx-auto text-zinc-400 text-lg  leading-relaxed">
+                        <p className="mb-12 max-w-2xl mx-auto text-zinc-400 text-base md:text-lg leading-relaxed">
                             It’s free. It takes just 5 minutes. It gives you actionable insight before submitting a full application. Know your numbers. Strengthen your position. Win more deals.
                         </p>
 
@@ -67,13 +67,13 @@ export default function CTASection() {
                                 href="https://softoffer.commerciallendingusa.com/login"
                                 onMouseMove={handleMouseMove}
                                 onMouseLeave={handleMouseLeave}
-                                className="relative flex items-center justify-center bg-white text-zinc-950 font-black text-2xl py-6 px-12 rounded-full overflow-hidden hover:scale-105 transition-transform shadow-[0_0_50px_rgba(255,255,255,0.2)] hover:shadow-[0_0_80px_rgba(255,255,255,0.4)] will-change-transform"
+                                className="relative flex items-center justify-center bg-white text-zinc-950 font-black text-xl md:text-2xl py-4 px-8 md:py-6 md:px-12 rounded-full overflow-hidden hover:scale-105 bg-linear-to-r from-amber-200 to-amber-500 transition-transform shadow-[0_0_50px_rgba(255,255,255,0.2)] hover:shadow-[0_0_80px_rgba(255,255,255,0.4)] will-change-transform"
                             >
                                 <span ref={textRef} className="relative z-10 flex items-center gap-3">
                                     Get My AI Soft Offer
                                     <ArrowRight className="w-8 h-8" />
                                 </span>
-                                <div className="absolute inset-0 bg-linear-to-r from-amber-200 to-amber-500 opacity-0 hover:opacity-100 transition-opacity duration-300" />
+                                <div className="absolute inset-0 bg-linear-to-r from-emerald-200 to-emerald-500 opacity-0 hover:opacity-100 transition-opacity duration-300" />
                             </Link>
                         </div>
 
