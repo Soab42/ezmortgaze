@@ -44,34 +44,26 @@ const features = [
 
 export default function WhySection() {
   return (
-    <section id="why" className="relative py-12 px-6 overflow-hidden" style={{ zIndex: 1, background: 'linear-gradient(145deg,#c026d3 10%,transparent 30%,transparent 60%, rgba(16,185,129,0.08) 80%)', }}>
+    <section id="why" className="relative py-12 px-6 overflow-hidden" style={{ zIndex: 1, background: 'linear-gradient(145deg,#c026d3 10%,transparent 60%, rgba(16,185,129,0.08) 80%)', }}>
       <MarketingSection />
       {/* Seamless Top Blend from Hero's bright colors to dark */}
-      {/* <div 
-        className="absolute top-0 left-0 right-0 h-[120vh] pointer-events-none"
+      <div
+        className="absolute -right-50 -top-60 w-[500px] h-[60vh] pointer-events-none blur-[120px]"
         style={{
-          background: 'linear-gradient(135deg, #c026d3 20%,transparent 50%, #f6a47a 80%)',
+          background: 'radial-gradient(ellipse at bottom,#f6a47a 80%, transparent 100%)',
           zIndex: 0
         }}
-      /> */}
-      {/*
-      <div
-        className="absolute top-10 left-0 right-0 h-[20vh] pointer-events-none"
-        style={{
-          background: 'linear-gradient(165deg,transparent 10%, #f6a47a 30%)',
-          zIndex: 0,
-        }}
-      /> */}
+      />
       {/* Additional ambient glow to soften the transition */}
       <div
         className="absolute  left-1/2 -translate-x-1/2 w-full max-w-[1200px] h-[80vh] pointer-events-none opacity-40 mix-blend-screen blur-[120px]"
         style={{
-          background: 'radial-gradient(ellipse at top,#f6a47a 50%, transparent 70%)',
+          background: 'radial-gradient(ellipse at top,#06b6d4 50%, transparent 70%)',
           zIndex: 0
         }}
       />
 
-      <div className="max-w-7xl mx-auto mt-36 relative z-10">
+      <div className="max-w-7xl mx-auto mt-16 relative z-10">
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-panel mb-6 border-blue-500/20 bg-white/5">
             <span className="text-sm font-bold tracking-widest text-blue-300 uppercase">
