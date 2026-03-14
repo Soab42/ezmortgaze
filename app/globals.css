@@ -16,8 +16,9 @@
 
 /* Base resets are handled by Tailwind v4 preflight */
 
+/* Global styles for Lenis smooth scrolling handled in components/SmoothScroll.tsx */
 html {
-  scroll-behavior: smooth;
+  height: auto;
 }
 
 body {

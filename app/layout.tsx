@@ -84,6 +84,8 @@ const jsonLd = {
   },
 };
 
+import SmoothScroll from "@/components/SmoothScroll";
+
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
@@ -102,8 +104,10 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <div className="mesh-bg" aria-hidden="true" />
-        {children}
+        <SmoothScroll>
+          <div className="mesh-bg" aria-hidden="true" />
+          {children}
+        </SmoothScroll>
       </body>
     </html>
   );

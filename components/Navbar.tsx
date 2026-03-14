@@ -4,14 +4,6 @@ import { useState, useEffect } from "react";
 import { Menu, X, TrendingUp, Phone } from "lucide-react";
 import Link from "next/link";
 
-const navLinks = [
-  { label: "Why Us", href: "#why" },
-  { label: "Loan Programs", href: "#programs" },
-  { label: "How It Works", href: "#how-it-works" },
-  { label: "Why Choose Us", href: "#why-choose" },
-  { label: "Get Offer", href: "#soft-offer" },
-];
-
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -23,67 +15,200 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 w-full pt-4 pb-6">
-      {/* Base Background: Small blur */}
-      <div className="absolute inset-0 bg-transparent backdrop-blur-sm border-b border-transparent z-[-1]" />
+    <>
+      <style jsx global>{`
+        .nav-slanted-btn {
+          position: relative;
+          padding: 0.6rem 1.8rem;
+          background: transparent;
+          transform: skewX(-20deg);
+          box-shadow: 0 4px 15px -3px rgba(0, 0, 0, 0.3);
+          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          overflow: hidden;
+          z-index: 1;
+        }
 
-      {/* Scrolled Background: Gradient and large blur fading in */}
-      <div className={`absolute inset-0 bg-linear-to-br from-[#6d28d9]/40 via-[#020814]/20 to-transparent backdrop-blur-xl border-b border-white/5 z-[-1] transition-opacity duration-300 ${scrolled ? 'opacity-100' : 'opacity-0 pointer-events-none'}`} />
+        .nav-slanted-btn::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          background: rgba(15, 23, 42, 0.2);
+          backdrop-blur: 12px;
+          z-index: -1;
+        }
 
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between relative z-10">
-        {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 no-underline group">
-          <div
-            className="w-9 h-9 rounded-lg flex items-center justify-center transition-transform group-hover:scale-105"
-            style={{ background: "linear-gradient(135deg,#f59e0b,#d97706)" }}
-          >
-            <TrendingUp className="w-5 h-5" style={{ color: "#020814" }} />
-          </div>
-          <span
-            className="text-xl font-bold"
-            style={{ fontFamily: "Outfit, sans-serif", color: "#f8fafc" }}
-          >
-            EZ<span className="gradient-text-gold">Mortgage</span>Lender
-            <span className="text-xs align-super" style={{ color: "#f59e0b" }}>®</span>
-          </span>
-        </Link>
+        /* The sliding hover part of the button background */
+        .nav-slanted-btn .hover-bg {
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(135deg, #f59e0b, #d97706);
+          transform: translateX(-101%);
+          transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+          z-index: 0;
+        }
 
-        {/* Desktop Nav */}
-        <ul className="hidden md:flex items-center gap-8 list-none m-0 p-0">
-          {/* {navLinks.slice(0, 4).map((link) => (
-            <li key={link.href}>
-              <Link
-                href={link.href}
-                className="text-sm font-medium transition-colors duration-200 no-underline hover:text-[#fbbf24] text-[#94a3b8]"
-              >
-                {link.label}
-              </Link>
-            </li>
-          ))} */}
-        </ul>
+        .nav-slanted-btn:hover .hover-bg {
+          transform: translateX(0);
+        }
 
-        {/* CTA */}
-        <div className="hidden md:flex items-center gap-6">
-          <a
-            href="tel:8555989900"
-            className="flex items-center gap-2 text-sm font-semibold text-[#f8fafc] hover:text-[#fbbf24] transition-colors no-underline group"
-          >
-            <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center border border-white/10 group-hover:border-[#fbbf24]/30">
-              <Phone className="w-4 h-4 text-[#fbbf24]" />
+        .nav-slanted-btn:hover {
+          border-bottom-color: #fbbf24;
+          box-shadow: 0 0 25px rgba(245, 158, 11, 0.4);
+          transform: skewX(-20deg) translateY(-2px);
+        }
+
+        .nav-slanted-btn .btn-content {
+          transform: skewX(20deg);
+          position: relative;
+          z-index: 2;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          height: 100%;
+        }
+
+        .nav-link-slanted {
+          position: relative;
+          padding: 0.5rem 1.25rem;
+          color: #94a3b8;
+          font-size: 0.875rem;
+          font-weight: 500;
+          transition: all 0.2s ease;
+          display: flex;
+          align-items: center;
+        }
+
+        .nav-link-slanted:hover {
+          color: #f8fafc;
+        }
+
+        .nav-link-slanted::after {
+          content: "";
+          position: absolute;
+          z-index: 10;
+          bottom: -4px;
+          left: 0;
+          width: 0;
+          height: 1.5px;
+          background: linear-gradient(135deg,#f59e0b,#d97706);
+          transition: width 0.3s ease;
+          transform: skewX(-20deg);
+        }
+
+        .nav-link-slanted:hover::after {
+          width: 100%;
+        }
+
+        .btn-running-border {
+          overflow: hidden;
+          z-index: 10;
+          padding: 1px; /* border thickness */
+        }
+
+        .btn-running-border::after {
+          content: "";
+          position: absolute;
+          z-index: -1;
+          left: -100%;
+          top: -100%;
+          width: 300%;
+          height: 300%;
+          background: conic-gradient(
+            from 180deg,
+            transparent 0deg,
+            transparent 340deg,
+            #fbbf24 350deg,
+            #fff 360deg
+          );
+          animation: rotate 2.5s linear infinite;
+        }
+
+        .btn-running-border::before {
+          content: "";
+          position: absolute;
+          inset: 1px;
+          background: #f59e0b;
+          backdrop-filter: blur(10px);
+          z-index: 0;
+        }
+
+        @keyframes rotate {
+          100% {
+            transform: rotate(360deg);
+          }
+        }
+      `}</style>
+
+      <nav className="fixed top-0 left-0 right-0 z-50 w-full pt-4 pb-6">
+        {/* Base Background: Small blur */}
+        <div className="absolute inset-0 bg-transparent backdrop-blur-sm border-b border-transparent z-[-1]" />
+
+        {/* Scrolled Background: Gradient and large blur fading in */}
+        <div className={`absolute inset-0 bg-linear-to-br from-[#6d28d9]/40 via-[#020814]/20 to-transparent backdrop-blur-xl border-b border-white/5 z-[-1] transition-opacity duration-300 ${scrolled ? 'opacity-100' : 'opacity-0 pointer-events-none'}`} />
+
+        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between relative z-10">
+          {/* Logo */}
+          <Link href="/" className="flex items-center gap-2 no-underline group">
+            <div
+              className="w-9 h-9 rounded-lg flex items-center justify-center transition-transform group-hover:scale-105"
+              style={{ background: "linear-gradient(135deg,#f59e0b,#d97706)" }}
+            >
+              <TrendingUp className="w-5 h-5" style={{ color: "#020814" }} />
             </div>
-            <span>(855) 598-9900 <span className="text-[10px] opacity-60 ml-1">(Toll Free)</span></span>
-          </a>
-          <Link
-            href="https://softoffer.commerciallendingusa.com/login"
-            className="btn-gold px-6 py-2.5 text-sm no-underline"
-          >
-            Get AI Soft Offer →
+            <span
+              className="text-xl font-bold"
+              style={{ fontFamily: "Outfit, sans-serif", color: "#f8fafc" }}
+            >
+              EZ<span className="gradient-text-gold">Mortgage</span>Lender
+              <span className="text-xs align-super" style={{ color: "#f59e0b" }}>®</span>
+            </span>
+          </Link>
+
+          {/* CTA */}
+          <div className="hidden md:flex items-center gap-1">
+            <a
+              href="tel:8555989900"
+              className="group flex items-center gap-3 px-4 py-2 hover:bg-white/5 rounded-2xl transition-colors no-underline"
+            >
+              <div className="w-9 h-9 rounded-full bg-white/5 flex items-center justify-center border border-white/10 group-hover:border-[#fbbf24]/30 transition-colors">
+                <Phone className="w-4 h-4 text-[#fbbf24]" />
+              </div>
+              <div className="flex flex-col">
+                <span className="text-[10px] text-[#fbbf24] font-bold uppercase tracking-widest leading-none mb-1">Toll Free</span>
+                <span className="text-sm font-bold text-white group-hover:text-[#fbbf24] transition-colors">(855) 598-9900</span>
+              </div>
+            </a>
+            <Link
+              href="/blog"
+              className="nav-slanted-btn no-underline"
+            >
+              <div className="hover-bg" />
+              <div className="btn-content">
+                <span className="text-sm font-black text-white group-hover:text-zinc-950 uppercase tracking-tight transition-colors">
+                  Blogs
+                </span>
+              </div>
+            </Link>
+            <Link
+              href="https://softoffer.commerciallendingusa.com/login"
+              className="nav-slanted-btn btn-running-border no-underline"
+            >
+              <div className="hover-bg" />
+              <div className="btn-content p-2">
+                <span className="text-sm font-black text-white group-hover:text-zinc-950 uppercase tracking-tight transition-colors">
+                  Get AI Soft Offer
+                </span>
+              </div>
           </Link>
         </div>
 
         {/* Mobile hamburger */}
         <button
-          className="md:hidden text-white"
+            className="md:hidden text-white w-10 h-10 flex items-center justify-center rounded-xl bg-white/5 border border-white/10"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
         >
@@ -93,36 +218,36 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 bg-[#020814]/95 backdrop-blur-xl border-b border-white/5 px-6 py-6 flex flex-col gap-4">
-          {/* {navLinks.map((link) => (
+          <div className="md:hidden absolute top-full left-0 right-0 bg-[#020814]/fb backdrop-blur-2xl border-b border-white/10 px-6 py-8 flex flex-col gap-6 animate-in slide-in-from-top duration-300">
             <Link
-              key={link.href}
-              href={link.href}
-              className="text-base font-medium no-underline hover:text-[#fbbf24] transition-colors text-[#94a3b8]"
+              href="/blog"
+              className="nav-slanted-btn no-underline w-full py-5"
               onClick={() => setMenuOpen(false)}
             >
-              {link.label}
+              <span className="text-base font-black text-white uppercase tracking-tight">
+                Blogs
+              </span>
             </Link>
-          ))} */}
-          <a
-            href="tel:8555989900"
-            className="flex flex-col items-center justify-center gap-1 text-lg font-bold text-[#f8fafc] py-4 bg-white/5 rounded-xl border border-white/10 no-underline mb-2"
-          >
-            <div className="flex items-center gap-2">
-              <Phone className="w-5 h-5 text-[#fbbf24]" />
-              <span>(855) 598-9900</span>
-            </div>
-            <span className="text-[10px] opacity-60 uppercase tracking-widest">Toll Free</span>
-          </a>
           <Link
             href="https://softoffer.commerciallendingusa.com/login"
-            className="btn-gold px-6 py-3 text-center text-sm mt-2 no-underline"
+              className="nav-slanted-btn no-underline w-full py-5"
             onClick={() => setMenuOpen(false)}
           >
-            Get AI Soft Offer →
+              <span className="text-base font-black text-white uppercase tracking-tight">
+                Get AI Soft Offer
+              </span>
           </Link>
+
+            <a
+              href="tel:8555989900"
+              className="flex items-center justify-center gap-3 py-4 rounded-2xl bg-amber-500/10 border border-amber-500/20 no-underline"
+            >
+              <Phone className="w-5 h-5 text-amber-500" />
+              <span className="text-lg font-bold text-white">(855) 598-9900</span>
+            </a>
         </div>
       )}
-    </nav>
+      </nav >
+    </>
   );
 }

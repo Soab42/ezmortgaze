@@ -23,31 +23,53 @@ export default function MarketingSection() {
           position: relative;
           padding: 1px;
           border-radius: 2.5rem;
-          background: rgba(255, 255, 255, 0.05);
+          background: rgba(255, 255, 255, .1);
           overflow: hidden;
+        }
+
+        .border-animation {
+          position: absolute;
+          inset: -120%;
+          background: conic-gradient(
+            from 0deg,
+            transparent 0deg,
+            transparent 45deg,
+            #10b981 90deg,
+            #6d28d9 180deg,
+            #f59e0b 270deg,
+            transparent 315deg,
+            transparent 360deg
+          );
+          animation: rotate-bg 8s linear infinite;
         }
 
         .inner-content {
           position: relative;
           z-index: 10;
-          border-radius: calc(2rem);
-          background: linear-gradient(135deg, rgba(16,185,129,0.5) 0%, rgba(109,40,217,0.4) 100%);
+          border-radius: 2rem;
+          margin: 6px;
+          background: #02061780;
+          backdrop-filter: blur(10px);
           overflow: hidden;
         }
 
         @keyframes rotate-bg {
-          from { transform: translate(-50%, -50%) rotate(0deg); }
-          to { transform: translate(-50%, -50%) rotate(360deg); }
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
         }
       `}} />
       <div className="max-w-5xl mx-auto">
         <div ref={cardRef} className="border-container shadow-2xl">
           <div className="border-animation" />
           <div className="inner-content">
-            <div className="glass-panel relative p-3 md:p-5 backdrop-blur-3xl">
+            <div className="glass-panel border-2.5 relative p-3 md:p-5 backdrop-blur-3xl"
+              style={{
+                borderRadius: "2rem",
+              }}
+            >
               {/* Decorative background glows */}
-              <div className="absolute top-0 right-0 w-80 h-80 bg-blue-600/10 blur-[100px] -mr-40 -mt-40" />
-              <div className="absolute bottom-0 left-0 w-80 h-80 bg-emerald-500/10 blur-[100px] -ml-40 -mb-40" />
+              {/* <div className="absolute top-0 right-0 w-96 h-80 bg-blue-600/40 blur-3xl -mr-40 -mt-40" /> */}
+              {/* <div className="absolute bottom-0 left-0 w-96 h-80 bg-emerald-500/40 blur-3xl -ml-40 -mb-40" /> */}
 
               <div className="relative z-10 flex flex-col gap-8">
                 <div className="flex flex-col gap-6">
