@@ -2,6 +2,7 @@
 
 import { Briefcase, Building2, Home, ShieldCheck, Target, Zap } from "lucide-react";
 import MarketingSection from "./MarketingSection";
+import { motion } from "framer-motion";
 
 const features = [
   {
@@ -64,7 +65,13 @@ export default function WhySection() {
       />
 
       <div className="max-w-7xl mx-auto mt-16 relative z-10">
-        <div className="text-center mb-16">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="text-center mb-16"
+        >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-panel mb-6 border-blue-500/20 bg-white/5">
             <span className="text-sm font-bold tracking-widest text-blue-300 uppercase">
               The EZ Advantage
@@ -73,15 +80,19 @@ export default function WhySection() {
           <h2 className="font-black mb-6 tracking-tight leading-tight text-white text-4xl md:text-5xl">
             Why This Is More Than <br className="hidden md:block" />
             <span className="bg-clip-text text-transparent bg-linear-to-r from-blue-400 to-cyan-300">
-              “Just Another Loan Quote?
+              “Just Another Loan Quote?”
             </span>
           </h2>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feat, i) => (
-            <div
+            <motion.div
               key={feat.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.1, ease: "easeOut" }}
               className={`relative glass-panel overflow-hidden border border-white/10 bg-white/5 backdrop-blur-xl p-8 flex flex-col gap-6 rounded-3xl group hover:bg-white/10 transition-colors duration-500 shadow-[0_8px_32px_0_rgba(255,255,255,0.02)] ${i === 3 || i === 4 ? "lg:col-span-1.5" : ""
                 }`}
             >
@@ -96,7 +107,7 @@ export default function WhySection() {
                   {feat.desc}
                 </p>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

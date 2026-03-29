@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X, TrendingUp, Phone } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -143,7 +144,7 @@ export default function Navbar() {
         }
       `}</style>
 
-      <nav className="fixed top-0 left-0 right-0 z-50 w-full pt-4 pb-6">
+      <nav className="fixed top-0 left-0 right-0 z-50 w-full p-2">
         {/* Base Background: Small blur */}
         <div className="absolute inset-0 bg-transparent backdrop-blur-sm border-b border-transparent z-[-1]" />
 
@@ -152,20 +153,15 @@ export default function Navbar() {
 
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between relative z-10">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 no-underline group">
-            <div
-              className="w-9 h-9 rounded-lg flex items-center justify-center transition-transform group-hover:scale-105"
-              style={{ background: "linear-gradient(135deg,#f59e0b,#d97706)" }}
-            >
-              <TrendingUp className="w-5 h-5" style={{ color: "#020814" }} />
-            </div>
-            <span
-              className="text-xl font-bold"
-              style={{ fontFamily: "Outfit, sans-serif", color: "#f8fafc" }}
-            >
-              EZ<span className="gradient-text-gold">Mortgage</span>Lender
-              <span className="text-xs align-super" style={{ color: "#f59e0b" }}>®</span>
-            </span>
+          <Link href="/" className="flex items-center no-underline group relative h-20 w-24 transition-transform group-hover:scale-105">
+            <Image
+              src="/logo.png"
+              alt="EZ Mortgage Lender Logo"
+              fill
+              // sizes="(max-width: 768px) 192px, 192px"
+              className="object-contain object-left"
+              priority
+            />
           </Link>
 
           {/* CTA */}

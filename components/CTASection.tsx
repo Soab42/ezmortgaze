@@ -4,10 +4,11 @@ import gsap from "gsap";
 import { useRef, MouseEvent } from "react";
 import { ArrowRight, Zap, Shield, Clock } from "lucide-react";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 export default function CTASection() {
-    const buttonRef = useRef < HTMLAnchorElement > (null);
-    const textRef = useRef < HTMLSpanElement > (null);
+    const buttonRef = useRef<HTMLAnchorElement>(null);
+    const textRef = useRef<HTMLSpanElement>(null);
 
     // Magnetic button effect on hover
     const handleMouseMove = (e: MouseEvent<HTMLAnchorElement>) => {
@@ -37,31 +38,61 @@ export default function CTASection() {
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-white/20 blur-[100px] pointer-events-none rounded-full" />
 
             <div className="max-w-4xl mx-auto relative z-10 w-full">
-                <div className="glass-panel p-8 md:p-20 text-center rounded-[3rem] border border-white/10 bg-zinc-950/60 backdrop-blur-3xl shadow-2xl relative overflow-hidden group">
+                <motion.div 
+                    initial={{ opacity: 0, scale: 0.95, y: 40, filter: "blur(10px)" }}
+                    whileInView={{ opacity: 1, scale: 1, y: 0, filter: "blur(0px)" }}
+                    viewport={{ once: true, amount: 0.3 }}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                    className="glass-panel p-8 md:p-20 text-center rounded-[3rem] border border-white/10 bg-zinc-950/60 backdrop-blur-3xl shadow-2xl relative overflow-hidden group"
+                >
 
                     {/* Hover Glow Follower inside card */}
                     <div className="absolute inset-0 bg-linear-to-b from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
 
                     <div className="relative z-10">
-                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-indigo-500/20 bg-indigo-500/10 mb-8 max-w-fit mx-auto">
+                        <motion.div 
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.5, delay: 0.2 }}
+                            className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-indigo-500/20 bg-indigo-500/10 mb-8 max-w-fit mx-auto"
+                        >
                             <span className="w-2 h-2 rounded-full bg-indigo-400 animate-pulse" />
                             <span className="text-sm font-semibold tracking-widest text-indigo-300 uppercase">
                                 Start Your AI-Generated Soft Offer Now
                             </span>
-                        </div>
+                        </motion.div>
 
-                        <h2 className="font-black mb-6 tracking-tight leading-[1.1]" style={{ fontSize: "clamp(1.8rem, 8vw, 3.5rem)" }}>
+                        <motion.h2 
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.6, delay: 0.3 }}
+                            className="font-black mb-6 tracking-tight leading-[1.1]" style={{ fontSize: "clamp(1.8rem, 8vw, 3.5rem)" }}
+                        >
                             Ready to Discover Your<br className="hidden md:block" />
                             <span className="bg-clip-text text-transparent bg-linear-to-r from-emerald-200 via-emerald-400 to-emerald-600">
                                 Borrowing Power?
                             </span>
-                        </h2>
+                        </motion.h2>
 
-                        <p className="mb-12 max-w-2xl mx-auto text-zinc-400 text-base md:text-lg leading-relaxed">
+                        <motion.p 
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.6, delay: 0.4 }}
+                            className="mb-12 max-w-2xl mx-auto text-zinc-400 text-base md:text-lg leading-relaxed"
+                        >
                             It’s free. It takes just 5 minutes. It gives you actionable insight before submitting a full application. Know your numbers. Strengthen your position. Win more deals.
-                        </p>
+                        </motion.p>
 
-                        <div className="flex justify-center mb-16">
+                        <motion.div 
+                            initial={{ opacity: 0, y: 20, scale: 0.9 }}
+                            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.6, delay: 0.5 }}
+                            className="flex justify-center mb-16"
+                        >
                             <Link
                                 ref={buttonRef}
                                 href="https://softoffer.commerciallendingusa.com/login"
@@ -75,23 +106,36 @@ export default function CTASection() {
                                 </span>
                                 <div className="absolute inset-0 bg-linear-to-r from-emerald-200 to-emerald-500 opacity-0 hover:opacity-100 transition-opacity duration-300" />
                             </Link>
-                        </div>
+                        </motion.div>
 
                         {/* Reassurance pills */}
-                        <div className="flex flex-wrap justify-center gap-4">
+                        <motion.div 
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.6, delay: 0.6 }}
+                            className="flex flex-wrap justify-center gap-4"
+                        >
                             {[
                                 { icon: Shield, text: "No Hard Credit Pull" },
                                 { icon: Clock, text: "Results in 5 Minutes" },
                                 { icon: Zap, text: "AI-Powered Pre-Qual" }
                             ].map((pill, i) => (
-                                <div key={i} className="flex items-center gap-2 px-4 py-2 rounded-full bg-black/40 border border-white/5 text-zinc-400 text-sm font-medium">
+                                <motion.div 
+                                    key={i} 
+                                    initial={{ opacity: 0, scale: 0.8 }}
+                                    whileInView={{ opacity: 1, scale: 1 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.4, delay: 0.6 + (i * 0.1) }}
+                                    className="flex items-center gap-2 px-4 py-2 rounded-full bg-black/40 border border-white/5 text-zinc-400 text-sm font-medium"
+                                >
                                     <pill.icon className="w-4 h-4 text-emerald-400" />
                                     {pill.text}
-                                </div>
+                                </motion.div>
                             ))}
-                        </div>
+                        </motion.div>
                     </div>
-                </div>
+                </motion.div>
             </div>
         </section>
     );

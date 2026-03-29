@@ -35,8 +35,8 @@ export default function WhyChooseUs() {
 
       {/* Abstract Glowing Lines & Beams Background */}
       <div className="absolute inset-0 z-0 pointer-events-none">
-        <div className="absolute top-[-20%] right-[-10%] w-[70%] h-[70%] rounded-full bg-violet-600/10 blur-[120px] mix-blend-screen" />
-        <div className="absolute bottom-[-20%] left-[-10%] w-[60%] h-[60%] rounded-full bg-blue-600/5 blur-[150px] mix-blend-screen" />
+        <div className="absolute top-[-20%] right-[-10%] w-[70%] h-[70%] rounded-full bg-violet-600/30 blur-[120px] mix-blend-color-burn" />
+        <div className="absolute bottom-[-20%] left-[-10%] w-[60%] h-[60%] rounded-full bg-pink-600/50 blur-[150px] mix-blend-luminosity" />
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
@@ -77,7 +77,7 @@ export default function WhyChooseUs() {
         </div>
 
         {/* Broker / Realtor Banner */}
-        <div className="mt-20 p-px bg-linear-to-r from-indigo-500/20 via-blue-500/20 to-emerald-500/20 rounded-4xl shadow-2xl">
+        {/* <div className="mt-20 p-px bg-linear-to-r from-indigo-500/20 via-blue-500/20 to-emerald-500/20 rounded-4xl shadow-2xl">
           <div className="glass-panel p-10 lg:p-12 rounded-[inherit] bg-zinc-950/80 backdrop-blur-2xl border-none flex flex-col md:flex-row items-center justify-between gap-10">
             <div className="flex-1 text-center md:text-left">
               <h3 className="text-3xl font-bold text-white mb-4 tracking-tight">
@@ -94,7 +94,7 @@ export default function WhyChooseUs() {
               </span>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );

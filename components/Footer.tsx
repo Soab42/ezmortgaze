@@ -24,20 +24,16 @@ export default function Footer() {
 
         <div className="max-w-7xl mx-auto relative z-10 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left Column: Text Content */}
-          <div className="flex flex-col gap-5">
-            <div className="flex items-center gap-3">
-              <div
-                className="w-12 h-12 md:w-16 md:h-16 rounded-xl flex items-center justify-center shrink-0 shadow-lg"
-                style={{ background: "linear-gradient(135deg,#f59e0b,#d97706)" }}
-              >
-                <TrendingUp className="w-7 h-7 md:w-9 md:h-9" style={{ color: "#020814" }} />
-              </div>
-              <h2 className="text-3xl md:text-5xl font-black leading-tight tracking-tight" style={{ fontFamily: "Outfit, sans-serif", color: "#f8fafc" }}>
-                EZ<span className="gradient-text-gold">Mortgage</span>Lender
-                <span className="text-xl md:text-2xl align-super" style={{ color: "#f59e0b" }}>®</span>
-              </h2>
+          <div className="flex flex-col gap-2 justify-center items-center md:justify-start md:items-start">
+            <div className="relative flex h-24 w-32 md:h-40 md:w-40 transition-transform hover:scale-[1.02] justify-center">
+              <Image
+                src="/logo.png"
+                alt="EZ Mortgage Lender Logo"
+                fill
+                className="object-contain object-left"
+              />
             </div>
-            <p className="text-zinc-300 text-lg md:text-xl">Negotiate stronger. Move faster. Compete with confidence.</p>
+            <p className="text-zinc-300 text-xs">Negotiate stronger. Move faster. Compete with confidence.</p>
           </div>
 
           {/* Right Column: Trust Logos */}

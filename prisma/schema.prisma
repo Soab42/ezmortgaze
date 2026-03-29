@@ -1,0 +1,100 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id                      String    @id @default(cuid())
+  email                   String    @unique
+  password                String
+  name                    String?
+  role                    String    @default("ADMIN")
+  verificationToken       String?   @unique
+  verificationTokenExpires DateTime?
+  pendingEmail            String?
+  createdAt               DateTime  @default(now())
+  updatedAt               DateTime  @updatedAt
+  posts                   Post[]
+}
+
+model Author {
+  id        String   @id @default(cuid())
+  slug      String   @unique
+  name      String
+  role      String
+  bio       String
+  avatar    String?
+  twitter   String?
+  linkedin  String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  posts     Post[]
+}
+
+model Category {
+  id        String   @id @default(cuid())
+  slug      String   @unique
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  posts     Post[]
+}
+
+model Post {
+  id              String    @id @default(cuid())
+  slug            String    @unique
+  title           String
+  excerpt         String
+  content         String
+  coverImage      String?
+  readTime        String?
+  metaTitle       String?
+  metaDescription String?
+  canonicalUrl    String?
+  isPublished     Boolean   @default(false)
+  publishDate     DateTime?
+  updateDate      DateTime?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  authorId        String
+  categoryId      String
+  userId          String
+  author          Author            @relation(fields: [authorId], references: [id])
+  category        Category          @relation(fields: [categoryId], references: [id])
+  user            User              @relation(fields: [userId], references: [id])
+  comments        Comment[]
+}
+
+model Comment {
+  id        String   @id @default(cuid())
+  postId    String
+  post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
+  name      String
+  email     String
+  content   String
+  approved  Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
+
+model ContactInquiry {
+  id        String   @id @default(cuid())
+  firstName String
+  lastName  String
+  email     String
+  message   String
+  isRead    Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
+model ActivityLog {
+  id          String   @id @default(cuid())
+  action      String   // CREATE, UPDATE, DELETE, PUBLISH, RECEIVE, APPROVE
+  entityType  String   // POST, COMMENT, INQUIRY, CATEGORY, AUTHOR, USER
+  entityId    String?
+  message     String   // "John Doe published a new article: 'EZ Mortgage Guide'"
+  userName    String   // Copy of the user/visitor name for performance
+  userEmail   String?
+  createdAt   DateTime @default(now())
+}

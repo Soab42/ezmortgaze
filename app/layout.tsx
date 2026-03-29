@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { GoogleAnalytics } from '@next/third-parties/google';
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -58,6 +59,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://ezmortgagelender.com",
   },
+  verification: {
+    google: "INSERT_GOOGLE_SEARCH_CONSOLE_VERIFICATION_TAG_HERE",
+  },
   category: "finance",
 };
 
@@ -108,6 +112,7 @@ export default function RootLayout({
           <div className="mesh-bg" aria-hidden="true" />
           {children}
         </SmoothScroll>
+        <GoogleAnalytics gaId="G-XXXXXXXXXX" />
       </body>
     </html>
   );

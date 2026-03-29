@@ -26,12 +26,13 @@ export default function HeroSection() {
       className="relative min-h-[70vh] md:min-h-screen flex items-start pt-16 md:pt-24 overflow-hidden"
       style={{
         zIndex: 1,
-        background: 'linear-gradient(135deg, #6d28d9 0%, #c026d3 50%, #f6a47a 100%)'
+        // background: 'linear-gradient(135deg, #6d28d9 0%, #c026d3 50%, #f6a47a 100%)'
+        background: 'linear-gradient(135deg, #D45CC1 0%, #c026d3 50%, #f6a47a 100%)'
       }}
     >
       {/* Dynamic Glow Orbs */}
-      <div className="glow-orb opacity-80 w-[600px] h-[600px] bg-blue-600/50 top-0 left-0 -translate-x-1/4 -translate-y-1/4 mix-blend-screen z-0" />
-      <div className="glow-orb opacity-80 w-[500px] h-[500px] bg-amber-500/40 bottom-0 right-0 translate-x-1/4 translate-y-1/4 mix-blend-screen z-0" />
+      {/* <div className="glow-orb opacity-80 w-[600px] h-[600px] bg-blue-600/50 top-0 left-0 -translate-x-1/4 -translate-y-1/4 mix-blend-screen z-0" />
+      <div className="glow-orb opacity-80 w-[500px] h-[500px] bg-amber-500/40 bottom-0 right-0 translate-x-1/4 translate-y-1/4 mix-blend-screen z-0" /> */}
 
       <div className="max-w-7xl mx-auto w-full px-6 grid lg:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-8 items-center relative z-10">
 

@@ -1,6 +1,7 @@
 "use client";
 
 import { Zap } from "lucide-react";
+import { motion } from "framer-motion";
 
 const steps = [
   {
@@ -63,7 +64,13 @@ export default function HowItWorks() {
 
       <div className="max-w-4xl mx-auto relative z-10 w-full">
         {/* Header */}
-        <div className="text-center mb-16">
+        <motion.div 
+          initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
+          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="text-center mb-16"
+        >
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-amber-500/20 bg-amber-500/5 backdrop-blur-md mb-4 shadow-sm">
             <span className="text-xs font-bold tracking-[0.2em] text-amber-300 uppercase">
               🧠 How It Works
@@ -79,17 +86,27 @@ export default function HowItWorks() {
           <p className="text-zinc-500 text-lg max-w-2xl mx-auto font-medium">
             A precision-engineered approach to securing high-leverage financing.
           </p>
-        </div>
+        </motion.div>
 
         {/* Timeline Layout */}
         <div className="relative">
           {/* Central Line */}
-          <div className="absolute left-[20px] md:left-1/2 top-4 bottom-4 w-[2px] -translate-x-1/2 bg-linear-to-b from-transparent via-white/10 to-transparent" />
+          <motion.div 
+            initial={{ height: 0 }}
+            whileInView={{ height: "100%" }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.5, ease: "easeInOut" }}
+            className="absolute left-[20px] md:left-1/2 top-4 bottom-4 w-[2px] -translate-x-1/2 bg-linear-to-b from-transparent via-white/10 to-transparent" 
+          />
 
           <div className="space-y-4">
             {steps.map((step, i) => (
-              <div
+              <motion.div
                 key={step.num}
+                initial={{ opacity: 0, y: 40, filter: "blur(10px)" }}
+                whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.8, delay: i * 0.15, ease: "easeOut" }}
                 className={`relative flex flex-col md:flex-row items-center gap-10 ${i % 2 === 0 ? "md:flex-row-reverse" : ""}`}
               >
                 {/* Center Node */}
@@ -124,13 +141,19 @@ export default function HowItWorks() {
 
                 {/* Spacer */}
                 <div className="hidden md:block w-1/2" />
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
 
         {/* Closing Execution Card */}
-        <div className="mt-20 group">
+        <motion.div 
+          initial={{ opacity: 0, y: 40, scale: 0.95, filter: "blur(10px)" }}
+          whileInView={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+          className="mt-20 group"
+        >
           <div className="relative overflow-hidden border border-white/10 bg-white/[0.03] backdrop-blur-2xl p-10 rounded-[3rem] transition-all duration-700 hover:border-amber-500/40 hover:shadow-[0_0_50px_rgba(245,158,11,0.1)]">
             {/* Internal Glow Effect */}
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-amber-500/5 blur-[120px] -mr-64 -mt-64 rounded-full pointer-events-none group-hover:bg-amber-500/10 transition-all duration-1000" />
@@ -156,7 +179,7 @@ export default function HowItWorks() {
               </p>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

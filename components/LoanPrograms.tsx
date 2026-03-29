@@ -1,6 +1,7 @@
 "use client";
 
 import { Building2, Home, CheckCircle2 } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function LoanPrograms() {
   return (
@@ -23,26 +24,52 @@ export default function LoanPrograms() {
       <div className="max-w-7xl mx-auto relative z-10 w-full">
         {/* Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-8 backdrop-blur-xl shadow-inner">
+          <motion.div 
+            initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
+            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-8 backdrop-blur-xl shadow-inner"
+          >
             <span className="flex w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
             <span className="text-[11px] font-black tracking-[0.2em] text-emerald-400 uppercase">
               Financial Architecture
             </span>
-          </div>
-          <h2 className="font-black mb-8 tracking-tighter leading-[0.95] text-white text-5xl" >
+          </motion.div>
+          
+          <motion.h2 
+            initial={{ opacity: 0, y: 40, filter: "blur(12px)" }}
+            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.15, ease: "easeOut" }}
+            className="font-black mb-8 tracking-tighter leading-[0.95] text-white text-5xl" 
+          >
             Strategic <br className="hidden md:block" />
             <span className="bg-clip-text text-transparent bg-linear-to-b from-emerald-400 via-teal-400 to-blue-500">
               Loan Programs
             </span>
-          </h2>
-          <p className="text-zinc-400 text-lg max-w-3xl mx-auto font-medium leading-relaxed">
+          </motion.h2>
+          
+          <motion.p 
+            initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
+            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+            className="text-zinc-400 text-lg max-w-3xl mx-auto font-medium leading-relaxed"
+          >
             Tailored financing structures designed for high-performance <br className="hidden md:block" /> real estate professionals and entrepreneurs.
-          </p>
+          </motion.p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-10">
           {/* Commercial Column */}
-          <div className="group relative p-px rounded-[3rem] bg-linear-to-b from-emerald-700 to-transparent backdrop-blur-3xl overflow-hidden transition-all duration-700 hover:scale-[1.015] hover:shadow-[0_0_80px_rgba(16,185,129,0.1)]">
+          <motion.div 
+            initial={{ opacity: 0, x: -80, scale: 0.95, filter: "blur(15px)" }}
+            whileInView={{ opacity: 1, x: 0, scale: 1, filter: "blur(0px)" }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="group relative p-px rounded-[3rem] bg-linear-to-b from-emerald-700 to-transparent backdrop-blur-3xl overflow-hidden transition-all duration-700 hover:scale-[1.015] hover:shadow-[0_0_80px_rgba(16,185,129,0.1)]"
+          >
             <div className="relative z-10 p-8 md:p-14 bg-[#02081490] rounded-[calc(3rem-1px)] h-full">
               {/* Internal Accent Glow */}
               <div className="absolute top-0 right-0 w-80 h-80 bg-emerald-500/10 blur-[100px] -mr-40 -mt-40 transition-opacity opacity-40 group-hover:opacity-100" />
@@ -63,19 +90,32 @@ export default function LoanPrograms() {
                   "Ground-up construction and major renovation loans for development and value-add projects",
                   "Lite-Doc or Full-Doc commercial mortgages with flexible terms and structured amortization"
                 ].map((item, i) => (
-                  <li key={i} className="flex gap-5 group/item">
+                  <motion.li 
+                    key={i} 
+                    initial={{ opacity: 0, x: -20, filter: "blur(5px)" }}
+                    whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: 0.5 + (i * 0.12) }}
+                    className="flex gap-5 group/item"
+                  >
                     <div className="mt-2 shrink-0 flex items-center justify-center w-7 h-7 rounded-full bg-emerald-500/10 border border-emerald-500/20 transition-all duration-500 group-hover/item:border-emerald-400 group-hover/item:bg-emerald-500/20">
                       <CheckCircle2 className="w-4 h-4 text-emerald-400" />
                     </div>
                     <span className="text-zinc-300 text-lg leading-snug font-medium transition-colors group-hover/item:text-white">{item}</span>
-                  </li>
+                  </motion.li>
                 ))}
               </ul>
             </div>
-          </div>
+          </motion.div>
 
           {/* Residential Column */}
-          <div className="group relative p-px rounded-[3rem] bg-linear-to-b from-amber-700  to-transparent backdrop-blur-3xl overflow-hidden transition-all duration-700 hover:scale-[1.015] hover:shadow-[0_0_80px_rgba(245,158,11,0.1)]">
+          <motion.div 
+            initial={{ opacity: 0, x: 80, scale: 0.95, filter: "blur(15px)" }}
+            whileInView={{ opacity: 1, x: 0, scale: 1, filter: "blur(0px)" }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 1, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            className="group relative p-px rounded-[3rem] bg-linear-to-b from-amber-700  to-transparent backdrop-blur-3xl overflow-hidden transition-all duration-700 hover:scale-[1.015] hover:shadow-[0_0_80px_rgba(245,158,11,0.1)]"
+          >
             <div className="relative z-10 p-8 md:p-14 bg-[#02081460] rounded-[calc(3rem-1px)] h-full">
               {/* Internal Accent Glow */}
               <div className="absolute top-0 right-0 w-80 h-80 bg-amber-500/10 blur-[100px] -mr-40 -mt-40 transition-opacity opacity-40 group-hover:opacity-100" />
@@ -96,24 +136,37 @@ export default function LoanPrograms() {
                   "DSCR and bank statement qualification programs designed for real estate entrepreneurs",
                   "No-Doc and Lite-Doc financing for complex borrower profiles and non-traditional income"
                 ].map((item, i) => (
-                  <li key={i} className="flex gap-5 group/item">
+                  <motion.li 
+                    key={i} 
+                    initial={{ opacity: 0, x: -20, filter: "blur(5px)" }}
+                    whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: 0.6 + (i * 0.12) }}
+                    className="flex gap-5 group/item"
+                  >
                     <div className="mt-2 shrink-0 flex items-center justify-center w-7 h-7 rounded-full bg-amber-500/10 border border-amber-500/20 transition-all duration-500 group-hover/item:border-amber-400 group-hover/item:bg-amber-500/20">
                       <CheckCircle2 className="w-4 h-4 text-amber-400" />
                     </div>
                     <span className="text-zinc-300 text-lg leading-snug font-medium transition-colors group-hover/item:text-white">{item}</span>
-                  </li>
+                  </motion.li>
                 ))}
               </ul>
             </div>
-          </div>
+          </motion.div>
         </div>
 
         {/* Footer Tagline */}
-        <div className="text-center max-w-5xl mx-auto pt-10">
+        <motion.div 
+          initial={{ opacity: 0, y: 30, scale: 0.98, filter: "blur(10px)" }}
+          whileInView={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, delay: 0.8, ease: "easeOut" }}
+          className="text-center max-w-5xl mx-auto pt-10"
+        >
           <p className="text-2xl italic font-bold leading-[1.2] bg-clip-text text-transparent bg-linear-to-r from-zinc-500 via-white to-zinc-500 tracking-tight">
             "Every solution is structured around your financial profile, property type, and exit strategy — not the other way around."
           </p>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -1,7 +1,33 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  async redirects() {
+    return [
+      {
+        source: "/home",
+        destination: "/",
+        permanent: true,
+      },
+      // Example legacy blog route redirect placeholder
+      {
+        source: "/articles/:slug",
+        destination: "/blog/:slug",
+        permanent: true,
+      },
+    ];
+  },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'www.kuro.info',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.pala.com.au',
+      },
+    ],
+  },
 };
 
 export default nextConfig;
