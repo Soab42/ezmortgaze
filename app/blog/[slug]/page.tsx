@@ -300,7 +300,7 @@ export default async function BlogDetails({ params }: Props) {
                 <div className="glass-panel p-8 rounded-3xl border border-white/5 bg-gradient-to-b from-white/5 to-transparent">
                   <h3 className="text-xl font-bold text-white mb-6">Related Insights</h3>
                   <div className="space-y-6">
-                    {relatedPosts.map(rp => (
+                    {relatedPosts.map((rp: (typeof relatedPosts)[number]) => (
                       <Link key={rp.slug} href={`/blog/${rp.slug}`} className="group block">
                         <p className="text-zinc-500 text-[10px] font-black uppercase tracking-widest mb-2">{rp.category?.name}</p>
                         <h4 className="text-white font-bold group-hover:text-amber-500 transition-colors leading-tight mb-4 line-clamp-2">

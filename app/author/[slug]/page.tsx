@@ -119,7 +119,7 @@ export default async function AuthorPage({ params }: Props) {
             <p className="text-zinc-500">No articles yet.</p>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {author.posts.map((post) => (
+              {author.posts.map((post: (typeof author.posts)[number]) => (
                 <Link
                   key={post.slug}
                   href={`/blog/${post.slug}`}
