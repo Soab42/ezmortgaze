@@ -171,7 +171,7 @@ export default async function BlogDetails({ params }: Props) {
                 {post.author.avatar ? (
                   <Image src={post.author.avatar} alt={post.author.name} fill className="object-cover" />
                 ) : (
-                  post.author.name.split(" ").map((n) => n[0]).join("")
+                  post.author.name.split(" ").map((n: string) => n[0]).join("")
                 )}
               </div>
               <div>
@@ -229,7 +229,7 @@ export default async function BlogDetails({ params }: Props) {
                     {post.author.avatar ? (
                       <Image src={post.author.avatar} alt={post.author.name} fill className="object-cover" />
                     ) : (
-                      post.author.name.split(" ").map((n) => n[0]).join("")
+                      post.author.name.split(" ").map((n: string) => n[0]).join("")
                     )}
                   </div>
                   

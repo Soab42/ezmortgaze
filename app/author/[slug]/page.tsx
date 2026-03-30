@@ -84,7 +84,7 @@ export default async function AuthorPage({ params }: Props) {
                   className="object-cover" 
                 />
               ) : (
-                author.name.split(" ").map((n) => n[0]).join("")
+                author.name.split(" ").map((n: string) => n[0]).join("")
               )}
             </div>
 
