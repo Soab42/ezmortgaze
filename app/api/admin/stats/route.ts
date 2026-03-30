@@ -33,7 +33,7 @@ export async function GET() {
     ])
 
     // Map logs to the format expected by the frontend
-    const activity = logs.map(log => ({
+    const activity = logs.map((log: (typeof logs)[number]) => ({
       id: log.id,
       type: log.entityType.toLowerCase(),
       action: log.action,
