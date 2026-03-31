@@ -10,6 +10,9 @@ import CommentSection from "@/components/blog/CommentSection";
 import { ArrowLeft, Calendar, Clock, RefreshCw, Share2, Twitter, Linkedin } from "lucide-react";
 import { notFound } from "next/navigation";
 import { auth } from "@/auth";
+import PostAnalyticsTracker from "@/components/blog/PostAnalyticsTracker";
+import ShareButtons from "@/components/blog/ShareButtons";
+import { SITE_URL, OG_IMAGE, LOGO } from "@/lib/config";
 
 type Props = {
   params: Promise<{ slug: string }>
@@ -28,7 +31,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return { title: 'Post Not Found | EZMortgageLender.com®' };
   }
 
-  const canonicalUrl = post.canonicalUrl || `https://ezmortgagelender.com/blog/${post.slug}`;
+  const canonicalUrl = post.canonicalUrl || `${SITE_URL}/blog/${post.slug}`;
 
   return {
     title: {
@@ -45,7 +48,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       authors: [post.author.name],
       url: canonicalUrl,
       images: [{
-        url: post.coverImage ? `https://ezmortgagelender.com${post.coverImage}` : `https://ezmortgagelender.com/placeholder.jpg`,
+        url: post.coverImage ? `${post.coverImage}` : OG_IMAGE,
         width: 1200,
         height: 630,
         alt: post.title,
@@ -55,7 +58,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       card: "summary_large_image",
       title: post.metaTitle || post.title,
       description: post.metaDescription || post.excerpt,
-      images: [post.coverImage ? `https://ezmortgagelender.com${post.coverImage}` : `https://ezmortgagelender.com/placeholder.jpg`],
+      images: [post.coverImage?.startsWith('http') ? post.coverImage : `${post.coverImage || '/placeholder.jpg'}`],
     },
     robots: { index: post.isPublished, follow: post.isPublished }
   };
@@ -87,16 +90,16 @@ export default async function BlogDetails({ params }: Props) {
     "@type": "BlogPosting",
     headline: post.metaTitle || post.title,
     description: post.metaDescription || post.excerpt,
-    image: post.coverImage ? `https://ezmortgagelender.com${post.coverImage}` : `https://ezmortgagelender.com/placeholder.jpg`,
+    image: post.coverImage ? `${SITE_URL}${post.coverImage}` : `${SITE_URL}/placeholder.jpg`,
     author: {
       "@type": "Person",
       name: post.author.name,
-      url: `https://ezmortgagelender.com/author/${post.author.slug}`
+      url: `${SITE_URL}/author/${post.author.slug}`
     },
     publisher: {
       "@type": "Organization",
       name: "EZMortgageLender.com®",
-      logo: { "@type": "ImageObject", url: "https://ezmortgagelender.com/logo.png" }
+      logo: { "@type": "ImageObject", url: LOGO }
     },
     datePublished: post.publishDate || post.createdAt,
     dateModified: post.updateDate || post.updatedAt,
@@ -106,9 +109,9 @@ export default async function BlogDetails({ params }: Props) {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://ezmortgagelender.com" },
-      { "@type": "ListItem", position: 2, name: "Blog", item: "https://ezmortgagelender.com/blog" },
-      { "@type": "ListItem", position: 3, name: post.title, item: `https://ezmortgagelender.com/blog/${post.slug}` }
+      { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+      { "@type": "ListItem", position: 2, name: "Blog", item: `${SITE_URL}/blog` },
+      { "@type": "ListItem", position: 3, name: post.title, item: `${SITE_URL}/blog/${post.slug}` }
     ]
   };
 
@@ -117,7 +120,12 @@ export default async function BlogDetails({ params }: Props) {
   const wasUpdated = (post.publishDate?.getTime() !== post.updateDate?.getTime());
 
   return (
-    <main className="relative min-h-screen bg-[#020610]">
+    <>
+      {!isAdmin && <PostAnalyticsTracker slug={post.slug} />}
+      {post.customHeaderScript && (
+        <div dangerouslySetInnerHTML={{ __html: post.customHeaderScript }} />
+      )}
+      <main className="relative min-h-screen bg-[#020610]">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
 
@@ -134,12 +142,12 @@ export default async function BlogDetails({ params }: Props) {
             sizes="100vw"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#020610]/60 to-[#020610]" />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-[#020610]/40 to-[#020610]" />
         </div>
 
         <div className="max-w-4xl mx-auto relative z-10 px-6 w-full">
           {/* Breadcrumbs */}
-          <div className="mb-6">
+            <div className="mb-6 text-shadow-sm">
             <Breadcrumbs items={[
               { label: "Blog", href: "/blog" },
               { label: post.category?.name || "Uncategorized", href: "/blog" },
@@ -150,7 +158,7 @@ export default async function BlogDetails({ params }: Props) {
           <div className="flex flex-col items-start gap-6 mb-8">
             <Link
               href="/blog"
-              className="group inline-flex items-center gap-2 text-amber-500 text-sm font-bold hover:gap-4 transition-all"
+                className="group inline-flex items-center gap-2 text-amber-500 text-sm font-bold hover:gap-4 transition-all text-shadow-sm"
             >
               <ArrowLeft className="w-4 h-4" />
               Back to Insights
@@ -161,7 +169,7 @@ export default async function BlogDetails({ params }: Props) {
             </div>
           </div>
 
-          <h1 className="text-4xl md:text-7xl font-black text-white leading-[1.1] tracking-tighter mb-8">
+            <h1 className="text-4xl md:text-7xl font-black text-white leading-[1.1] tracking-tighter mb-8 text-shadow-md">
             {post.title}
           </h1>
 
@@ -269,16 +277,10 @@ export default async function BlogDetails({ params }: Props) {
               <CommentSection postId={post.id} slug={post.slug} />
 
               <div className="mt-16 pt-8 border-t border-white/5 flex flex-wrap items-center justify-between gap-4">
-                <div className="flex items-center gap-2">
-                  <span className="text-zinc-500 text-sm font-bold">Share this insight</span>
-                  <div className="flex gap-2">
-                    {[1, 2, 3].map(i => (
-                      <button key={i} className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-amber-500 hover:text-zinc-950 transition-all">
-                        <Share2 className="w-3 h-3" />
-                      </button>
-                    ))}
-                  </div>
-                </div>
+                <ShareButtons
+                  url={`${SITE_URL}/blog/${post.slug}`}
+                  title={post.title}
+                />
                 <div className="flex gap-2 flex-wrap">
                   {["#CommercialRE", "#FinTech", "#AI"].map(tag => (
                     <span key={tag} className="px-3 py-1 rounded-lg bg-zinc-950 border border-white/5 text-[10px] text-zinc-500 font-bold uppercase tracking-widest">
@@ -323,5 +325,9 @@ export default async function BlogDetails({ params }: Props) {
 
       <Footer />
     </main>
+      {post.customFooterScript && (
+        <div dangerouslySetInnerHTML={{ __html: post.customFooterScript }} />
+      )}
+    </>
   );
 }

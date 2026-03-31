@@ -19,12 +19,20 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'www.kuro.info',
+        protocol: "https",
+        hostname: "www.kuro.info",
       },
       {
-        protocol: 'https',
-        hostname: 'www.pala.com.au',
+        protocol: "https",
+        hostname: "www.pala.com.au",
+      },
+      {
+        protocol: "https",
+        hostname: "**.cloudinary.com",
+      },
+      {
+        protocol: "https",
+        hostname: "dwe6gs8sp.cloudfront.net",
       },
     ],
   },

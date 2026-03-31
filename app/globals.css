@@ -1,4 +1,6 @@
 @import "tailwindcss";
+
+@plugin "@tailwindcss/typography";
 /* Fonts loaded via <link> in layout.tsx <head> to avoid CSS @import ordering conflicts */
 
 :root {
@@ -13,6 +15,10 @@
   --text-secondary: #a1a1aa; /* Zinc 400 */
   --border-glass: rgba(255, 255, 255, 0.08);
 }
+
+.text-shadow-sm { text-shadow: 0 1px 2px rgba(0,0,0,0.8); }
+.text-shadow-md { text-shadow: 0 2px 4px rgba(0,0,0,0.6), 0 0 20px rgba(0,0,0,0.3); }
+.text-shadow-lg { text-shadow: 0 4px 8px rgba(0,0,0,0.7), 0 0 30px rgba(0,0,0,0.4); }
 
 /* Base resets are handled by Tailwind v4 preflight */
 
@@ -365,4 +371,36 @@ select.form-input option { background: #0a1628; color: #f8fafc; }
   font-size: 0.7em;
   opacity: 0.6;
   vertical-align: super;
+}
+
+/* ─────────────────────────────────────────
+   TinyMCE Formatting Overrides
+   ───────────────────────────────────────── */
+
+/* Force Tailwind prose to respect TinyMCE inline text alignments */
+.prose [style*="text-align: center"] { text-align: center !important; }
+.prose [style*="text-align: right"] { text-align: right !important; }
+.prose [style*="text-align: justify"] { text-align: justify !important; }
+.prose [style*="text-align: left"] { text-align: left !important; }
+
+/* Ensure lists render properly without squashing */
+.prose ul { list-style-type: disc !important; padding-left: 1.5rem; }
+.prose ol { list-style-type: decimal !important; padding-left: 1.5rem; }
+.prose li { margin-bottom: 0.25rem; }
+
+/* Let images inside prose behave smoothly */
+.prose img {
+  display: inline-block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 1.5rem auto;
+}
+
+/* Videos embedded via iframe */
+.prose iframe {
+  width: 100%;
+  aspect-ratio: 16/9;
+  border-radius: 12px;
+  margin: 2rem 0;
 }

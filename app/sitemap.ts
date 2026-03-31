@@ -1,8 +1,9 @@
 import { MetadataRoute } from 'next'
 import { blogPosts } from '@/data/blogs'
+import { SITE_URL } from '@/lib/config'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://ezmortgagelender.com'
+  const baseUrl = SITE_URL
 
   const blogs = blogPosts.map((post) => ({
     url: `${baseUrl}/blog/${post.slug}`,

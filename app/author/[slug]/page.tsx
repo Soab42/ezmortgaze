@@ -7,6 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import prisma from "@/lib/prisma";
 import { Calendar, Clock, Twitter, Linkedin, ArrowRight } from "lucide-react";
+import { SITE_URL } from "@/lib/config";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -19,13 +20,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!author) return { title: "Author Not Found" };
 
   return {
-    title: `${author.name} | EZMortgageLender.com®`,
+    title: `${author.name} | EZMortgageLender.net®`,
     description: author.bio,
-    alternates: { canonical: `https://ezmortgagelender.com/author/${author.slug}` },
+    alternates: { canonical: `${SITE_URL}/author/${author.slug}` },
     openGraph: {
       title: `${author.name} — ${author.role}`,
       description: author.bio,
-      url: `https://ezmortgagelender.com/author/${author.slug}`,
+      url: `${SITE_URL}/author/${author.slug}`,
     },
   };
 }
@@ -52,7 +53,7 @@ export default async function AuthorPage({ params }: Props) {
     name: author.name,
     jobTitle: author.role,
     description: author.bio,
-    url: `https://ezmortgagelender.com/author/${author.slug}`,
+    url: `${SITE_URL}/author/${author.slug}`,
     sameAs: [author.twitter, author.linkedin].filter(Boolean),
   };
 
@@ -147,7 +148,7 @@ export default async function AuthorPage({ params }: Props) {
                     <h3 className="text-lg font-bold text-white leading-snug mb-3 group-hover:text-amber-400 transition-colors">
                       {post.title}
                     </h3>
-                    <p className="text-zinc-500 text-sm line-clamp-2 mb-4 leading-relaxed">{post.excerpt}</p>
+                    <p className="text-zinc-500 text-sm line-clamp-2 mb-4 leading-relaxed">{post.excerpt?.replace(/<[^>]+>/g, '')}</p>
                     <div className="mt-auto flex items-center gap-2 text-amber-500 text-sm font-bold group-hover:gap-4 transition-all">
                       Read Article <ArrowRight className="w-4 h-4" />
                     </div>

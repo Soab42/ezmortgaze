@@ -16,6 +16,7 @@ export default async function BlogListing() {
     orderBy: {
       publishDate: 'desc',
     },
+    take: 7,
   });
 
   return (

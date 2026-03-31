@@ -14,6 +14,10 @@ const postSchema = z.object({
   metaDescription: z.string().optional(),
   canonicalUrl: z.string().url().optional(),
   isPublished: z.boolean().default(false),
+  isFeatured: z.boolean().default(false),
+  slug: z.string().optional(),
+  customHeaderScript: z.string().optional(),
+  customFooterScript: z.string().optional(),
   authorId: z.string(),
   categoryId: z.string(),
 })
@@ -58,12 +62,13 @@ export async function POST(req: Request) {
     const body = await req.json()
     const validatedData = postSchema.parse(body)
 
-    // Generate unique slug from title
-    const baseSlug = validatedData.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '')
-    let slug = baseSlug
+    // Generate or use user-provided slug
+    const sourceString = validatedData.slug && validatedData.slug.trim() !== "" ? validatedData.slug : validatedData.title
+    const baseSlug = sourceString.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '')
+    let slug = baseSlug || 'untitled-post'
     let counter = 1
     while (await prisma.post.findUnique({ where: { slug } })) {
-      slug = `${baseSlug}-${counter}`
+      slug = `${baseSlug || 'untitled-post'}-${counter}`
       counter++
     }
 

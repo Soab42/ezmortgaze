@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { GoogleAnalytics } from '@next/third-parties/google';
 import "./globals.css";
+import { SITE_URL, OG_IMAGE, LOGO, SITE_NAME } from "@/lib/config";
 
 export const metadata: Metadata = {
-  title: "AI Soft Offer in 5 Minutes | EZMortgageLender.com®",
+  title: "AI Soft Offer in 5 Minutes | EZMortgageLender.net®",
   description:
     "Get your AI-generated soft offer for commercial & residential investment loans in just 5 minutes. No hard credit pull. Fix-and-flip, DSCR, bridge, hard money, multifamily, retail, office & more. 30+ years of expertise, 200+ lenders.",
   keywords: [
@@ -24,9 +25,9 @@ export const metadata: Metadata = {
     "soft pre-qualification",
     "commercial mortgage",
   ],
-  authors: [{ name: "EZMortgageLender.com®" }],
-  creator: "EZMortgageLender.com®",
-  publisher: "EZMortgageLender.com®",
+  authors: [{ name: "EZMortgageLender.net®" }],
+  creator: "EZMortgageLender.net®",
+  publisher: "EZMortgageLender.net®",
   robots: {
     index: true,
     follow: true,
@@ -35,29 +36,29 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://ezmortgagelender.com",
-    siteName: "EZMortgageLender.com®",
-    title: "AI-Driven Soft Offer in 5 Minutes | EZMortgageLender.com®",
+    url: SITE_URL,
+    siteName: SITE_NAME,
+    title: "AI-Driven Soft Offer in 5 Minutes | EZMortgageLender.net®",
     description:
       "Instantly discover your borrowing power for commercial & residential investment loans. AI-powered soft pre-qualification with no hard credit pull.",
     images: [
       {
-        url: "https://ezmortgagelender.com/og-image.jpg",
+        url: OG_IMAGE,
         width: 1200,
         height: 630,
-        alt: "EZMortgageLender.com - AI Soft Offer",
+        alt: "EZMortgageLender.net - AI Soft Offer",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI Soft Offer in 5 Min | EZMortgageLender.com®",
+    title: "AI Soft Offer in 5 Min | EZMortgageLender.net®",
     description:
       "No hard credit pull. Get your estimated lending range instantly. 30+ years expertise. 200+ lenders.",
-    images: ["https://ezmortgagelender.com/og-image.jpg"],
+    images: [OG_IMAGE],
   },
   alternates: {
-    canonical: "https://ezmortgagelender.com",
+    canonical: SITE_URL,
   },
   verification: {
     google: "INSERT_GOOGLE_SEARCH_CONSOLE_VERIFICATION_TAG_HERE",
@@ -68,11 +69,11 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "FinancialService",
-  name: "EZMortgageLender.com®",
+  name: "EZMortgageLender.net®",
   description:
     "AI-driven commercial and residential investment loan soft offers in just 5 minutes.",
-  url: "https://ezmortgagelender.com",
-  logo: "https://ezmortgagelender.com/logo.png",
+  url: SITE_URL,
+  logo: LOGO,
   sameAs: [],
   areaServed: "US",
   hasOfferCatalog: {

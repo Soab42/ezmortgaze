@@ -2,8 +2,9 @@
 
 import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
-import { Save, Loader2, ArrowLeft, Eye, Type } from "lucide-react"
+import { Save, Loader2, ArrowLeft, Eye, Type, Plus, Trash2 } from "lucide-react"
 import RichTextEditor from "./RichTextEditor"
+import ImageUpload from "./ImageUpload"
 
 type Author = { id: string; name: string }
 type Category = { id: string; name: string }
@@ -16,8 +17,11 @@ export default function PostEditor({ postId }: PostEditorProps) {
   const router = useRouter()
   const [loading, setLoading] = useState(true)
   const [saving, setSaving] = useState(false)
-  const [authors, setAuthors] = useState < Author[] > ([])
-  const [categories, setCategories] = useState < Category[] > ([])
+  const [isSlugAuto, setIsSlugAuto] = useState(!postId)
+  const [headerScripts, setHeaderScripts] = useState<string[]>([""])
+  const [footerScripts, setFooterScripts] = useState<string[]>([""])
+  const [authors, setAuthors] = useState<Author[]>([])
+  const [categories, setCategories] = useState<Category[]>([])
 
   const [formData, setFormData] = useState({
     title: "",
@@ -29,10 +33,21 @@ export default function PostEditor({ postId }: PostEditorProps) {
     metaDescription: "",
     canonicalUrl: "",
     isPublished: false,
+    isFeatured: false,
     authorId: "",
     categoryId: "",
     slug: "",
+    customHeaderScript: "",
+    customFooterScript: "",
   })
+
+  // Auto-generate slug from title if auto is enabled
+  useEffect(() => {
+    if (isSlugAuto) {
+      const generated = formData.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '')
+      setFormData(prev => ({ ...prev, slug: generated }))
+    }
+  }, [formData.title, isSlugAuto])
 
   useEffect(() => {
     fetchMetadata()
@@ -71,10 +86,17 @@ export default function PostEditor({ postId }: PostEditorProps) {
           metaDescription: data.metaDescription || "",
           canonicalUrl: data.canonicalUrl || "",
           isPublished: data.isPublished || false,
+          isFeatured: data.isFeatured || false,
           authorId: data.authorId || "",
           categoryId: data.categoryId || "",
           slug: data.slug || "",
+          customHeaderScript: data.customHeaderScript || "",
+          customFooterScript: data.customFooterScript || "",
         })
+        const rawH = data.customHeaderScript || ""
+        const rawF = data.customFooterScript || ""
+        setHeaderScripts(rawH ? rawH.split('\n<!-- SCRIPT_SPLIT -->\n') : [""])
+        setFooterScripts(rawF ? rawF.split('\n<!-- SCRIPT_SPLIT -->\n') : [""])
       }
     } catch (error) {
       console.error("Failed to fetch post", error)
@@ -91,10 +113,16 @@ export default function PostEditor({ postId }: PostEditorProps) {
       const url = postId ? `/api/admin/blogs/${postId}` : "/api/admin/blogs"
       const method = postId ? "PUT" : "POST"
 
+      const submitData = {
+        ...formData,
+        customHeaderScript: headerScripts.filter(s => s.trim() !== "").join('\n<!-- SCRIPT_SPLIT -->\n'),
+        customFooterScript: footerScripts.filter(s => s.trim() !== "").join('\n<!-- SCRIPT_SPLIT -->\n')
+      }
+
       const res = await fetch(url, {
         method,
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(submitData),
       })
 
       if (res.ok) {
@@ -148,7 +176,18 @@ export default function PostEditor({ postId }: PostEditorProps) {
             </a>
           )}
         </div>
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-6">
+          <label className="flex items-center gap-2 text-sm font-bold text-zinc-400 cursor-pointer">
+            <input
+              type="checkbox"
+              name="isFeatured"
+              checked={formData.isFeatured}
+              onChange={handleChange}
+              className="w-5 h-5 rounded border-white/20 bg-[#020610] text-amber-500 focus:ring-amber-500/50"
+            />
+            {formData.isFeatured ? <span className="text-amber-500 shadow-sm">Featured Post</span> : "Mark Featured"}
+          </label>
+          <div className="h-6 w-px bg-white/10 hidden sm:block" />
           <label className="flex items-center gap-2 text-sm font-bold text-zinc-400 cursor-pointer">
             <input
               type="checkbox"
@@ -189,6 +228,33 @@ export default function PostEditor({ postId }: PostEditorProps) {
               </div>
 
               <div>
+                <label className="text-sm font-bold text-zinc-400 mb-2 uppercase tracking-wide flex justify-between items-center">
+                  <span>URL Slug</span>
+                  <button 
+                    type="button" 
+                    onClick={() => setIsSlugAuto(!isSlugAuto)}
+                    className={`text-xs font-bold transition-all px-2 py-0.5 rounded ${isSlugAuto ? 'bg-amber-500/20 text-amber-500' : 'bg-white/10 text-zinc-500 hover:text-white'}`}
+                  >
+                    {isSlugAuto ? 'Auto-Sync: ON' : 'Auto-Sync: OFF'}
+                  </button>
+                </label>
+                <div className="relative flex items-center">
+                  <span className="absolute left-4 text-zinc-600 font-mono text-sm hidden sm:block">ezmortgagelender.com/blog/</span>
+                  <input
+                    type="text"
+                    name="slug"
+                    value={formData.slug}
+                    onChange={(e) => {
+                      setIsSlugAuto(false)
+                      handleChange(e)
+                    }}
+                    className="w-full bg-[#020610] text-amber-300 p-4 sm:pl-[240px] rounded-xl border border-white/10 focus:border-amber-500/50 outline-none transition-all placeholder:text-zinc-600 font-mono text-sm"
+                    placeholder="custom-article-slug"
+                  />
+                </div>
+              </div>
+
+              <div>
                 <label className="block text-sm font-bold text-zinc-400 mb-2 uppercase tracking-wide">Excerpt (Summary)</label>
                 <textarea
                   name="excerpt"
@@ -202,7 +268,7 @@ export default function PostEditor({ postId }: PostEditorProps) {
               </div>
 
               <div>
-                <label className="block text-sm font-bold text-zinc-400 mb-2 uppercase tracking-wide flex justify-between">
+                <label className="text-sm font-bold text-zinc-400 mb-2 uppercase tracking-wide flex justify-between">
                   <span>Rich Text Content</span>
                   <span className="text-xs text-amber-500">Auto-detects formatting on paste (Word/Docs)</span>
                 </label>
@@ -261,17 +327,11 @@ export default function PostEditor({ postId }: PostEditorProps) {
                 />
               </div>
 
-              <div>
-                <label className="block text-sm font-bold text-zinc-400 mb-2 uppercase tracking-wide">Cover Image URL</label>
-                <input
-                  type="url"
-                  name="coverImage"
-                  value={formData.coverImage}
-                  onChange={handleChange}
-                  className="w-full bg-[#020610] text-white p-4 rounded-xl border border-white/10 focus:border-amber-500/50 outline-none transition-all placeholder:text-zinc-600"
-                  placeholder="https://..."
-                />
-              </div>
+              <ImageUpload
+                label="Cover Image"
+                value={formData.coverImage}
+                onChange={(url) => setFormData(prev => ({ ...prev, coverImage: url }))}
+              />
             </div>
           </div>
 
@@ -314,6 +374,92 @@ export default function PostEditor({ postId }: PostEditorProps) {
                   className="w-full bg-[#020610] text-white p-4 rounded-xl border border-white/10 focus:border-amber-500/50 outline-none transition-all placeholder:text-zinc-600"
                   placeholder="Optional absolute URL"
                 />
+              </div>
+
+              <div className="pt-4 border-t border-white/5">
+                <div className="flex justify-between items-center mb-4">
+                  <div>
+                    <h3 className="text-sm font-bold text-zinc-400 uppercase tracking-wide">Header Script Injection</h3>
+                    <p className="text-xs text-amber-500 font-normal mt-1">Loads in &lt;head&gt;</p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setHeaderScripts([...headerScripts, ""])}
+                    className="flex items-center gap-2 text-xs font-bold text-amber-500 bg-amber-500/10 hover:bg-amber-500/20 px-3 py-1.5 rounded-lg transition-all"
+                  >
+                    <Plus className="w-4 h-4" /> Add Script
+                  </button>
+                </div>
+                
+                <div className="space-y-4">
+                  {headerScripts.map((script, idx) => (
+                    <div key={`header-${idx}`} className="relative group">
+                      <textarea
+                        rows={3}
+                        value={script}
+                        onChange={(e) => {
+                          const newScripts = [...headerScripts]
+                          newScripts[idx] = e.target.value
+                          setHeaderScripts(newScripts)
+                        }}
+                        className="w-full bg-[#020610] text-amber-300 p-4 rounded-xl border border-white/10 focus:border-amber-500/50 outline-none transition-all placeholder:text-zinc-600 resize-y font-mono text-sm leading-relaxed"
+                        placeholder={`<script type="application/ld+json">...</script>`}
+                      />
+                      {headerScripts.length > 1 && (
+                        <button
+                          type="button"
+                          onClick={() => setHeaderScripts(headerScripts.filter((_, i) => i !== idx))}
+                          className="absolute top-4 right-4 text-red-500/50 hover:text-red-500 opacity-0 group-hover:opacity-100 transition-opacity bg-[#020610] p-1 rounded-md"
+                        >
+                          <Trash2 className="w-4 h-4" />
+                        </button>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="pt-6 border-t border-white/5">
+                <div className="flex justify-between items-center mb-4">
+                  <div>
+                    <h3 className="text-sm font-bold text-zinc-400 uppercase tracking-wide">Footer Script Injection</h3>
+                    <p className="text-xs text-amber-500 font-normal mt-1">Loads before &lt;/body&gt;</p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setFooterScripts([...footerScripts, ""])}
+                    className="flex items-center gap-2 text-xs font-bold text-amber-500 bg-amber-500/10 hover:bg-amber-500/20 px-3 py-1.5 rounded-lg transition-all"
+                  >
+                    <Plus className="w-4 h-4" /> Add Script
+                  </button>
+                </div>
+                
+                <div className="space-y-4">
+                  {footerScripts.map((script, idx) => (
+                    <div key={`footer-${idx}`} className="relative group">
+                      <textarea
+                        rows={3}
+                        value={script}
+                        onChange={(e) => {
+                          const newScripts = [...footerScripts]
+                          newScripts[idx] = e.target.value
+                          setFooterScripts(newScripts)
+                        }}
+                        className="w-full bg-[#020610] text-amber-300 p-4 rounded-xl border border-white/10 focus:border-amber-500/50 outline-none transition-all placeholder:text-zinc-600 resize-y font-mono text-sm leading-relaxed"
+                        placeholder="<script>...</script>"
+                      />
+                      {footerScripts.length > 1 && (
+                        <button
+                          type="button"
+                          onClick={() => setFooterScripts(footerScripts.filter((_, i) => i !== idx))}
+                          className="absolute top-4 right-4 text-red-500/50 hover:text-red-500 opacity-0 group-hover:opacity-100 transition-opacity bg-[#020610] p-1 rounded-md"
+                        >
+                          <Trash2 className="w-4 h-4" />
+                        </button>
+                      )}
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>

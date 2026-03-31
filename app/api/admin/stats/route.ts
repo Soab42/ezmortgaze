@@ -19,6 +19,7 @@ export async function GET() {
       totalAuthors,
       totalCategories,
       logs,
+      topPosts,
     ] = await Promise.all([
       prisma.post.count(),
       prisma.post.count({ where: { isPublished: true } }),
@@ -27,8 +28,14 @@ export async function GET() {
       prisma.author.count(),
       prisma.category.count(),
       prisma.activityLog.findMany({
-        take: 15,
+        take: 10,
         orderBy: { createdAt: 'desc' },
+      }),
+      prisma.post.findMany({
+        orderBy: { viewCount: 'desc' },
+        take: 5,
+        select: { id: true, title: true, slug: true, viewCount: true, readingTimeSpent: true, isFeatured: true },
+        where: { isPublished: true }
       }),
     ])
 
@@ -52,6 +59,7 @@ export async function GET() {
         totalCategories,
       },
       activity,
+      topPosts
     })
   } catch (error) {
     console.error('Failed to fetch dashboard stats:', error)

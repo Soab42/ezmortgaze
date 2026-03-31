@@ -75,7 +75,7 @@ export default function CommentSection({ postId, slug }: { postId: string, slug:
         </h2>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+      <div className="space-y-12">
         {/* Comment Form */}
         <div className="glass-panel border border-white/10 rounded-3xl p-8 bg-white/5 backdrop-blur-xl">
           <h3 className="text-xl font-bold text-white mb-6">Leave a Comment</h3>
@@ -147,7 +147,9 @@ export default function CommentSection({ postId, slug }: { postId: string, slug:
 
         {/* Comment List */}
         <div className="space-y-6">
-          <h3 className="text-xl font-bold text-white pl-1">Approved Thoughts</h3>
+          <h3 className="text-xl font-bold text-white pl-1">
+            Thoughts <span className="text-zinc-600 text-sm font-medium">({comments.length})</span>
+          </h3>
           {loading ? (
             <div className="flex flex-col items-center justify-center py-20 text-zinc-600 gap-4">
               <Loader2 className="w-8 h-8 animate-spin" />
@@ -158,7 +160,7 @@ export default function CommentSection({ postId, slug }: { postId: string, slug:
               Be the first to share your perspective!
             </div>
           ) : (
-            <div className="space-y-6 max-h-[600px] overflow-y-auto pr-2 custom-scrollbar">
+                <div className="space-y-6">
               {comments.map((comment) => (
                 <div key={comment.id} className="p-6 rounded-2xl bg-white/2 border border-white/5 hover:border-white/10 transition-all group">
                   <div className="flex items-center justify-between mb-4">

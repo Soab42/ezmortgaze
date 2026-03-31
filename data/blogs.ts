@@ -42,7 +42,7 @@ export const blogPosts: BlogPost[] = [
     date: "March 10, 2026",
     publishDate: "2026-03-10T10:00:00Z",
     updateDate: "2026-03-11T14:30:00Z",
-    canonicalUrl: "https://ezmortgagelender.com/blog/navigating-commercial-real-estate-trends-2026",
+    canonicalUrl: "https://ezmortgagelender.net/blog/navigating-commercial-real-estate-trends-2026",
     category: "Market Trends",
     readTime: "6 min read",
     coverImage: "/blog-market-trends.png"
@@ -69,7 +69,7 @@ export const blogPosts: BlogPost[] = [
     date: "March 05, 2026",
     publishDate: "2026-03-05T09:15:00Z",
     updateDate: "2026-03-08T11:45:00Z",
-    canonicalUrl: "https://ezmortgagelender.com/blog/ai-impact-on-mortgage-lending",
+    canonicalUrl: "https://ezmortgagelender.net/blog/ai-impact-on-mortgage-lending",
     category: "AI & Lending",
     readTime: "4 min read",
     coverImage: "/blog-ai-lending.png"
@@ -99,7 +99,7 @@ export const blogPosts: BlogPost[] = [
     date: "February 28, 2026",
     publishDate: "2026-02-28T13:00:00Z",
     updateDate: "2026-02-28T13:00:00Z",
-    canonicalUrl: "https://ezmortgagelender.com/blog/real-estate-investment-strategies-volatile-markets",
+    canonicalUrl: "https://ezmortgagelender.net/blog/real-estate-investment-strategies-volatile-markets",
     category: "Real Estate Strategies",
     readTime: "8 min read",
     coverImage: "/blog-real-estate.png"

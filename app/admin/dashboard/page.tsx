@@ -14,7 +14,8 @@ import {
   User,
   Tags,
   PenTool,
-  ShieldAlert
+  ShieldAlert,
+  Eye
 } from "lucide-react"
 
 type Activity = {
@@ -37,6 +38,7 @@ type Stat = {
 export default function OverviewDashboard() {
   const [stats, setStats] = useState<any>(null)
   const [activities, setActivities] = useState<Activity[]>([])
+  const [topPosts, setTopPosts] = useState<any[]>([])
   const [loading, setLoading] = useState<boolean>(true)
 
   useEffect(() => {
@@ -50,6 +52,7 @@ export default function OverviewDashboard() {
         const data = await res.json()
         setStats(data.counts)
         setActivities(data.activity)
+        setTopPosts(data.topPosts || [])
       }
     } catch (error) {
       console.error("Failed to fetch dashboard stats", error)
@@ -187,15 +190,23 @@ export default function OverviewDashboard() {
                  <Clock className="w-5 h-5 text-amber-500" />
                  Recent Digital Footprints
               </h3>
-              {activities.length === 0 && (
-                <button 
-                  onClick={handleSyncLogs}
-                  className="text-[10px] font-black uppercase tracking-widest text-amber-500 hover:text-amber-400 transition-colors border-b border-amber-500/30 pb-1"
+              <div className="flex items-center gap-4">
+                {activities.length === 0 && (
+                  <button 
+                    onClick={handleSyncLogs}
+                    className="text-[10px] font-black uppercase tracking-widest text-amber-500 hover:text-amber-400 transition-colors border-b border-amber-500/30 pb-1"
+                  >
+                    Sync Historical Data
+                  </button>
+                )}
+                <Link 
+                  href="/admin/dashboard/activity"
+                  className="flex items-center gap-1.5 text-[10px] font-black uppercase tracking-widest text-zinc-500 hover:text-amber-400 transition-colors border-b border-zinc-800 hover:border-amber-500/30 pb-1 group"
                 >
-                  Sync Historical Data
-                </button>
-              )}
-              <div className="text-[10px] font-black uppercase tracking-widest text-zinc-700 italic border-b border-zinc-800 pb-1">Verified System Audit</div>
+                  View All
+                  <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
+                </Link>
+              </div>
            </div>
            
            <div className="glass-panel border border-white/10 bg-white/2 p-3 rounded-[3rem] overflow-hidden min-h-[600px]">
@@ -249,38 +260,58 @@ export default function OverviewDashboard() {
            </div>
         </div>
 
-        {/* Rapid Deployment */}
+        {/* Top Performing Content Sidebar */}
         <div className="space-y-8">
-           <h3 className="text-xl font-bold text-white px-4 italic tracking-tight">Tactical Operations</h3>
+           <h3 className="text-xl font-bold text-white px-4 italic tracking-tight">Content Leaderboard</h3>
+           
            <div className="glass-panel border border-white/10 bg-white/2 p-6 rounded-[3rem] space-y-4 shadow-2xl">
-              {[
-                { label: "New Publication", icon: FileText, href: "/admin/dashboard/editor", desc: "Launch blog content" },
-                { label: "Dialogue Moderation", icon: MessageSquare, href: "/admin/dashboard/comments", desc: "Audit visitor feedback" },
-                { label: "Inquiry Management", icon: Inbox, href: "/admin/dashboard/inquiries", desc: "Review client pulse" },
-                { label: "Taxonomy Engine", icon: Tags, href: "/admin/dashboard/categories", desc: "Configure site nodes" },
-                { label: "User Access", icon: User, href: "/admin/dashboard/users", desc: "Command security levels" },
-              ].map((action) => (
-                <Link key={action.label} href={action.href}>
-                   <div className="p-6 rounded-[2rem] bg-zinc-950/50 border border-white/5 hover:border-amber-500/40 hover:bg-zinc-900 transition-all group flex flex-col gap-3">
-                      <div className="flex items-center justify-between">
-                         <div className="flex items-center gap-4">
-                            <div className="p-3 rounded-xl bg-white/5 text-amber-500 transition-transform group-hover:rotate-12">
-                               <action.icon className="w-5 h-5" />
-                            </div>
-                            <span className="text-white font-black text-sm tracking-tight">{action.label}</span>
-                         </div>
-                         <ArrowRight className="w-4 h-4 text-zinc-800 group-hover:translate-x-1 group-hover:text-amber-500 transition-all" />
-                      </div>
-                      <p className="text-zinc-700 text-[9px] font-black uppercase tracking-[0.3em] pl-1">{action.desc}</p>
-                   </div>
-                </Link>
-              ))}
+              {topPosts.length === 0 ? (
+                <div className="py-12 text-center text-zinc-600 font-bold text-xs uppercase tracking-widest">
+                  Awaiting Telemetry
+                </div>
+              ) : (
+                topPosts.map((post, idx) => (
+                  <Link key={post.id} href={`/admin/dashboard/editor/${post.id}`}>
+                     <div className="p-4 rounded-[2rem] bg-zinc-950/50 border border-white/5 hover:border-amber-500/40 hover:bg-zinc-900 transition-all group flex flex-col gap-3 relative overflow-hidden">
+                        {/* Rank Badge */}
+                        <div className="absolute -right-4 -top-4 w-16 h-16 bg-white/5 rounded-full flex items-center justify-center pointer-events-none group-hover:bg-amber-500/10 transition-colors">
+                           <span className="text-3xl font-black text-white/10 group-hover:text-amber-500/20 absolute -bottom-1 -left-2 italic">#{idx + 1}</span>
+                        </div>
+                        
+                        <div className="pr-8">
+                           <h4 className="text-white font-bold text-sm tracking-tight leading-tight mb-2 group-hover:text-amber-500 transition-colors line-clamp-2">
+                              {post.title}
+                           </h4>
+                           
+                           <div className="flex items-center gap-4 text-xs font-black uppercase tracking-widest text-zinc-600">
+                              <div className="flex items-center gap-1.5" title="Total Views">
+                                <Eye className="w-3.5 h-3.5 text-blue-400" />
+                                <span className="text-zinc-400">{post.viewCount}</span>
+                              </div>
+                              <div className="flex items-center gap-1.5" title="Total Active Seconds Read">
+                                <Clock className="w-3.5 h-3.5 text-purple-400" />
+                                <span className="text-zinc-400">{post.readingTimeSpent}s</span>
+                              </div>
+                              {post.isFeatured && (
+                                <div className="flex items-center gap-1.5" title="Featured Post">
+                                  <div className="w-2 h-2 rounded-full bg-amber-500 shadow-[0_0_10px_rgba(245,158,11,0.5)] animate-pulse" />
+                                  <span className="text-amber-500 text-[9px]">Pinned</span>
+                                </div>
+                              )}
+                           </div>
+                        </div>
+                     </div>
+                  </Link>
+                ))
+              )}
            </div>
            
-           <div className="p-8 rounded-[2rem] bg-amber-500/5 border border-amber-500/10 space-y-4">
-              <h4 className="text-amber-500 font-black uppercase text-[10px] tracking-widest">Platform Security Note</h4>
-              <p className="text-zinc-600 text-xs leading-relaxed italic font-medium">
-                 All digital footprints are logged with 100% fidelity. Administrators are responsible for maintaining audit integrity across all publication channels.
+           <div className="p-8 rounded-[2rem] bg-indigo-500/5 border border-indigo-500/10 space-y-4">
+              <h4 className="text-indigo-400 font-black uppercase text-[10px] tracking-widest flex items-center gap-2">
+                 <TrendingUp className="w-4 h-4" /> Live Telemetry Analytics
+              </h4>
+              <p className="text-zinc-500 text-xs leading-relaxed italic font-medium">
+                 The leaderboard ranks content by strictly validated views and organic dwell time, updating securely behind the scenes without heavy analytics plugins.
               </p>
            </div>
         </div>

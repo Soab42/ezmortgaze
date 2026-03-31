@@ -9,23 +9,33 @@ import { motion } from "framer-motion";
 const PAGE_SIZE = 6;
 
 export default function BlogListClient({ initialPosts }: { initialPosts: any[] }) {
-  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
+  const [posts, setPosts] = useState(initialPosts.slice(1));
+  const [page, setPage] = useState(2);
+  // If we received exactly 7 posts initially (1 featured + 6 grid), there might be more
+  const [hasMore, setHasMore] = useState(initialPosts.length === 7);
   const [isLoading, setIsLoading] = useState(false);
   const sentinelRef = useRef<HTMLDivElement>(null);
 
   const featuredPost = initialPosts[0];
-  const allPosts = initialPosts;
-  const visiblePosts = allPosts.slice(0, visibleCount);
-  const hasMore = visibleCount < allPosts.length;
 
-  const loadMore = useCallback(() => {
+  const loadMore = useCallback(async () => {
     if (isLoading || !hasMore) return;
     setIsLoading(true);
-    setTimeout(() => {
-      setVisibleCount((prev) => Math.min(prev + PAGE_SIZE, allPosts.length));
+
+    try {
+      const res = await fetch(`/api/blog?page=${page}&limit=${PAGE_SIZE}`);
+      if (!res.ok) throw new Error("Failed to fetch posts");
+      const data = await res.json();
+
+      setPosts((prev) => [...prev, ...data.posts]);
+      setHasMore(data.hasMore);
+      setPage((prev) => prev + 1);
+    } catch (err) {
+      console.error(err);
+    } finally {
       setIsLoading(false);
-    }, 600);
-  }, [isLoading, hasMore, allPosts.length]);
+    }
+  }, [isLoading, hasMore, page]);
 
   useEffect(() => {
     const el = sentinelRef.current;
@@ -63,16 +73,16 @@ export default function BlogListClient({ initialPosts }: { initialPosts: any[] }
               className="object-cover transition-transform duration-700 group-hover:scale-105"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#020610] via-[#020610]/40 to-transparent" />
+            <div className="absolute inset-0 bg-linear-to-t from-[#020610] via-[#020610]/40 to-transparent" />
 
             <div className="absolute bottom-0 left-0 p-8 md:p-16 w-full md:w-2/3">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500 text-zinc-950 text-xs font-bold uppercase tracking-wider mb-6">
                 Featured Article
               </div>
-              <h2 className="text-3xl md:text-5xl font-black text-white leading-tight mb-6 group-hover:text-amber-400 transition-colors">
+              <h2 className="text-3xl md:text-5xl font-black text-white leading-tight mb-6 group-hover:text-amber-400 transition-colors text-shadow-md">
                 {featuredPost.title}
               </h2>
-              <div className="flex items-center gap-6 text-zinc-400 text-sm font-medium">
+              <div className="flex items-center gap-6 text-zinc-300 text-sm font-medium text-shadow-sm">
                 <div className="flex items-center gap-2">
                   <Calendar className="w-4 h-4" />
                   {new Date(featuredPost.createdAt).toLocaleDateString()}
@@ -88,7 +98,7 @@ export default function BlogListClient({ initialPosts }: { initialPosts: any[] }
       </motion.div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {visiblePosts.map((post, index) => (
+        {posts.map((post, index) => (
           <motion.div
             key={post.slug}
             initial={{ opacity: 0, y: 24 }}
@@ -133,7 +143,7 @@ export default function BlogListClient({ initialPosts }: { initialPosts: any[] }
                   {post.title}
                 </h3>
                 <p className="text-zinc-400 text-sm line-clamp-2 mb-8 leading-relaxed">
-                  {post.excerpt}
+                  {post.excerpt?.replace(/<[^>]+>/g, '')}
                 </p>
 
                 <div className="mt-auto flex items-center gap-2 text-amber-500 text-sm font-bold group-hover:gap-4 transition-all">
@@ -153,7 +163,7 @@ export default function BlogListClient({ initialPosts }: { initialPosts: any[] }
             Loading more insights…
           </div>
         )}
-        {!hasMore && visiblePosts.length > PAGE_SIZE && (
+        {!hasMore && posts.length > 0 && (
           <p className="text-zinc-600 text-sm font-medium tracking-widest uppercase">
             — You&apos;ve reached the end —
           </p>

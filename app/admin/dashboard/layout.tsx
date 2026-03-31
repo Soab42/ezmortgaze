@@ -4,7 +4,7 @@ import { useSession, signOut } from "next-auth/react"
 import { useRouter } from "next/navigation"
 import { useEffect } from "react"
 import Link from "next/link"
-import { LogOut, LayoutDashboard, FileText, Settings, Users, Tags, PenTool, MessageSquare, Inbox } from "lucide-react"
+import { LogOut, LayoutDashboard, FileText, Settings, Users, Tags, PenTool, MessageSquare, Inbox, Activity } from "lucide-react"
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   const { data: session, status } = useSession()
@@ -23,9 +23,9 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   if (!session) return null
 
   return (
-    <div className="flex min-h-screen bg-[#020610]">
+    <div className="flex h-screen bg-[#020610] overflow-hidden">
       {/* Sidebar */}
-      <aside className="w-64 border-r border-white/10 glass-panel p-6 flex flex-col hidden md:flex">
+      <aside data-lenis-prevent="true" className="w-64 border-r border-white/10 glass-panel p-6 flex flex-col hidden md:flex h-full overflow-y-auto">
         <div className="text-xl font-black text-white mb-10 tracking-tighter">
           EZ<span className="text-amber-500">MORTGAZE</span>
         </div>
@@ -59,6 +59,10 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             <Inbox className="w-5 h-5" />
             Inquiries
           </Link>
+          <Link href="/admin/dashboard/activity" className="flex items-center gap-3 px-4 py-3 rounded-xl text-zinc-400 hover:text-white hover:bg-white/5 transition-all font-bold group-hover:bg-amber-500/10">
+            <Activity className="w-5 h-5" />
+            Audit Log
+          </Link>
           <Link href="/admin/dashboard/settings" className="flex items-center gap-3 px-4 py-3 rounded-xl text-zinc-400 hover:text-white hover:bg-white/5 transition-all font-bold group-hover:bg-amber-500/10">
             <Settings className="w-5 h-5" />
             Settings
@@ -78,7 +82,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       </aside>
 
       {/* Main Content */}
-      <main className="flex-1 overflow-auto">
+      <main data-lenis-prevent="true" className="flex-1 h-full overflow-y-auto relative">
         <header className="border-b border-white/10 p-6 flex items-center justify-between md:hidden">
           <div className="text-xl font-black text-white tracking-tighter">
             EZ<span className="text-amber-500">MORTGAZE</span>

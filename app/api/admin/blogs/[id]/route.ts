@@ -14,6 +14,10 @@ const postSchema = z.object({
   metaDescription: z.string().optional(),
   canonicalUrl: z.string().url().optional().or(z.literal('')),
   isPublished: z.boolean().default(false),
+  isFeatured: z.boolean().default(false),
+  slug: z.string().optional(),
+  customHeaderScript: z.string().optional().or(z.literal('')),
+  customFooterScript: z.string().optional().or(z.literal('')),
   authorId: z.string(),
   categoryId: z.string(),
 })
@@ -63,12 +67,26 @@ export async function PUT(req: Request, { params }: { params: Promise<{ id: stri
       return NextResponse.json({ error: 'Not Found' }, { status: 404 })
     }
 
+    let resolvedSlug = existingPost.slug
+    if (validatedData.slug && validatedData.slug.trim() !== '') {
+      const formattedSlug = validatedData.slug.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '')
+      if (formattedSlug !== existingPost.slug) {
+        resolvedSlug = formattedSlug
+        let counter = 1
+        while (await prisma.post.findFirst({ where: { slug: resolvedSlug, id: { not: resolvedParams.id } } })) {
+          resolvedSlug = `${formattedSlug}-${counter}`
+          counter++
+        }
+      }
+    }
+
     const isNowPublished = validatedData.isPublished && !existingPost.isPublished
 
     const updatedPost = await prisma.post.update({
       where: { id: resolvedParams.id },
       data: {
         ...validatedData,
+        slug: resolvedSlug,
         coverImage,
         canonicalUrl,
         updateDate: new Date(),

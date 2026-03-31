@@ -3,17 +3,18 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { ArrowRight, Building2, TrendingUp, Zap } from "lucide-react";
 import Link from "next/link";
+import { SITE_URL } from "@/lib/config";
 
 export const metadata: Metadata = {
-  title: "About Us | EZMortgageLender.com®",
+  title: "About Us | EZMortgageLender.net®",
   description: "Learn how EZMortgageLender compares to traditional mortgage processing by combining decades of underwriting expertise with cutting-edge artificial intelligence.",
   alternates: {
-    canonical: "https://ezmortgagelender.com/about",
+    canonical: `${SITE_URL}/about`,
   },
   openGraph: {
-    title: "About EZMortgageLender.com®",
+    title: "About EZMortgageLender.net®",
     description: "Learn how EZMortgageLender combines human expertise with AI to simplify complex real estate financing.",
-    url: "https://ezmortgagelender.com/about",
+    url: `${SITE_URL}/about`,
   }
 };
 

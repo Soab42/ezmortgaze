@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { Plus, PenTool, Loader2, Pencil, Trash2, Save } from "lucide-react"
+import ImageUpload from "@/components/admin/ImageUpload"
 
 type Author = {
   id: string
@@ -275,17 +276,12 @@ export default function AuthorsPage() {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div>
-                  <label className="block text-sm font-bold text-zinc-400 mb-2 uppercase tracking-wide">Avatar URL</label>
-                  <input
-                    type="url"
-                    name="avatar"
-                    value={formData.avatar}
-                    onChange={handleChange}
-                    className="w-full bg-[#020610] text-white p-4 rounded-xl border border-white/10 focus:border-amber-500/50 outline-none transition-all placeholder:text-zinc-600 font-medium"
-                    placeholder="https://..."
-                  />
-                </div>
+                <ImageUpload
+                  label="Avatar Image"
+                  aspect="square"
+                  value={formData.avatar}
+                  onChange={(url) => setFormData(prev => ({ ...prev, avatar: url }))}
+                />
                 <div>
                   <label className="block text-sm font-bold text-zinc-400 mb-2 uppercase tracking-wide">Twitter URL</label>
                   <input
