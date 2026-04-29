@@ -13,6 +13,7 @@ export async function GET() {
   const lastModStr = lastMod instanceof Date ? lastMod.toISOString() : new Date(lastMod).toISOString();
 
   const sitemapIndex = `<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <sitemap>
     <loc>${SITE_URL}/page-sitemap.xml</loc>
