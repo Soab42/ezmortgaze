@@ -48,7 +48,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       authors: [post.author.name],
       url: canonicalUrl,
       images: [{
-        url: post.coverImage ? `${post.coverImage}` : OG_IMAGE,
+        url: post.coverImage ? (post.coverImage.startsWith('http') ? post.coverImage : `${SITE_URL}${post.coverImage}`) : OG_IMAGE,
         width: 1200,
         height: 630,
         alt: post.title,
@@ -58,9 +58,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       card: "summary_large_image",
       title: post.metaTitle || post.title,
       description: post.metaDescription || post.excerpt,
-      images: [post.coverImage?.startsWith('http') ? post.coverImage : `${post.coverImage || '/placeholder.jpg'}`],
+      images: [post.coverImage?.startsWith('http') ? post.coverImage : (post.coverImage ? `${SITE_URL}${post.coverImage}` : OG_IMAGE)],
     },
-    robots: { index: post.isPublished, follow: post.isPublished }
+    robots: { index: post.isPublished, follow: post.isPublished },
+    other: {
+      "twitter:url": canonicalUrl,
+    }
   };
 }
 
@@ -90,7 +93,7 @@ export default async function BlogDetails({ params }: Props) {
     "@type": "BlogPosting",
     headline: post.metaTitle || post.title,
     description: post.metaDescription || post.excerpt,
-    image: post.coverImage ? `${SITE_URL}${post.coverImage}` : `${SITE_URL}/placeholder.jpg`,
+    image: post.coverImage ? (post.coverImage.startsWith('http') ? post.coverImage : `${SITE_URL}${post.coverImage}`) : `${SITE_URL}/placeholder.jpg`,
     author: {
       "@type": "Person",
       name: post.author.name,
