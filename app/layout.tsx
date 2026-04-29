@@ -64,6 +64,9 @@ export const metadata: Metadata = {
     google: "INSERT_GOOGLE_SEARCH_CONSOLE_VERIFICATION_TAG_HERE",
   },
   category: "finance",
+  other: {
+    "og:logo": LOGO,
+  },
 };
 
 const jsonLd = {

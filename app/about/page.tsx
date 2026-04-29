@@ -15,6 +15,9 @@ export const metadata: Metadata = {
     title: "About EZMortgageLender.net®",
     description: "Learn how EZMortgageLender combines human expertise with AI to simplify complex real estate financing.",
     url: `${SITE_URL}/about`,
+  },
+  other: {
+    "og:logo": `${SITE_URL}/logo.png`,
   }
 };
 

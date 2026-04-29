@@ -12,7 +12,7 @@ const postSchema = z.object({
   readTime: z.string().optional(),
   metaTitle: z.string().optional(),
   metaDescription: z.string().optional(),
-  canonicalUrl: z.string().url().optional(),
+  canonicalUrl: z.string().url().optional().or(z.literal('')),
   isPublished: z.boolean().default(false),
   isFeatured: z.boolean().default(false),
   slug: z.string().optional(),
@@ -75,6 +75,7 @@ export async function POST(req: Request) {
     const post = await prisma.post.create({
       data: {
         ...validatedData,
+        canonicalUrl: validatedData.canonicalUrl === '' ? null : validatedData.canonicalUrl,
         slug,
         userId: session.user.id as string,
         // Optional dates

@@ -28,6 +28,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: author.bio,
       url: `${SITE_URL}/author/${author.slug}`,
     },
+    other: {
+      "og:logo": `${SITE_URL}/logo.png`,
+    }
   };
 }
 

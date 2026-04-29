@@ -63,6 +63,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     robots: { index: post.isPublished, follow: post.isPublished },
     other: {
       "twitter:url": canonicalUrl,
+      "og:logo": LOGO,
     }
   };
 }
