@@ -45,21 +45,21 @@ const features = [
 
 export default function WhySection() {
   return (
-    <section id="why" className="relative py-12 px-6 overflow-hidden" style={{ zIndex: 1, background: 'linear-gradient(145deg,#c026d3 10%,transparent 60%, rgba(16,185,129,0.08) 80%)', }}>
+    <section id="why" className="relative py-12 px-6 overflow-hidden" style={{ zIndex: 1, background: 'linear-gradient(145deg,#1e3a8a 10%,transparent 60%, rgba(16,185,129,0.08) 80%)', }}>
       <MarketingSection />
       {/* Seamless Top Blend from Hero's bright colors to dark */}
-      <div
+      {/* <div
         className="absolute -right-50 -top-60 w-[500px] h-[60vh] pointer-events-none blur-[120px]"
         style={{
-          background: 'radial-gradient(ellipse at bottom,#f6a47a 80%, transparent 100%)',
+          background: 'radial-gradient(ellipse at bottom, #3b82f6 100%, transparent 100%)',
           zIndex: 0
         }}
-      />
+      /> */}
       {/* Additional ambient glow to soften the transition */}
       <div
         className="absolute  left-1/2 -translate-x-1/2 w-full max-w-[1200px] h-[80vh] pointer-events-none opacity-40 mix-blend-screen blur-[120px]"
         style={{
-          background: 'radial-gradient(ellipse at top,#06b6d4 50%, transparent 70%)',
+          background: 'radial-gradient(ellipse at top, #1e3a8a 50%, transparent 70%)',
           zIndex: 0
         }}
       />
