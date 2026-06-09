@@ -229,7 +229,11 @@ export default async function BlogDetails({ params }: Props) {
             <div className="flex-1 min-w-0">
               <div
                 className="prose prose-invert prose-amber max-w-none prose-p:text-zinc-400 prose-p:leading-[1.8] prose-p:text-lg prose-headings:text-white prose-headings:font-black prose-headings:tracking-tight text-white mb-20"
-                dangerouslySetInnerHTML={{ __html: post.content }}
+                dangerouslySetInnerHTML={{ 
+                  __html: post.content
+                    .replace(/<table([^>]*)>/gi, '<div class="table-scroll"><table$1>')
+                    .replace(/<\/table>/gi, '</table></div>')
+                }}
               />
 
               {/* Author Bio Section */}

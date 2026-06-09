@@ -294,6 +294,7 @@ select.form-input option { background: #0a1628; color: #f8fafc; }
   border: none;
   border-radius: 0;
   margin-bottom: 0;
+  min-width: 600px;
 }
 
 .prose th {
