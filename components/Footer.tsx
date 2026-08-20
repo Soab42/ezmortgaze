@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { TrendingUp } from "lucide-react";
 import Link from "next/link";
+import { LOGO_ON_DARK } from "@/lib/config";
 
 export default function Footer() {
   return (
@@ -27,7 +28,7 @@ export default function Footer() {
           <div className="flex flex-col gap-2 justify-center items-center md:justify-start md:items-start">
             <div className="relative flex h-24 w-32 md:h-40 md:w-40 transition-transform hover:scale-[1.02] justify-center">
               <Image
-                src="/logo.png"
+                src={LOGO_ON_DARK}
                 alt="EZ Mortgage Lender Logo"
                 fill
                 className="object-contain object-left"

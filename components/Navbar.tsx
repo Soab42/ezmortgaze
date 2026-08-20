@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { Menu, X, TrendingUp, Phone } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import { LOGO_ON_DARK } from "@/lib/config";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -155,7 +156,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex items-center no-underline group relative h-20 w-24 transition-transform group-hover:scale-105">
             <Image
-              src="/logo.png"
+              src={LOGO_ON_DARK}
               alt="EZ Mortgage Lender Logo"
               fill
               // sizes="(max-width: 768px) 192px, 192px"

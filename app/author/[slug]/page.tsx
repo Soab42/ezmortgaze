@@ -7,7 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import prisma from "@/lib/prisma";
 import { Calendar, Clock, Twitter, Linkedin, ArrowRight } from "lucide-react";
-import { SITE_URL } from "@/lib/config";
+import { SITE_URL, LOGO } from "@/lib/config";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url: `${SITE_URL}/author/${author.slug}`,
     },
     other: {
-      "og:logo": `${SITE_URL}/logo.png`,
+      "og:logo": LOGO,
     }
   };
 }

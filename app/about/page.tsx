@@ -3,7 +3,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { ArrowRight, Building2, TrendingUp, Zap } from "lucide-react";
 import Link from "next/link";
-import { SITE_URL } from "@/lib/config";
+import { SITE_URL, LOGO } from "@/lib/config";
 
 export const metadata: Metadata = {
   title: "About Us | EZMortgageLender.net®",
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     url: `${SITE_URL}/about`,
   },
   other: {
-    "og:logo": `${SITE_URL}/logo.png`,
+    "og:logo": LOGO,
   }
 };
 
